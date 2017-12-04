@@ -1,98 +1,21 @@
-body {
-	font-family:arial, verdana, sans-serif;}
+.navbar-nav > li {
+  padding-left:5px;
+  padding-right:5px;
+}
 
-.ad {
-	height:100px;
-	background-color:#efefef;
-	padding:10px;}
+.navbar-nav > li {
+  padding-left:5px;
+  padding-right:5px;
+}
 
-.navigation {
-	height:40px;
-	line-height:40px;
-	background-color:#efefef;
-	padding:10px;}
+.nav > li {
+	padding-top:5px;
+  padding-left:30px;
+  padding-right:30px;
+}
 
-/* 2 columns */
-
-.column1of2, .column2of2 {
-	float:left;
-	width:440px;
-	background-color:#cccccc;
-	padding:10px;
-	margin-top:20px;}
-
-.column1of2 {margin-right:20px;}
-
-
-/* 3 columns */
-.column1of3, .column2of3, .column3of3 {
-	float:left;
-	width:280px;
-	background-color:#cccccc;
-	padding:10px;
-	margin-top:20px;}
-
-.column1of3, .column2of3, .columns1and2of3 {margin-right:20px;}
-
-.columns1and2of3, .columns2and3of3 {
-	float:left;
-	width:600px;
-	background-color:#cccccc;
-	padding:10px;
-	margin-top:20px;}
-
-
-/* 4 columns */
-.column1of4, .column2of4, .column3of4, .column4of4 {
-	float:left;
-	width:200px;
-	background-color:#cccccc;
-	padding:10px;
-	margin-top:20px;}
-
-.column1of4, .column2of4, .column3of4 {margin-right:20px;}
-
-.columns2and3and4of4 {
-	float:left;
-	width:680px;
-	background-color:#cccccc;
-	padding:10px;
-	margin-top:20px;}
-
-
-/* 6 columns */
-.column1of6, .column2of6, .column3of6, .column4of6, .column5of6, .column6of6 {
-	float:left;
-	width:120px;
-	background-color:#cccccc;
-	padding:10px;
-	margin-top:20px;}
-
-.column1of6, .column2of6, .column3of6, .column4of6, .column5of6 {margin-right:20px;}
-
-
-.column1of3, .column1of4, .column1of6 {clear:both;}
-
-
-
-#footer {
-	height:40px;
-	clear:both;
-	border-top:20px solid #ffffff;
-	padding:10px;
-	background-color:#cccccc;}
-
-#page {
-	padding:0px 10px 10px 10px;
-	width:940px;
-	background-color:#ffffff;}
-
-#frame {
-	margin-left:auto;
-	margin-right:auto;
-	width:960px;
-	background-color:#ffffff;}
-
-body {background-color:#efefef;margin:0px;}
-
-.clear {clear:both;}
+.nav > li {
+	margin-top:5px;
+  padding-left:30px;
+  padding-right:30px;
+}

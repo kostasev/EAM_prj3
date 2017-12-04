@@ -3,32 +3,79 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitionalt//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
   <head>
-    <title>Layout Example</title>
-    <link rel="stylesheet" type="text/css" href="../css/main.css" />
+    <title>IKA</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/main.css">
   </head>
+
   <body>
-    <div id="frame">
-	  <div id="page">
 
-        <div class="columns1and2of3 clear">sign in / register / text size</div>
-        <div class="column3of3">go to... site sections</div>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">IKA IMAGE</a>
 
-        <div class="ad clear">ad</div>
-
-        <div class="column1of3 clear">site name</div>
-        <div class="column2of3">empty</div>
-        <div class="column3of3">search</div>
-
-        <div class="navigation clear">navigation and breadcrumb</div>
-
-        <div class="column1of2 clear">article</div>
-        <div class="column4of6">socia media links, tools, and other links</div>
-        <div class="column3of3">most viewed articles and best sellers from the shop</div>
-
-        <div class="navigation clear">footer</div>
-
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Signup</a>
+          </li>
+          <li class="navbar-item">
+            <a class="nav-link" href="#">Login</a>
+          </li>
+          <li class="navbar-item">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Language
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">English</a>
+                <a class="dropdown-item" href="#">French</a>
+                <a class="dropdown-item" href="#">German</a>
+                <a class="dropdown-item" href="#">Greek</a>
+                <a class="dropdown-item" href="#">Italian</a>
+                <a class="dropdown-item" href="#">Spanish</a>
+              </div>
+            </div>
+          </li>
+        </ul>
       </div>
-    </div>
+    </nav>
+
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="btn btn-secondary" href="#">Facilities</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-secondary" href="#">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-secondary" href="#">News</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-secondary" href="#">F.A.Q.s</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-secondary" href="#">About us</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-secondary" href="#">Contact</a>
+      </li>
+    </ul>
+
   </body>
+
+  <script type="text/javascript">
+        $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+        });
+   </script>
+
 </html>
