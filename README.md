@@ -1,4 +1,4 @@
-# Computer - Human Interaction -- "IKA" Website Implementation
+# "IKA" Website Implementation
 
 ## About
 
