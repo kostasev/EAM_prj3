@@ -6,7 +6,7 @@
 
 ## Documentation
 
-For complete project documentation please see _IKA Website Implementation Documentation -- Evangelou - Gkergki - Kamaras.pdf_
+For complete project documentation please see _"IKA Website Implementation Documentation -- Evangelou - Gkergki - Kamaras.pdf"_
 
 ## Contact & Feedback Details
 
