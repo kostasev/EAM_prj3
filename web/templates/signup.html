@@ -1,0 +1,194 @@
+
+<?xml version="1.0" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitionalt//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+  <head>
+    <title>IKA Sign-up</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/main.css">
+  </head>
+
+  <body>
+
+    <!-- NAVEBAR -->
+
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">IKA IMAGE</a>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <form class="form-inline my-2 my-lg-0 search-bar">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Signup</a>
+          </li>
+          <li class="navbar-item">
+            <a class="nav-link" href="#">Login</a>
+          </li>
+          <li class="navbar-item">
+            <select class="custom-select">
+              <option value="Albanian">Albanian</option>
+              <option value="Bulgarian">Bulgarian</option>
+              <option value="Egyptian">Egyptian</option>
+              <option value="English" selected>English</option>
+              <option value="French">French</option>
+              <option value="German">German</option>
+              <option value="Greek">Greek</option>
+              <option value="Italian">Italian</option>
+              <option value="Polish">Polish</option>
+              <option value="Romanian">Romanian</option>
+              <option value="Russian">Russian</option>
+              <option value="Serbian">Serbian</option>
+              <option value="Turkish">Turkish</option>
+            </select>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- MAIN MENU -->
+
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="btn btn-secondary" href="#">Facilities</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-secondary" href="#">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-secondary" href="#">News</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-secondary" href="#">F.A.Q.s</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-secondary" href="#">About us</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-secondary" href="#">Contact</a>
+      </li>
+    </ul>
+
+    <!-- SIGN-UP PAGE CONTENT -->
+
+    <div class="container">
+  		<div class="row">
+  			<div class="col-sm-12" style="text-align:center">
+  				<form action="***" method="post" id="signUpForm">
+  					<input type="hidden" name="action" value="userSignUp">
+  					<br>
+    				<h2><strong>Sign-up</strong></h2>
+            <p>Please insert your details and your desired credentials</p>
+
+            <div class="row">
+              <div class="col-md-3 form-group">
+      					<label>
+      						<input class="form-control" id="firstName" name="firstName" type="text" placeholder="First name" required requiredMessage="Please enter your first name" pattern=".{1,45}">
+      					</label>
+      				</div>
+      				<div class="col-md-3 form-group">
+                <label>
+      						<input class="form-control" id="secondName" name="secondName" type="text" placeholder="Second name" required requiredMessage="Please enter your second name" pattern=".{1,45}">
+      					</label>
+      				</div>
+              <div class="col-md-3 form-group">
+      					<label>
+      						<input class="form-control" id="fathersName" name="fathersName" type="text" placeholder="Father's name" required requiredMessage="Please enter your father's name" pattern=".{1,45}">
+      					</label>
+      				</div>
+      				<div class="col-md-3 form-group">
+                <label>
+      						<input class="form-control" id="mothersName" name="mothersName" type="text" placeholder="Mother's name" required requiredMessage="Please enter your mother's name" pattern=".{1,45}">
+      					</label>
+      				</div>
+            </div>
+
+            <div class="row">
+
+              <label for="dateOfBirth" class="col-2 col-form-label">Date of Birth</label>
+              <div class="col-md-2">
+                <input class="form-control" type="date" value="1980-08-19" id="dateOfBirth">
+              </div>
+
+              <div class="col-md-3 form-group">
+                <label>
+      						<input class="form-control" id="placeOfBirth" name="placeOfBirth" type="text" placeholder="Place of birth" required requiredMessage="Please enter your place birth" pattern=".{1,45}">
+      					</label>
+      				</div>
+              <div class="col-md-3 form-group">
+      					<label>
+      						<input class="form-control" id="homeAddress" name="homeAddress" type="text" placeholder="Home address" required requiredMessage="Please enter your home address" pattern=".{1,45}">
+      					</label>
+      				</div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3 form-group">
+      					<label>
+      						<input class="form-control" id="postalCode" name="postalCode" type="text" placeholder="Postal code" required requiredMessage="Please enter your postal code" pattern=".{1,45}">
+      					</label>
+      				</div>
+              <div class="col-md-3 form-group">
+      					<label>
+      						<input class="form-control" id="AFM" name="AFM" type="text" placeholder="AFM" required requiredMessage="Please enter your AFM" pattern=".{1,45}">
+      					</label>
+      				</div>
+      				<div class="col-md-3 form-group">
+                <label>
+      						<input class="form-control" id="IDNumber" name="IDNumber" type="text" placeholder="ID number" required requiredMessage="Please enter your ID number" pattern=".{1,45}">
+      					</label>
+      				</div>
+      				<div class="col-md-3 form-group">
+                <label>
+      						<input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone number" required requiredMessage="Please enter your phone number" pattern=".{1,45}">
+      					</label>
+      				</div>
+            </div>
+
+            <div class="row">
+
+              <label for="email" class="col-1 col-form-label">Email</label>
+              <div class="col-md-4">
+                <input class="form-control" type="email" value="joedoe@somemail.com" id="email">
+              </div>
+
+              <div class="col-md-3 form-group">
+                <label>
+      						<input class="form-control" id="password" name="password" type="password" placeholder="Password" required requiredMessage="Please enter your password" pattern=".{1,45}">
+      					</label>
+      				</div>
+              <div class="col-md-3 form-group">
+                <label>
+      						<input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm password" required requiredMessage="Please confirm your password" pattern=".{1,45}">
+      					</label>
+      				</div>
+            </div>
+
+            <br>
+    				<input class="btn" type="submit" value="Sign-up">
+            <br> <br>
+            <p><a href="./login.html">Just remembered that you already have an account?</a></p>
+          </form>
+  			</div>
+  		</div>
+  	</div>
+
+    <!-- FOOTER  -->
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+      </div>
+    </footer>
+
+  </body>
+
+</html>
