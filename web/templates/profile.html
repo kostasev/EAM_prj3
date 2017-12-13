@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
   <head>
-    <title>IKA Sign-up</title>
+    <title>IKA Profile</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
@@ -27,7 +27,7 @@
         </form>
         <ul class="navbar-nav ml-auto">
           <li class="navbar-item">
-            <a class="nav-link" href="#">Log in</a>
+            <a class="nav-link" href="#">Log out</a>
           </li>
           <li class="navbar-item">
             <select class="custom-select">
@@ -73,7 +73,7 @@
       </li>
     </ul>
 
-    <!-- SIGN-UP PAGE CONTENT -->
+    <!-- PROFILE PAGE CONTENT -->
 
     <div class="container">
   		<div class="row">
@@ -81,9 +81,11 @@
   				<form action="***" method="post" id="signUpForm">
   					<input type="hidden" name="action" value="userSignUp">
   					<br>
-    				<h2><strong>Sign-up</strong></h2>
-            <p>Please insert your details and your desired credentials</p>
+    				<h2><strong>Your profile</strong></h2>
+            <p>You can modify your details, credentials and preferences as desired</p>
 
+            <br>
+            <p><strong>Details and Credentials</strong></p>
             <div class="row">
               <div class="col-md-3 form-group">
       					<label>
@@ -180,16 +182,72 @@
             </div>
 
             <br>
+            <p><strong>Notifications and Updates</strong></p>
+            <div class="row">
+              <div class="form-check col-md-6 form-group">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" checked data-toggle="tooltip" data-placement="bottom" title="You will be notified for matters concerning your applications, questions, appointments etc.">
+                  I want to receive account related notifications by email
+                </label>
+              </div>
+              <div class="form-check col-md-6 form-group">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" data-toggle="tooltip" data-placement="bottom" title="You will be updated for general matters concerning all IKA clients.">
+                  I want to receive updates concerning IKA by email
+                </label>
+              </div>
+            </div>
+
+            <br>
+            <p><strong>History and action-tracking</strong></p>
+            <div class="row">
+              <div class="form-check col-md-6 form-group">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" checked data-toggle="tooltip" data-placement="bottom" title="This history is going to remain strictly confidential and available only to you.">
+                  I want a complete history of my actions to be kept
+                </label>
+              </div>
+              <div class="form-check col-md-6 form-group">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" checked data-toggle="tooltip" data-placement="bottom" title="For this we will need to monitor your actions, to be able to help you. Your data is going to remain strictly confidential and available only to you.">
+                  I want auto-complete in my forms
+                </label>
+              </div>
+            </div>
+
+            <br>
+            <p><strong>Special assistance</strong></p>
+            <div class="row">
+              <div class="form-check col-md-4 form-group">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" data-toggle="tooltip" data-placement="bottom" title="This way you can ask questions and our specialized software will be able to assist you.">
+                  Turn microphone on when I log-in
+                </label>
+              </div>
+              <div class="form-check col-md-4 form-group">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" data-toggle="tooltip" data-placement="bottom" title="When your cursor remains inert for more than 3 seconds, we are going to zoom-in to where it points.">
+                  Zoom-in when my cursor focuses
+                </label>
+              </div>
+              <div class="form-check col-md-4 form-group">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" data-toggle="tooltip" data-placement="bottom" title="When you remain inert for more than 10 seconds, our specialized software will automatically step-in to assist you.">
+                  Vocal guidance after prolongued inertia
+                </label>
+              </div>
+            </div>
+
+            <br>
             <div class="row">
               <div class="col-md-6 form-group">
-                <button type="button" class="btn btn-outline-danger">Clear</button>
+                <button type="button" class="btn btn-outline-danger">Cancel</button>
               </div>
               <div class="col-md-6 form-group">
-        				<input class="btn btn-primary" type="submit" value="Sign-up">
+        				<input class="btn btn-primary" type="submit" value="Save">
                 <br> <br>
               </div>
             </div>
-            <p><a href="./login.html">Just remembered that you already have an account?</a></p>
 
           </form>
   			</div>
