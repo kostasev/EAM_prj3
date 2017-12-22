@@ -3,8 +3,6 @@
 }
 
 .container {
-  padding-right: 15px;
-  padding-left: 15px;
   padding-top: 15px;
 }
 
@@ -30,4 +28,16 @@ a {
 .navbar-nav > li {
   margin-left:5px;
   margin-right:5px;
+}
+
+.row {
+  padding-top:5px;
+  padding-left:15px;
+  padding-bottom:5px;
+}
+
+.row {
+  margin-top:5px;
+  margin-left:15px;
+  margin-bottom:5px;
 }
