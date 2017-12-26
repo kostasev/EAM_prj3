@@ -90,7 +90,7 @@
       		<div class="row">
       			<div class="col-sm-12" style="text-align:center">
       				<form action="***" method="post" id="signUpForm">
-      					<input type="hidden" name="action" value="userSignUp">
+      					<input type="hidden" name="action" value="userProfile">
       					<br>
         				<h2><strong>Your profile</strong></h2>
                 <p>You can modify your details, credentials and preferences as desired</p>
@@ -98,54 +98,57 @@
                 <br>
                 <p><strong>Details and Credentials</strong></p>
                 <div class="row">
-                  <div class="col-md-3 form-group">
-          					<label>
-          						<input class="form-control" id="firstName" name="firstName" type="text" placeholder="First name" required requiredMessage="Please enter your first name" pattern=".{1,45}">
-          					</label>
-          		  </div>
-
+                  <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label>
-          						<input class="form-control" id="secondName" name="secondName" type="text" placeholder="Second name" required requiredMessage="Please enter your second name" pattern=".{1,45}">
-          					</label>
-          		  </div>
-              </div>
-
-              <div class="row">
+                      <input class="form-control" id="firstName" name="firstName" type="text" placeholder="First name" required requiredMessage="Please enter your first name" pattern=".{1,45}">
+          				  </label>
+                  </div>
                   <div class="col-md-3 form-group">
-          					<label>
-          						<input class="form-control" id="fathersName" name="fathersName" type="text" placeholder="Father's name" required requiredMessage="Please enter your father's name" pattern=".{1,45}">
-          					</label>
-          				</div>
-
-          			<div class="col-md-3 form-group">
-                        <label>
-          						<input class="form-control" id="mothersName" name="mothersName" type="text" placeholder="Mother's name" required requiredMessage="Please enter your mother's name" pattern=".{1,45}">
-          				</label>
-          			</div>
+                    <label>
+                      <input class="form-control" id="secondName" name="secondName" type="text" placeholder="Second name" required requiredMessage="Please enter your second name" pattern=".{1,45}">
+          				  </label>
+                  </div>
+                  <div class="col-md-3 form-group"></div>
                 </div>
 
                 <div class="row">
-
-                  <label for="dateOfBirth" class="col-2 col-form-label">Date of Birth</label>
-                    <div class="col-md-2">
-                        <input class="form-control" type="date" value="1980-08-19" id="dateOfBirth">
-                    </div>
-
+                  <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label>
-          						<input class="form-control" id="placeOfBirth" name="placeOfBirth" type="text" placeholder="Place of birth" required requiredMessage="Please enter your place birth" pattern=".{1,45}">
-          					</label>
-          				</div>
+                      <input class="form-control" id="fathersName" name="fathersName" type="text" placeholder="Father's name" required requiredMessage="Please enter your father's name" pattern=".{1,45}">
+          				  </label>
+                  </div>
+                  <div class="col-md-3 form-group">
+                    <label>
+                      <input class="form-control" id="mothersName" name="mothersName" type="text" placeholder="Mother's name" required requiredMessage="Please enter your mother's name" pattern=".{1,45}">
+          				  </label>
+                  </div>
+                  <div class="col-md-3 form-group"></div>
                 </div>
 
-                <div class ="row">
-                  <div class="col-md-3 form-group">
-          					<label>
-          						<input class="form-control" id="homeAddress" name="homeAddress" type="text" placeholder="Home address" required requiredMessage="Please enter your home address" pattern=".{1,45}">
-          					</label>
-          				</div>
+                <div class="row">
+                  <div class="col-md-3 form-group"></div>
+                  <label for="dateOfBirth" class="col-md-1 col-form-label">Date of Birth</label>
+                  <div class="col-md-3">
+                    <input class="form-control" type="date" value="1980-08-19" id="dateOfBirth">
+                  </div>
                   <div class="col-md-2 form-group">
+                    <label>
+                      <input class="form-control" id="placeOfBirth" name="placeOfBirth" type="text" placeholder="Place of birth" required requiredMessage="Please enter your place birth" pattern=".{1,45}">
+          				  </label>
+                  </div>
+                  <div class="col-md-3 form-group"></div>
+                </div>
+
+                <div class="row">
+                <div class="col-md-3 form-group"></div>
+                  <div class="col-md-3 form-group">
+                    <label>
+                      <input class="form-control" id="homeAddress" name="homeAddress" type="text" placeholder="Home address" required requiredMessage="Please enter your home address" pattern=".{1,45}">
+          					</label>
+                  </div>
+                  <div class="col-md-3 form-group">
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Sex
@@ -156,23 +159,27 @@
                       </div>
                     </div>
                   </div>
+                  <div class="col-md-3 form-group"></div>
                 </div>
 
                 <div class="row">
+                <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-          					<label>
-          						<input class="form-control" id="postalCode" name="postalCode" type="text" placeholder="Postal code" required requiredMessage="Please enter your postal code" pattern=".{1,45}">
+                    <label>
+                      <input class="form-control" id="postalCode" name="postalCode" type="text" placeholder="Postal code" required requiredMessage="Please enter your postal code" pattern=".{1,45}">
           					</label>
-          				</div>
+                  </div>
                   <div class="col-md-3 form-group">
           					<label>
           						<input class="form-control" id="AFM" name="AFM" type="text" placeholder="AFM" required requiredMessage="Please enter your AFM" pattern=".{1,45}">
           					</label>
           				</div>
+                  <div class="col-md-3 form-group"></div>
                 </div>
 
                 <div class="row">
-          				<div class="col-md-3 form-group">
+                <div class="col-md-3 form-group"></div>
+                  <div class="col-md-3 form-group">
                     <label>
           						<input class="form-control" id="IDNumber" name="IDNumber" type="text" placeholder="ID number" required requiredMessage="Please enter your ID number" pattern=".{1,45}">
           					</label>
@@ -182,28 +189,32 @@
           						<input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone number" required requiredMessage="Please enter your phone number" pattern=".{1,45}">
           					</label>
           				</div>
+                  <div class="col-md-3 form-group"></div>
                 </div>
 
                 <div class="row">
-
-                  <label for="email" class="col-1 col-form-label">Email</label>
-                  <div class="col-md-4">
+                <div class="col-md-3 form-group"></div>
+                  <label for="email" class="col-md-3 col-form-label">Email</label>
+                  <div class="col-md-3">
                     <input class="form-control" type="email" value="joedoe@somemail.com" id="email">
                   </div>
-              </div>
-              <br>
+                  <div class="col-md-3 form-group"></div>
+                </div>
+                <br>
 
-              <div class="row">
+                <div class="row">
+                  <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label>
-          						<input class="form-control" id="password" name="password" type="password" placeholder="Password" required requiredMessage="Please enter your password" pattern=".{1,45}">
-          					</label>
-          				</div>
+                      <input class="form-control" id="password" name="password" type="password" placeholder="Password" required requiredMessage="Please enter your password" pattern=".{1,45}">
+          			    </label>
+                  </div>
                   <div class="col-md-3 form-group">
                     <label>
-          						<input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm password" required requiredMessage="Please confirm your password" pattern=".{1,45}">
+                      <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm password" required requiredMessage="Please confirm your password" pattern=".{1,45}">
           					</label>
-          				</div>
+                  </div>
+                  <div class="col-md-3 form-group"></div>
                 </div>
 
                 <br>
