@@ -73,6 +73,16 @@ INSERT INTO `user` VALUES (3,'Theopoula','Kati','Kapoios','Kapoia','1959-02-12',
 UNLOCK TABLES;
 
 
+-- -----------------------------------------------------
+-- Add sample settings
+-- -----------------------------------------------------
+LOCK TABLES `settings` WRITE;
+INSERT INTO `settings` VALUES (1,0,1,0,1,0,0,0);
+INSERT INTO `settings` VALUES (2,1,0,1,0,0,1,0);
+INSERT INTO `settings` VALUES (3,1,1,1,1,0,0,1);
+UNLOCK TABLES;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
