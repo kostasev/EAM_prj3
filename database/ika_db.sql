@@ -63,6 +63,16 @@ CREATE TABLE IF NOT EXISTS `ika_db`.`settings` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Add sample users
+-- -----------------------------------------------------
+LOCK TABLES `user` WRITE;
+INSERT INTO `user` VALUES (1,'Stavrakas','Kritikarakis','Liakouras','Tassoula','1975-04-17','Rethymno','Rakomelias 5, Rethymno','12220','750417987654','PR-1234','6900000001','kritikaros1975@hotmail.com','giaourtikrikri',0,0,0);
+INSERT INTO `user` VALUES (2,'Kikitsa','Stavridou','Panagiotis','Aspasia','1950-11-10','Kalamata','Manis 19B, Argyroupoli','14010','501110987654','MN-1234','6900000002','kikitsast@gmail.com','soutzoukakiastofourno',1,1,0);
+INSERT INTO `user` VALUES (3,'Theopoula','Kati','Kapoios','Kapoia','1959-02-12','Kapou','Kapou 1, Allou','14011','590212987654','XY-1234','6900000002','theopoulaKati@gmail.com','123456789',1,0,1);
+UNLOCK TABLES;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
