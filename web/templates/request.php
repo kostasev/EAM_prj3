@@ -16,7 +16,7 @@
           </button>
           <div class="col-md-2"></div>
           <div>
-            <a class="navbar-brand" href="#"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
+            <a class="navbar-brand" href="main.php"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
           </div>
           <div class="col-md-3">
             <form class="navbar-collapse collapse" id="navbarsExampleDefault2">
@@ -99,7 +99,7 @@
                     <a class="nav-link active" href="#">Retired</a>
                     <ul class="nav inner-nav2 flex-column">
                       <li class="nav-item">
-                        <a class="nav-link" href="calculation.html">Pension Calculator</a>
+                        <a class="nav-link" href="calculation.php">Pension Calculator</a>
                       </li>
                     </ul>
                   </li>

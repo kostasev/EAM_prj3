@@ -17,7 +17,7 @@
         </button>
         <div class="col-md-2"></div>
         <div>
-          <a class="navbar-brand" href="#"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
+          <a class="navbar-brand" href="main.php"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
         </div>
         <div class="col-md-3">
           <form class="navbar-collapse collapse" id="navbarsExampleDefault2">
@@ -154,8 +154,8 @@
                         Sex
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">Male</button>
-                        <button class="dropdown-item" type="button">Female</button>
+                        <input type="radio" name="sex" value="Male">Male</button>
+                        <input type="radio" name="sex" value="Female">Female</button>
                       </div>
                     </div>
                   </div>
@@ -277,7 +277,7 @@
                 <br>
                 <div class="row">
                   <div class="col-md-6 form-group">
-                    <button type="button" class="btn btn-outline-danger">Cancel</button>
+                    <button type="reset" class="btn btn-outline-danger">Cancel</button>
                   </div>
                   <div class="col-md-6 form-group">
             				<input class="btn btn-primary" type="submit" value="Save">

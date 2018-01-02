@@ -4,9 +4,9 @@
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Calculation</title>
+    <title>IKA Log In</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/calculation.css">
+    <link rel="stylesheet" href="../css/login.css">
 
   </head>
   <body>
@@ -17,7 +17,7 @@
         </button>
         <div class="col-md-2"></div>
         <div>
-          <a class="navbar-brand" href="#"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
+          <a class="navbar-brand" href="main.php"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
         </div>
         <div class="col-md-3">
           <form class="navbar-collapse collapse" id="navbarsExampleDefault2">
@@ -29,7 +29,7 @@
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Sign Up</a>
+              <a class="nav-link" href="signup.php">Sign Up</a>
             </li>
             <li class="navbar-item">
               <select class="custom-select">
@@ -84,7 +84,7 @@
           <hr>
         </div>
 
-        <!-- CALCULATION PAGE CONTENT - Pension calculation scenario -->
+        <!-- LOG-IN PAGE CONTENT -->
 
         <div class="container">
       		<div class="row">
@@ -92,65 +92,24 @@
       				<form action="***" method="post" id="logInForm">
       					<input type="hidden" name="action" value="userLogIn">
       					<br>
-        				<h2><strong>Basic Pension Calculator</strong></h2>
-                <p>Please insert your details</p>
+        				<h2><strong>Log-in</strong></h2>
+                <p>Please insert your credentials</p>
 
-                <div class="row">
-                  <div class="col-md-6 form-group">
-          					<label>
-          						<input class="form-control" id="firstName" name="firstName" type="text" placeholder="First name" required requiredMessage="Please enter your first name" pattern=".{1,45}">
-          					</label>
-          				</div>
-          				<div class="col-md-6 form-group">
-                    <label>
-          						<input class="form-control" id="secondName" name="secondName" type="text" placeholder="Second name" required requiredMessage="Please enter your second name" pattern=".{1,45}">
-          					</label>
-          				</div>
-                </div>
-
-                <div class="row">
-
-                  <label for="dateOfBirth" class="col-3 col-form-label">Date of Birth</label>
-                  <div class="col-md-3">
-                    <input class="form-control" type="date" value="1980-08-19" id="dateOfBirth">
-                  </div>
-
-                  <div class="col-md-6 form-group">
-                    <label>
-          						<input class="form-control" id="sex" name="sex" type="text" placeholder="Sex" required requiredMessage="Please enter your sex" pattern=".{1,45}">
-          					</label>
-          				</div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-4 form-group">
-          					<label>
-          						<input class="form-control" id="pensionType" name="pensionType" type="text" placeholder="Pension type" required requiredMessage="Please enter your pension type" pattern=".{1,45}">
-          					</label>
-          				</div>
-                  <div class="col-md-4 form-group">
-          					<label>
-          						<input class="form-control" id="daysOfEmployment" name="daysOfEmployment" type="number" placeholder="Days of employment" required requiredMessage="Please enter your days of employment" pattern=".{1,45}">
-          					</label>
-          				</div>
-                  <div class="col-md-4 form-group">
-          					<label>
-          						<input class="form-control" id="avgReceivingsPerYear" name="avgReceivingsPerYear" type="number" step="0.01" placeholder="Avg yearly receivings" required requiredMessage="Please enter your average receivings per year" pattern=".{1,45}">
-          					</label>
-          				</div>
-                </div>
+                <div>
+        					<label>
+        						<input class="form-control" id="email" name="email" type="email" placeholder="your email" required requiredMessage="Please enter your email">
+        					</label>
+        				</div>
+        				<div>
+        					<label>
+        						<input class="form-control" id="password" name="password" type="password" placeholder="your password" required requiredMessage="Please enter your password">
+        					</label>
+        				</div>
 
                 <br>
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <button type="button" class="btn btn-outline-danger">Clear</button>
-                  </div>
-                  <div class="col-md-6 form-group">
-            				<input class="btn btn-primary" type="submit" value="Calculate">
-                    <br> <br>
-                  </div>
-                </div>
-
+        				<input class="btn btn-primary" type="submit" value="Log-in">
+                <br> <br>
+                <p><a href="./signup.html">Don't have an account?</a></p>
               </form>
       			</div>
       		</div>

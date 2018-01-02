@@ -4,9 +4,9 @@
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Request Reply</title>
+    <title>IKA Certification Reply</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/request.css">
+    <link rel="stylesheet" href="../css/certification.css">
 
   </head>
   <body>
@@ -16,7 +16,7 @@
           </button>
           <div class="col-md-2"></div>
           <div>
-            <a class="navbar-brand" href="#"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
+            <a class="navbar-brand" href="main.php"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
           </div>
           <div class="col-md-3">
             <form class="navbar-collapse collapse" id="navbarsExampleDefault2">
@@ -99,7 +99,7 @@
                     <a class="nav-link active" href="#">Retired</a>
                     <ul class="nav inner-nav2 flex-column">
                       <li class="nav-item">
-                        <a class="nav-link" href="calculation.html">Pension Calculator</a>
+                        <a class="nav-link" href="calculation.php">Pension Calculator</a>
                       </li>
                     </ul>
                   </li>
@@ -117,11 +117,11 @@
 
               <!-- REQUEST RESULT -->
               <div class="col-md-10" style="text-align:center">
-                <h2><strong>Retirement request</strong></h2>
-                <p><strong>TEXT THAT DECLARES THE USER IS NOW RETIRED</strong></p>
-                <p><strong>TEXT THAT DECLARES THE USER IS NOW RETIRED</strong></p>
-                <p><strong>TEXT THAT DECLARES THE USER IS NOW RETIRED</strong></p>
-                <p><strong>TEXT THAT DECLARES THE USER IS NOW RETIRED</strong></p>
+                <h2><strong>Pension certification</strong></h2>
+                <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
+                <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
+                <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
+                <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
               </div>
 
             </div>

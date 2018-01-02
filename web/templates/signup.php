@@ -17,7 +17,7 @@
         </button>
         <div class="col-md-2"></div>
         <div>
-          <a class="navbar-brand" href="#"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
+          <a class="navbar-brand" href="main.php"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
         </div>
         <div class="col-md-3">
           <form class="navbar-collapse collapse" id="navbarsExampleDefault2">
@@ -29,7 +29,7 @@
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Log In</a>
+              <a class="nav-link" href="login.php">Log In</a>
             </li>
             <li class="navbar-item">
               <select class="custom-select">
@@ -89,7 +89,7 @@
         <div class="container">
       		<div class="row">
       			<div class="col-md-12" style="text-align:center">
-      				<form action="***" method="post" id="signUpForm">
+      				<form action="welcome.php" method="post" id="signUpForm">
       					<input type="hidden" name="action" value="userSignUp">
       					<br>
         				<h2><strong>Sign-up</strong></h2>
@@ -129,11 +129,11 @@
                   <div class="col-md-3 form-group"></div>
                   <label for="dateOfBirth" class="col-md-1 col-form-label">Date of Birth</label>
                   <div class="col-md-3">
-                    <input class="form-control" type="date" value="1980-08-19" id="dateOfBirth">
+                    <input class="form-control"name="dateOfBirth" type="date" value="1980-08-19" id="dateOfBirth">
                   </div>
                   <div class="col-md-2 form-group">
                     <label>
-                      <input class="form-control" id="placeOfBirth" name="placeOfBirth" type="text" placeholder="Place of birth" required requiredMessage="Please enter your place birth" pattern=".{1,45}">
+                      <input class="form-control" id="placeOfBirth" name="placeOfBirth" type="text" placeholder="Enter place of birth" required requiredMessage="Please enter your place birth" pattern=".{1,45}">
           				  </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
@@ -152,8 +152,8 @@
                         Sex
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <button class="dropdown-item" type="button">Male</button>
-                        <button class="dropdown-item" type="button">Female</button>
+                        <input type="radio" name="sex" value="Male" checked>Male</button>
+                        <input type="radio" name="sex" value="Female">Female</button>
                       </div>
                     </div>
                   </div>
@@ -194,7 +194,7 @@
                   <div class="col-md-3 form-group"></div>
                   <label for="email" class="col-md-3 col-form-label">Email</label>
                   <div class="col-md-3">
-                    <input class="form-control" type="email" value="joedoe@somemail.com" id="email">
+                    <input class="form-control" name="email" type="email" value="joedoe@somemail.com" id="email">
                   </div>
                   <div class="col-md-3 form-group"></div>
                 </div>
@@ -258,5 +258,4 @@
         </script>
 
   </body>
-
 </html>

@@ -17,7 +17,7 @@
         </button>
         <div class="col-md-2"></div>
         <div>
-          <a class="navbar-brand" href="#"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
+          <a class="navbar-brand" href="main.php"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
         </div>
         <div class="col-md-3">
           <form class="navbar-collapse collapse" id="navbarsExampleDefault2">
@@ -29,10 +29,10 @@
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Sign Up</a>
+              <a class="nav-link" href="signup.php">Sign Up</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Log In</a>
+              <a class="nav-link" href="login.php">Log In</a>
             </li>
             <li class="navbar-item">
               <select class="custom-select">
@@ -192,7 +192,7 @@
       <div class="container">
         <hr>
         <div class="row" style="background-color: #d6d6d6;">
-            <h3 style=" padding-top: 15px; padding-left: 15px;">Applications</h3>
+            <h3 style=" padding-top: 15px; padding-left: 20px;">Applications</h3>
         </div>
         <div class="row" style="background-color: #d6d6d6;">
           <!-- <div class="col-md-2"></div> -->
@@ -200,14 +200,14 @@
             <a href="#">
               <img src="../images/doc.png"/>
             </a>
-            <h4 style="padding-top: 15px; padding-left: 20px;">Appointments</h4>
+            <h4 style="padding-top: 15px; padding-left: 30px;">Appointments</h4>
             <p style="padding-left: 10px;">Are you feeling weird lately? Don't wait any longer! Schedule an appointment with a doctor or a specialist.</p>
           </div>
           <div class="col-md-3">
-            <a href="calculation.html">
+            <a href="calculation.php">
               <img src="../images/calc.png"/>
             </a>
-            <h4 style="padding-top: 15px; padding-left: 50px;">Pension Calculator</h4>
+            <h4 style="padding-top: 15px; padding-left: 15px;">Pension Calculator</h4>
             <p style="padding-left: 10px;">Are you about to retire or you just want to plan ahead? Calculate your pension.</p>
           </div>
           <div class="col-md-3">
@@ -221,7 +221,7 @@
             <a target="_blank" href="http://www.amka.gr/">
               <img src="../images/amka.png"/>
             </a>
-            <h4 style="padding-top: 15px; padding-left: 25px;">Obtain AMKA</h4>
+            <h4 style="padding-top: 15px; padding-left: 30px;">Obtain AMKA</h4>
             <p style="padding-left: 5px;">Do you want to obtain a "Social Insurance Record Number" (AMKA)? It takes just a few steps, it lasts a lifetime.</p>
           </div>
           <!-- <div class="col-md-2"></div> -->
