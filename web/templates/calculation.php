@@ -109,17 +109,23 @@
                 </div>
 
                 <div class="row">
-
                   <label for="dateOfBirth" class="col-3 col-form-label">Date of Birth</label>
                   <div class="col-md-3">
                     <input class="form-control" type="date" value="1980-08-19" id="dateOfBirth">
                   </div>
 
-                  <div class="col-md-6 form-group">
-                    <label>
-          						<input class="form-control" id="sex" name="sex" type="text" placeholder="Sex" required requiredMessage="Please enter your sex" pattern=".{1,45}">
-          					</label>
-          				</div>
+                  <div class="col-md-3 form-group">
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sex
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <input type="radio" name="sex" value="Male" checked>Male</button>
+                        <input type="radio" name="sex" value="Female">Female</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 form-group"></div>
                 </div>
 
                 <div class="row">
