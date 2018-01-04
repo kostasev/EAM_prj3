@@ -3,6 +3,56 @@
   require_once 'db_connection.php';
   $conn = new mysqli($hn, $un, $pw, $db);
   if ($conn->connect_error) die ($conn->connect_error);
+
+  function checkDetailsUniqueness($AFM, $IDNumber, $email) {
+    /* initialize error message */
+    $err = "";
+    /* Check for unique AFM */
+    $sql = "SELECT count(AFM) FROM user WHERE AFM='$AFM'";
+
+    $result = mysql_result(mysql_query($sql),0);
+
+    if( $result > 0 ) {
+      // die( "There is already a user with that AFM!" );
+      $err += "There is already a user with that AFM";
+    }//end if
+
+    /* Check for unique IDNumber */
+    $sql = "SELECT count(IDNumber) FROM user WHERE IDNumber='$IDNumber'";
+
+    $result = mysql_result(mysql_query($sql),0);
+
+    if( $result > 0 ) {
+      // die( "There is already a user with that IDNumber!" );
+      if ($err == "") {
+        $err += "There is already a user with that IDNumber";
+      }
+      else {
+        $err += ", IDNumber";
+      }
+    }//end if
+
+    /* Check for unique email */
+    $sql = "SELECT count(Email) FROM user WHERE Email='$email'";
+
+    $result = mysql_result(mysql_query($sql),0);
+
+    if( $result > 0 ) {
+      // die( "There is already a user with that email!" );
+      if ($err == "") {
+        $err += "There is already a user with that email";
+      }
+      else {
+        $err += " and email";
+      }
+    }//end if
+
+    if ($err != "") {
+      $err += "!";
+    }
+
+    return $err;
+  }
 ?>
 
 <html lang="en">
@@ -109,19 +159,28 @@
           $retired = 0;
           $special = 0;
 
-          $query = "INSERT INTO user(FirstName, LastName, FathersName, MothersName, DateOfBirth, BirthPlace, HomeAddress, PostalCode, AFM, IDNumber, PhoneNumber, Email, Password, Sex, IsRetired, IsSpecial) VALUES".
-          "('$name', '$surname', '$father', '$mother', '$date', '$place', '$home', '$postal', '$afm', '$id', '$phone', '$email', '$password', '$sex', '$retired', '$special')";
+          $err = checkDetailsUniqueness($afm, $id, $email);
 
-          $result = $conn->query($query);
-          if (!$result) {
-            echo '<h2 style="text-align:center">Sign-up was unsuccesful!</h2>';
-            $conn->error;
+          if ($err != "") {
+            echo '<div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem!</strong>';
+            echo $err;
+            echo '</div>';
           }
-          else if ($result) {
-            echo '<h2 style="text-align:center">Welcome to IKA!</h2>';
-          }
+          else {
+            $query = "INSERT INTO user(FirstName, LastName, FathersName, MothersName, DateOfBirth, BirthPlace, HomeAddress, PostalCode, AFM, IDNumber, PhoneNumber, Email, Password, Sex, IsRetired, IsSpecial) VALUES".
+            "('$name', '$surname', '$father', '$mother', '$date', '$place', '$home', '$postal', '$afm', '$id', '$phone', '$email', '$password', '$sex', '$retired', '$special')";
 
-          $conn->close()
+            $result = $conn->query($query);
+            if (!$result) {
+              echo '<h2 style="text-align:center">Sign-up was unsuccesful!</h2>';
+              $conn->error;
+            }
+            else if ($result) {
+              echo '<h2 style="text-align:center">Welcome to IKA!</h2>';
+            }
+
+            $conn->close()
+          }
         ?>
 
 

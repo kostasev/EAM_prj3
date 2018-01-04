@@ -1,38 +1,3 @@
-<?php
-  include 'db_connect.php'
-
-  /* source: https://stackoverflow.com/questions/9475350/prevent-duplicate-email-address-in-php-sign-up-form */
-  function createUser($AFM, $IDNumber, $email) {
-    /* Check for unique AFM */
-    $sql = "SELECT count(AFM) FROM user WHERE AFM='$AFM'" ;
-
-    $result = mysql_result(mysql_query($sql),0);
-
-    if( $result > 0 ) {
-      die( "There is already a user with that AFM!" );
-    }//end if
-
-    /* Check for unique IDNumber */
-    $sql = "SELECT count(IDNumber) FROM user WHERE IDNumber='$IDNumber'" ;
-
-    $result = mysql_result(mysql_query($sql),0);
-
-    if( $result > 0 ) {
-      die( "There is already a user with that IDNumber!" );
-    }//end if
-
-    /* Check for unique email */
-    $sql = "SELECT count(Email) FROM user WHERE Email='$email'" ;
-
-    $result = mysql_result(mysql_query($sql),0);
-
-    if( $result > 0 ) {
-      die( "There is already a user with that email!" );
-    }//end if
-  }
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
