@@ -152,7 +152,7 @@
           $err = checkDetailsUniqueness($conn, $afm, $id, $email);
 
           if ($err != "") {
-            echo '<div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem!</strong>';
+            echo '<div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! </strong>';
             echo $err;
             echo '</div>';
           }
