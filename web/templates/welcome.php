@@ -4,42 +4,42 @@
   $conn = new mysqli($hn, $un, $pw, $db);
   if ($conn->connect_error) die ($conn->connect_error);
 
-  function checkDetailsUniqueness($AFM, $IDNumber, $email) {
+  function checkDetailsUniqueness($conn, $AFM, $IDNumber, $email) {
     /* initialize error message */
     $err = "";
     /* Check for unique AFM */
-    $sql = "SELECT count(AFM) FROM user WHERE AFM='$AFM'";
+    $query = "SELECT count(AFM) FROM user WHERE AFM='$AFM'";
 
-    $result = mysql_result(mysql_query($sql),0);
+    $result = $conn->query($query);
 
-    if( $result > 0 ) {
+    if( $result->num_rows > 0 ) {
       // die( "There is already a user with that AFM!" );
-      $err += "There is already a user with that AFM";
+      $err .= "There is already a user with that AFM";
     }//end if
 
     /* Check for unique IDNumber */
-    $sql = "SELECT count(IDNumber) FROM user WHERE IDNumber='$IDNumber'";
+    $query = "SELECT count(IDNumber) FROM user WHERE IDNumber='$IDNumber'";
 
-    $result = mysql_result(mysql_query($sql),0);
+    $result = $conn->query($query);
 
-    if( $result > 0 ) {
+    if( $result->num_rows > 0 ) {
       // die( "There is already a user with that IDNumber!" );
-      if ($err == "") $err += "There is already a user with that IDNumber";
-      else $err += ", IDNumber";
+      if ($err == "") $err .= "There is already a user with that IDNumber";
+      else $err .= ", IDNumber";
     }//end if
 
     /* Check for unique email */
-    $sql = "SELECT count(Email) FROM user WHERE Email='$email'";
+    $query = "SELECT count(Email) FROM user WHERE Email='$email'";
 
-    $result = mysql_result(mysql_query($sql),0);
+    $result = $conn->query($query);
 
-    if( $result > 0 ) {
+    if( $result->num_rows > 0 ) {
       // die( "There is already a user with that email!" );
-      if ($err == "") $err += "There is already a user with that email";
-      else $err += " and email";
+      if ($err == "") $err .= "There is already a user with that email";
+      else $err .= " and email";
     }//end if
 
-    if ($err != "") $err += "!";
+    if ($err != "") $err .= "!";
 
     return $err;
   }
@@ -149,7 +149,7 @@
           $retired = 0;
           $special = 0;
 
-          $err = checkDetailsUniqueness($afm, $id, $email);
+          $err = checkDetailsUniqueness($conn, $afm, $id, $email);
 
           if ($err != "") {
             echo '<div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem!</strong>';
@@ -173,7 +173,7 @@
               echo '<h2 style="text-align:center">Welcome to IKA!</h2>';
             }
 
-            $conn->close()
+            $conn->close();
           }
         ?>
 
