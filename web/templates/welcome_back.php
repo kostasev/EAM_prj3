@@ -1,12 +1,18 @@
 <!DOCTYPE html>
+<?php
+  require_once 'db_connection.php';
+  $conn = new mysqli($hn, $un, $pw, $db);
+  if ($conn->connect_error) die ($conn->connect_error);
+?>
+
 <html lang="en">
   <head>
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Log In</title>
+    <title>IKA Welcome</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/signup.css">
 
   </head>
   <body>
@@ -29,7 +35,7 @@
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="signup.php">Sign Up</a>
+              <a class="nav-link" href="#">Log In</a>
             </li>
             <li class="navbar-item">
               <select class="custom-select">
@@ -84,36 +90,25 @@
           <hr>
         </div>
 
-        <!-- LOG-IN PAGE CONTENT -->
+        <!-- LOG_IN RESULT PAGE CONTENT -->
+        <?php
+          $email = isset($_POST['email']) ? $_POST['email'] : '';
+          $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-        <div class="container">
-      		<div class="row">
-      			<div class="col-sm-12" style="text-align:center">
-      				<form action="welcome_back.php" method="post" id="logInForm">
-      					<input type="hidden" name="action" value="userLogIn">
-      					<br>
-        				<h2><strong>Log-in</strong></h2>
-                <p>Please insert your credentials</p>
+          $query = "SELECT * FROM `user` WHERE `Email` = `$email` AND `Password` = `$password`";
 
-                <div>
-        					<label>
-        						<input class="form-control" id="email" name="email" type="email" placeholder="your email" required requiredMessage="Please enter your email">
-        					</label>
-        				</div>
-        				<div>
-        					<label>
-        						<input class="form-control" id="password" name="password" type="password" placeholder="your password" required requiredMessage="Please enter your password">
-        					</label>
-        				</div>
+          $result = $conn->query($query);
+          if (!$result) {
+            echo '<h2 style="text-align:center">Log-in was unsuccesful!</h2>';
+            $conn->error;
+          }
+          else {
+            echo '<h2 style="text-align:center">Welcome back to IKA!</h2>';
+          }
 
-                <br>
-        				<input class="btn btn-primary" type="submit" value="Log-in">
-                <br> <br>
-                <p><a href="./signup.html">Don't have an account?</a></p>
-              </form>
-      			</div>
-      		</div>
-      	</div>
+          $conn->close()
+        ?>
+
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">
@@ -140,5 +135,4 @@
         </script>
 
   </body>
-
 </html>

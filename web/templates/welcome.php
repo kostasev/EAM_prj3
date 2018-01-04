@@ -24,12 +24,8 @@
 
     if( $result > 0 ) {
       // die( "There is already a user with that IDNumber!" );
-      if ($err == "") {
-        $err += "There is already a user with that IDNumber";
-      }
-      else {
-        $err += ", IDNumber";
-      }
+      if ($err == "") $err += "There is already a user with that IDNumber";
+      else $err += ", IDNumber";
     }//end if
 
     /* Check for unique email */
@@ -39,17 +35,11 @@
 
     if( $result > 0 ) {
       // die( "There is already a user with that email!" );
-      if ($err == "") {
-        $err += "There is already a user with that email";
-      }
-      else {
-        $err += " and email";
-      }
+      if ($err == "") $err += "There is already a user with that email";
+      else $err += " and email";
     }//end if
 
-    if ($err != "") {
-      $err += "!";
-    }
+    if ($err != "") $err += "!";
 
     return $err;
   }
@@ -140,7 +130,7 @@
           <hr>
         </div>
 
-        <!-- SIGN-UP PAGE CONTENT -->
+        <!-- SIGN-UP RESULT PAGE CONTENT -->
         <?php
           $name = isset($_POST['firstName']) ? $_POST['firstName'] : '';
           $surname = isset($_POST['secondName']) ? $_POST['secondName'] : '';
@@ -167,15 +157,19 @@
             echo '</div>';
           }
           else {
-            $query = "INSERT INTO user(FirstName, LastName, FathersName, MothersName, DateOfBirth, BirthPlace, HomeAddress, PostalCode, AFM, IDNumber, PhoneNumber, Email, Password, Sex, IsRetired, IsSpecial) VALUES".
-            "('$name', '$surname', '$father', '$mother', '$date', '$place', '$home', '$postal', '$afm', '$id', '$phone', '$email', '$password', '$sex', '$retired', '$special')";
+            /* find IsFemale field's value */
+            if ($sex == "Female") $isFemale = 1;
+            else $isFemale = 0;
+
+            $query = "INSERT INTO user(FirstName, LastName, FathersName, MothersName, DateOfBirth, BirthPlace, HomeAddress, PostalCode, AFM, IDNumber, PhoneNumber, Email, Password, IsFemale, IsRetired, IsSpecial) VALUES".
+            "('$name', '$surname', '$father', '$mother', '$date', '$place', '$home', '$postal', '$afm', '$id', '$phone', '$email', '$password', '$isFemale', '$retired', '$special')";
 
             $result = $conn->query($query);
             if (!$result) {
               echo '<h2 style="text-align:center">Sign-up was unsuccesful!</h2>';
               $conn->error;
             }
-            else if ($result) {
+            else {
               echo '<h2 style="text-align:center">Welcome to IKA!</h2>';
             }
 
