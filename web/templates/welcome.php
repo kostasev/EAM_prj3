@@ -75,7 +75,7 @@
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Log In</a>
+              <a class="nav-link" href="goodbye.php">Log Out</a>
             </li>
             <li class="navbar-item">
               <select class="custom-select">
@@ -155,6 +155,7 @@
             echo '<div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! </strong>';
             echo $err;
             echo '</div>';
+            $err = "";
           }
           else {
             /* find IsFemale field's value */
@@ -172,9 +173,9 @@
             else {
               echo '<h2 style="text-align:center">Welcome to IKA!</h2>';
             }
-
-            $conn->close();
           }
+
+          $conn->close();
         ?>
 
 

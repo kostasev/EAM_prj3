@@ -35,7 +35,7 @@
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Log In</a>
+              <a class="nav-link" href="goodbye.php">Log Out</a>
             </li>
             <li class="navbar-item">
               <select class="custom-select">
@@ -95,7 +95,7 @@
           $email = isset($_POST['email']) ? $_POST['email'] : '';
           $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-          $query = "SELECT * FROM `user` WHERE `Email` = `$email` AND `Password` = `$password`";
+          $query = sprintf("SELECT * FROM user WHERE Email = '%s' AND Password = '%s'", $email, $password);
 
           $result = $conn->query($query);
           if (!$result) {
