@@ -1,6 +1,7 @@
 <?php
   include 'make_connection.php';
-  
+
+  /* start a new session */
   session_start();
 
   $email = isset($_POST['email']) ? $_POST['email'] : '';
@@ -21,6 +22,7 @@
     $_SESSION['email'] = $row['Email'];
   }
 
+  $result->close();
   $conn->close();
 
   /* redirect properly */

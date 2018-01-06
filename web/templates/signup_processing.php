@@ -1,47 +1,73 @@
 <!DOCTYPE html>
 <?php
-  require_once 'db_connection.php';
-  $conn = new mysqli($hn, $un, $pw, $db);
-  if ($conn->connect_error) die ($conn->connect_error);
+  include 'make_connection.php';
 
-  function checkDetailsUniqueness($conn, $AFM, $IDNumber, $email) {
-    /* initialize error message */
-    $err = "";
-    /* Check for unique AFM */
-    $query = "SELECT count(AFM) FROM user WHERE AFM='$AFM'";
+  /* errors array */
+  $errors = array('EMAIL_EXISTS' => false,
+                  'AFM_EXISTS' => false,
+                  'IDNUMBER_EXISTS' => false);
+
+  /* gather details */
+  $forname = isset($_POST['firstName']) ? $_POST['firstName'] : '';
+  $surname = isset($_POST['secondName']) ? $_POST['secondName'] : '';
+  $father = isset($_POST['fathersName']) ? $_POST['fathersName'] : '';
+  $mother = isset($_POST['mothersName']) ? $_POST['mothersName'] : '';
+  $date = isset($_POST['dateOfBirth']) ? $_POST['dateOfBirth'] : '';
+  $place = isset($_POST['placeOfBirth']) ? $_POST['placeOfBirth'] : '';
+  $home = isset($_POST['homeAddress']) ? $_POST['homeAddress'] : '';
+  $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
+  $postal = isset($_POST['postalCode']) ? $_POST['postalCode'] : '';
+  $afm = isset($_POST['AFM']) ? $_POST['AFM'] : '';
+  $id = isset($_POST['IDNumber']) ? $_POST['IDNumber'] : '';
+  $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
+  $email = isset($_POST['email']) ? $_POST['email'] : '';
+  $password = isset($_POST['password']) ? $_POST['password'] : '';
+  $retired = 0;
+  $special = 0;
+
+  /* Check for unique AFM */
+  $query = "SELECT count(AFM) FROM user WHERE AFM='$afm'";
+  $result = $conn->query($query);
+  if($result->num_rows > 0) $errors['AFM_EXISTS'] = true;
+  $result->close();
+
+  /* Check for unique IDNumber */
+  $query = "SELECT count(IDNumber) FROM user WHERE IDNumber='$id'";
+  $result = $conn->query($query);
+  if( $result->num_rows > 0 ) $errors['IDNUMBER_EXISTS'] = true;
+  $result->close();
+
+  /* Check for unique email */
+  $query = "SELECT count(Email) FROM user WHERE Email='$email'";
+  $result = $conn->query($query);
+  if( $result->num_rows > 0 ) $errors['EMAIL_EXISTS'] = true;
+  $result->close();
+
+  if (!$errors['AFM_EXISTS'] and !$errors['IDNUMBER_EXISTS'] and !$errors['EMAIL_EXISTS']) {
+    /* find IsFemale field's value */
+    if ($sex == "Female") $isFemale = 1;
+    else $isFemale = 0;
+
+    $query = "INSERT INTO user(FirstName, LastName, FathersName, MothersName, DateOfBirth, BirthPlace, HomeAddress, PostalCode, AFM, IDNumber, PhoneNumber, Email, Password, IsFemale, IsRetired, IsSpecial) VALUES".
+    "('$forname', '$surname', '$father', '$mother', '$date', '$place', '$home', '$postal', '$afm', '$id', '$phone', '$email', '$password', '$isFemale', '$retired', '$special')";
 
     $result = $conn->query($query);
 
-    if( $result->num_rows > 0 ) {
-      // die( "There is already a user with that AFM!" );
-      $err .= "There is already a user with that AFM";
-    }//end if
+    /* set session variables */
+    $_SESSION['user'] = true;
+    $_SESSION['userID'] = $result->insert_id;
+    $_SESSION['first_name'] = $forname;
+    $_SESSION['last_name'] = $surname;
+    $_SESSION['email'] = $email;
+    $_SESSION['new_user'] = true;
 
-    /* Check for unique IDNumber */
-    $query = "SELECT count(IDNumber) FROM user WHERE IDNumber='$IDNumber'";
+    $result->close();
+    $conn->close();
 
-    $result = $conn->query($query);
-
-    if( $result->num_rows > 0 ) {
-      // die( "There is already a user with that IDNumber!" );
-      if ($err == "") $err .= "There is already a user with that IDNumber";
-      else $err .= ", IDNumber";
-    }//end if
-
-    /* Check for unique email */
-    $query = "SELECT count(Email) FROM user WHERE Email='$email'";
-
-    $result = $conn->query($query);
-
-    if( $result->num_rows > 0 ) {
-      // die( "There is already a user with that email!" );
-      if ($err == "") $err .= "There is already a user with that email";
-      else $err .= " and email";
-    }//end if
-
-    if ($err != "") $err .= "!";
-
-    return $err;
+    /* redirect properly */
+    $redirect_url = 'main.php';
+    header('Location: ' . $redirect_url);
+    exit();
   }
 ?>
 
@@ -75,7 +101,10 @@
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="logout.php">Log Out</a>
+              <a class="nav-link" href="signup.php">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.php">Log In</a>
             </li>
             <li class="navbar-item">
               <select class="custom-select">
@@ -130,54 +159,38 @@
           <hr>
         </div>
 
-        <!-- SIGN-UP RESULT PAGE CONTENT -->
+        <!-- SIGN-UP ERROR PAGE CONTENT -->
         <?php
-          $name = isset($_POST['firstName']) ? $_POST['firstName'] : '';
-          $surname = isset($_POST['secondName']) ? $_POST['secondName'] : '';
-          $father = isset($_POST['fathersName']) ? $_POST['fathersName'] : '';
-          $mother = isset($_POST['mothersName']) ? $_POST['mothersName'] : '';
-          $date = isset($_POST['dateOfBirth']) ? $_POST['dateOfBirth'] : '';
-          $place = isset($_POST['placeOfBirth']) ? $_POST['placeOfBirth'] : '';
-          $home = isset($_POST['homeAddress']) ? $_POST['homeAddress'] : '';
-          $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
-          $postal = isset($_POST['postalCode']) ? $_POST['postalCode'] : '';
-          $afm = isset($_POST['AFM']) ? $_POST['AFM'] : '';
-          $id = isset($_POST['IDNumber']) ? $_POST['IDNumber'] : '';
-          $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
-          $email = isset($_POST['email']) ? $_POST['email'] : '';
-          $password = isset($_POST['password']) ? $_POST['password'] : '';
-          $retired = 0;
-          $special = 0;
-
-          $err = checkDetailsUniqueness($conn, $afm, $id, $email);
-
-          if ($err != "") {
-            echo '<div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! </strong>';
-            echo $err;
-            echo '</div>';
-            $err = "";
-          }
-          else {
-            /* find IsFemale field's value */
-            if ($sex == "Female") $isFemale = 1;
-            else $isFemale = 0;
-
-            $query = "INSERT INTO user(FirstName, LastName, FathersName, MothersName, DateOfBirth, BirthPlace, HomeAddress, PostalCode, AFM, IDNumber, PhoneNumber, Email, Password, IsFemale, IsRetired, IsSpecial) VALUES".
-            "('$name', '$surname', '$father', '$mother', '$date', '$place', '$home', '$postal', '$afm', '$id', '$phone', '$email', '$password', '$isFemale', '$retired', '$special')";
-
-            $result = $conn->query($query);
-            if (!$result) {
-              echo '<h2 style="text-align:center">Sign-up was unsuccesful!</h2>';
-              $conn->error;
-            }
-            else {
-              echo '<h2 style="text-align:center">Welcome to IKA!</h2>';
-            }
-          }
-
-          $conn->close();
+          if ($errors['AFM_EXISTS'] and $errors['IDNUMBER_EXISTS'] and $errors['EMAIL_EXISTS']) {
         ?>
-
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM, ID-Number and email already exists!</strong></div>
+        <?php
+          } else if ($errors['AFM_EXISTS'] and $errors['IDNUMBER_EXISTS']) {
+        ?>
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM and ID-Number already exists!</strong></div>
+        <?php
+          } else if ($errors['IDNUMBER_EXISTS'] and $errors['EMAIL_EXISTS']) {
+        ?>
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this ID-Number and email already exists!</strong></div>
+        <?php
+          } else if ($errors['AFM_EXISTS'] and $errors['EMAIL_EXISTS']) {
+        ?>
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM and email already exists!</strong></div>
+        <?php
+          } else if ($errors['AFM_EXISTS']) {
+        ?>
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM already exists!</strong></div>
+        <?php
+          } else if ($errors['IDNUMBER_EXISTS']) {
+        ?>
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this ID-Number already exists!</strong></div>
+        <?php
+          } elseif ($errors['EMAIL_EXISTS']) {
+        ?>
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this email already exists!</strong></div>
+        <?php
+          }
+        ?>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">

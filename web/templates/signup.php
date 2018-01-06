@@ -89,7 +89,7 @@
         <div class="container">
       		<div class="row">
       			<div class="col-md-12" style="text-align:center">
-      				<form action="welcome.php" method="post" onsubmit="return passwordsMatching()" id="signUpForm">
+      				<form action="signup_processing.php" method="post" onsubmit="return passwordsMatching()" id="signUpForm">
       					<input type="hidden" name="action" value="userSignUp">
       					<br>
         				<h2><strong>Sign-up</strong></h2>

@@ -1,6 +1,5 @@
 <?php
-  /* start a new session */
-  session_start();
+  include 'make_connection.php';
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +44,8 @@
     <?php
       }
       $_SESSION['login_error'] = false;
+
+      $conn->close();
     ?>
 
   </head>
@@ -72,7 +73,7 @@
               if (isset($_SESSION['user'])) {
             ?>
               <li class="nav-item">
-                <a class="nav-link" href="profile.php">My Profile</a>
+                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="logout.php">Log Out</a>
