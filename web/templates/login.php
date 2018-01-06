@@ -89,7 +89,7 @@
         <div class="container">
       		<div class="row">
       			<div class="col-sm-12" style="text-align:center">
-      				<form action="welcome_back.php" method="post" id="logInForm">
+      				<form action="login_script.php" method="post" id="logInForm">
       					<input type="hidden" name="action" value="userLogIn">
       					<br>
         				<h2><strong>Log-in</strong></h2>

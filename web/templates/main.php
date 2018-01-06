@@ -1,3 +1,8 @@
+<?php
+  /* start a new session */
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,6 +12,40 @@
     <title>IKA</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
+
+    <?php
+      if (isset($_SESSION['user']) and isset($_SESSION['new_user']) and $_SESSION['new_user']) {
+    ?>
+    <script>
+      $(document).ready(function(){
+          var message = "Sign-up was successful!";
+          $('#profile').tooltip({title: message, trigger: 'manual'}).tooltip("show");
+      });
+      $(document).click(function(e) {
+         $('#profile').tooltip("destroy");
+      });
+    </script>
+    <?php
+        $_SESSION['new_user'] = false;
+      }
+      if (isset($_SESSION['login_error']) and $_SESSION['login_error']) {
+    ?>
+    <script>
+      $(document).ready(function(){
+          var message = "Your credentials were wrong!";
+          $('#login-btn').removeAttr('data-container');
+          $('#login-btn').addClass('danger-tooltip');
+          $('#login-btn').tooltip({title: message, trigger: 'manual', animation: false}).tooltip("show");
+      });
+      $(document).on('click', function (e) {
+         $('#login-btn').tooltip('destroy');
+         $('#login-btn').attr('data-container', 'body');
+      });
+    </script>
+    <?php
+      }
+      $_SESSION['login_error'] = false;
+    ?>
 
   </head>
   <body>
@@ -28,12 +67,29 @@
         <div class="col-md-2"></div>
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="signup.php">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.php">Log In</a>
-            </li>
+
+            <?php
+              if (isset($_SESSION['user'])) {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link" href="profile.php">My Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="logout.php">Log Out</a>
+              </li>
+            <?php
+              } else {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link" href="signup.php">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.php">Log In</a>
+              </li>
+            <?php
+              }
+            ?>
+
             <li class="navbar-item">
               <select class="custom-select">
                 <option value="Albanian">Albanian</option>
