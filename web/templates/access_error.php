@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<?php
-  require_once 'db_connection.php';
-  $conn = new mysqli($hn, $un, $pw, $db);
-  if ($conn->connect_error) die ($conn->connect_error);
-?>
-
 <html lang="en">
   <head>
     <link rel="icon" href="../images/toplogo.png">
@@ -35,7 +29,10 @@
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="logout.php">Log Out</a>
+              <a class="nav-link" href="signup.php">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.php">Log In</a>
             </li>
             <li class="navbar-item">
               <select class="custom-select">
@@ -90,25 +87,8 @@
           <hr>
         </div>
 
-        <!-- LOG_IN RESULT PAGE CONTENT -->
-        <?php
-          $email = isset($_POST['email']) ? $_POST['email'] : '';
-          $password = isset($_POST['password']) ? $_POST['password'] : '';
-
-          $query = sprintf("SELECT * FROM user WHERE Email = '%s' AND Password = '%s'", $email, $password);
-
-          $result = $conn->query($query);
-          if (!$result) {
-            echo '<h2 style="text-align:center">Log-in was unsuccesful!</h2>';
-            $conn->error;
-          }
-          else {
-            echo '<h2 style="text-align:center">Welcome back to IKA!</h2>';
-          }
-
-          $conn->close()
-        ?>
-
+        <!-- ACCESS ERROR PAGE CONTENT -->
+        <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! You cannot access this page!</strong></div>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">

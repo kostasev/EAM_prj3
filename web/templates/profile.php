@@ -1,3 +1,49 @@
+<?php
+  include 'make_connection.php';
+
+  if (!isset($_SESSION['user'])) {
+    /* we have an access error */
+    /* redirect properly */
+    $redirect_url = 'access_error.php';
+    header('Location: ' . $redirect_url);
+    exit();
+  }
+
+  $query = sprintf("SELECT * FROM user WHERE Email = '%s'", $_SESSION['email']);
+
+  $result = $conn->query($query);
+  if (!$result) {
+    /* we have an access error */
+    /* redirect properly */
+    $redirect_url = 'access_error.php';
+    header('Location: ' . $redirect_url);
+    exit();
+  }
+  else {
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $userID = $row['UserID'];
+    $forname = $row['FirstName'];
+    $surname = $row['LastName'];
+    $father = $row['FathersName'];
+    $mother = $row['MothersName'];
+    $date = $row['DateOfBirth'];
+    $place = $row['BirthPlace'];
+    $home = $row['HomeAddress'];
+    $postal = $row['PostalCode'];
+    $afm = $row['AFM'];
+    $id = $row['IDNumber'];
+    $phone = $row['PhoneNumber'];
+    $email = $row['Email'];
+    $password = $row['Password'];
+    $isFemale = $row['IsFemale'];
+    $isRetired = $row['IsRetired'];
+    $isSpecial = $row['IsSpecial'];
+  }
+
+  $result->close();
+  $conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +75,7 @@
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="#">Sign Out</a>
+              <a class="nav-link" href="logout.php">Log Out</a>
             </li>
             <li class="navbar-item">
               <select class="custom-select">
@@ -101,13 +147,13 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label>
-                      <input class="form-control" id="firstName" name="firstName" type="text" placeholder="First name" required requiredMessage="Please enter your first name" pattern=".{1,45}">
-          				  </label>
+                      <input class="form-control" id="firstName" name="firstName" type="text" value="<?php echo $forname; ?>" required requiredMessage="Please enter your first name" pattern=".{1,45}">
+                    </label>
                   </div>
                   <div class="col-md-3 form-group">
                     <label>
-                      <input class="form-control" id="secondName" name="secondName" type="text" placeholder="Second name" required requiredMessage="Please enter your second name" pattern=".{1,45}">
-          				  </label>
+                      <input class="form-control" id="secondName" name="secondName" type="text" value="<?php echo $surname; ?>" required requiredMessage="Please enter your second name" pattern=".{1,45}">
+                    </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
                 </div>
@@ -116,13 +162,13 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label>
-                      <input class="form-control" id="fathersName" name="fathersName" type="text" placeholder="Father's name" required requiredMessage="Please enter your father's name" pattern=".{1,45}">
-          				  </label>
+                      <input class="form-control" id="fathersName" name="fathersName" type="text" value="<?php echo $father; ?>" required requiredMessage="Please enter your father\'s name" pattern=".{1,45}">
+                    </label>
                   </div>
                   <div class="col-md-3 form-group">
                     <label>
-                      <input class="form-control" id="mothersName" name="mothersName" type="text" placeholder="Mother's name" required requiredMessage="Please enter your mother's name" pattern=".{1,45}">
-          				  </label>
+                      <input class="form-control" id="mothersName" name="mothersName" type="text" value="<?php echo $mother; ?>" required requiredMessage="Please enter your mother\'s name" pattern=".{1,45}">
+                    </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
                 </div>
@@ -131,12 +177,12 @@
                   <div class="col-md-3 form-group"></div>
                   <label for="dateOfBirth" class="col-md-1 col-form-label">Date of Birth</label>
                   <div class="col-md-3">
-                    <input class="form-control" type="date" value="1980-08-19" id="dateOfBirth">
+                    <input class="form-control" type="date" value="<?php echo $date; ?>" id="dateOfBirth">
                   </div>
                   <div class="col-md-2 form-group">
                     <label>
-                      <input class="form-control" id="placeOfBirth" name="placeOfBirth" type="text" placeholder="Place of birth" required requiredMessage="Please enter your place birth" pattern=".{1,45}">
-          				  </label>
+                      <input class="form-control" id="placeOfBirth" name="placeOfBirth" type="text" value="<?php echo $place; ?>" required requiredMessage="Please enter your place birth" pattern=".{1,45}">
+                    </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
                 </div>
@@ -145,8 +191,8 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label>
-                      <input class="form-control" id="homeAddress" name="homeAddress" type="text" placeholder="Home address" required requiredMessage="Please enter your home address" pattern=".{1,45}">
-          					</label>
+                      <input class="form-control" id="homeAddress" name="homeAddress" type="text" value="<?php echo $home; ?>" required requiredMessage="Please enter your home address" pattern=".{1,45}">
+                    </label>
                   </div>
                   <div class="col-md-3 form-group">
                     <div class="dropdown">
@@ -154,8 +200,16 @@
                         Sex
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <input type="radio" name="sex" value="Male">Male</button>
-                        <input type="radio" name="sex" value="Female">Female</button>
+                        <?php
+                          if ($isFemale) {
+                            echo '<input type="radio" name="sex" value="Male">Male</button>';
+                            echo '<input type="radio" name="sex" value="Female" checked>Female</button>';
+                          }
+                          else {
+                            echo '<input type="radio" name="sex" value="Male" checked>Male</button>';
+                            echo '<input type="radio" name="sex" value="Female">Female</button>';
+                          }
+                        ?>
                       </div>
                     </div>
                   </div>
@@ -166,13 +220,13 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label>
-                      <input class="form-control" id="postalCode" name="postalCode" type="text" placeholder="Postal code" required requiredMessage="Please enter your postal code" pattern=".{1,45}">
-          					</label>
+                      <input class="form-control" id="postalCode" name="postalCode" type="text" value="<?php echo $postal; ?>" required requiredMessage="Please enter your postal code" pattern=".{1,45}">
+                    </label>
                   </div>
                   <div class="col-md-3 form-group">
           					<label>
-          						<input class="form-control" id="AFM" name="AFM" type="text" placeholder="AFM" required requiredMessage="Please enter your AFM" pattern=".{1,45}">
-          					</label>
+                      <input class="form-control" id="AFM" name="AFM" type="text" value="<?php echo $afm; ?>" required requiredMessage="Please enter your AFM" pattern=".{1,45}">
+                    </label>
           				</div>
                   <div class="col-md-3 form-group"></div>
                 </div>
@@ -181,13 +235,13 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label>
-          						<input class="form-control" id="IDNumber" name="IDNumber" type="text" placeholder="ID number" required requiredMessage="Please enter your ID number" pattern=".{1,45}">
-          					</label>
+                      <input class="form-control" id="IDNumber" name="IDNumber" type="text" value="<?php echo $id; ?>" required requiredMessage="Please enter your ID number" pattern=".{1,45}">
+                    </label>
           				</div>
           				<div class="col-md-3 form-group">
                     <label>
-          						<input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone number" required requiredMessage="Please enter your phone number" pattern=".{1,45}">
-          					</label>
+                      <input class="form-control" id="phone" name="phone" type="tel" value="<?php echo $phone; ?>" required requiredMessage="Please enter your phone number" pattern=".{1,45}">
+                    </label>
           				</div>
                   <div class="col-md-3 form-group"></div>
                 </div>
@@ -196,7 +250,7 @@
                   <div class="col-md-3 form-group"></div>
                   <label for="email" class="col-md-3 col-form-label">Email</label>
                   <div class="col-md-3">
-                    <input class="form-control" type="email" value="joedoe@somemail.com" id="email">
+                    <input class="form-control" type="email" value="<?php echo $email; ?>" id="email">
                   </div>
                   <div class="col-md-3 form-group"></div>
                 </div>
@@ -206,13 +260,13 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label>
-                      <input class="form-control" id="password" name="password" type="password" placeholder="Password" required requiredMessage="Please enter your password" pattern=".{1,45}">
-          			    </label>
+                      <input class="form-control" id="password" name="password" type="password" value="<?php echo $password; ?>" required requiredMessage="Please enter your password" pattern=".{1,45}">
+                    </label>
                   </div>
                   <div class="col-md-3 form-group">
                     <label>
                       <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm password" required requiredMessage="Please confirm your password" pattern=".{1,45}">
-          					</label>
+                    </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
                 </div>
