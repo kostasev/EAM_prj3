@@ -26,21 +26,24 @@
   $special = 0;
 
   /* Check for unique AFM */
-  $query = "SELECT count(AFM) FROM user WHERE AFM='$afm'";
+  $query = "SELECT * FROM user WHERE AFM='$afm'";
   $result = $conn->query($query);
   if($result->num_rows > 0) $errors['AFM_EXISTS'] = true;
+  // echo $result->num_rows;
   $result->close();
 
   /* Check for unique IDNumber */
-  $query = "SELECT count(IDNumber) FROM user WHERE IDNumber='$id'";
+  $query = "SELECT * FROM user WHERE IDNumber='$id'";
   $result = $conn->query($query);
   if( $result->num_rows > 0 ) $errors['IDNUMBER_EXISTS'] = true;
+  // echo $result->num_rows;
   $result->close();
 
   /* Check for unique email */
-  $query = "SELECT count(Email) FROM user WHERE Email='$email'";
+  $query = "SELECT * FROM user WHERE Email='$email'";
   $result = $conn->query($query);
   if( $result->num_rows > 0 ) $errors['EMAIL_EXISTS'] = true;
+  // echo $result->num_rows;
   $result->close();
 
   if (!$errors['AFM_EXISTS'] and !$errors['IDNUMBER_EXISTS'] and !$errors['EMAIL_EXISTS']) {
@@ -54,8 +57,12 @@
     $result = $conn->query($query);
 
     /* set session variables */
+    $query = sprintf("SELECT * FROM user WHERE Email = '%s' AND Password = '%s'", $email, $password);
+    $result = $conn->query($query);
+    // echo $result->num_rows;
+    $row = $result->fetch_array(MYSQLI_ASSOC);
     $_SESSION['user'] = true;
-    $_SESSION['userID'] = $result->insert_id;
+    $_SESSION['userID'] = $row['UserID'];
     $_SESSION['first_name'] = $forname;
     $_SESSION['last_name'] = $surname;
     $_SESSION['email'] = $email;
