@@ -1,10 +1,89 @@
 <!DOCTYPE html>
+<?php
+  include 'make_connection.php';
+
+  /* errors array */
+  $errors = array('EMAIL_EXISTS' => false,
+                  'AFM_EXISTS' => false,
+                  'IDNUMBER_EXISTS' => false);
+
+  /* gather details */
+  $forname = isset($_POST['firstName']) ? $_POST['firstName'] : '';
+  $surname = isset($_POST['secondName']) ? $_POST['secondName'] : '';
+  $father = isset($_POST['fathersName']) ? $_POST['fathersName'] : '';
+  $mother = isset($_POST['mothersName']) ? $_POST['mothersName'] : '';
+  $date = isset($_POST['dateOfBirth']) ? $_POST['dateOfBirth'] : '';
+  $place = isset($_POST['placeOfBirth']) ? $_POST['placeOfBirth'] : '';
+  $home = isset($_POST['homeAddress']) ? $_POST['homeAddress'] : '';
+  $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
+  $postal = isset($_POST['postalCode']) ? $_POST['postalCode'] : '';
+  $afm = isset($_POST['AFM']) ? $_POST['AFM'] : '';
+  $id = isset($_POST['IDNumber']) ? $_POST['IDNumber'] : '';
+  $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
+  $email = isset($_POST['email']) ? $_POST['email'] : '';
+  $password = isset($_POST['password']) ? $_POST['password'] : '';
+  $retired = 0;
+  $special = 0;
+
+  /* Check for unique AFM */
+  $query = "SELECT * FROM user WHERE AFM='$afm' AND UserID != 3";
+  $result = $conn->query($query);
+  if($result->num_rows > 0) $errors['AFM_EXISTS'] = true;
+  // echo $result->num_rows;
+  $result->close();
+
+  /* Check for unique IDNumber */
+  $query = "SELECT * FROM user WHERE IDNumber='$id' AND UserID != 3";
+  $result = $conn->query($query);
+  if( $result->num_rows > 0 ) $errors['IDNUMBER_EXISTS'] = true;
+  // echo $result->num_rows;
+  $result->close();
+
+  /* Check for unique email */
+  $query = "SELECT * FROM user WHERE Email='$email' AND UserID != 3";
+  $result = $conn->query($query);
+  if( $result->num_rows > 0 ) $errors['EMAIL_EXISTS'] = true;
+  // echo $result->num_rows;
+  $result->close();
+
+  if (!$errors['AFM_EXISTS'] and !$errors['IDNUMBER_EXISTS'] and !$errors['EMAIL_EXISTS']) {
+    /* find IsFemale field's value */
+    if ($sex == "Female") $isFemale = 1;
+    else $isFemale = 0;
+
+    $query = "UPDATE user SET
+              FirstName = '$forname', LastName = '$surname', FathersName = '$father', MothersName = '$mother', DateOfBirth = '$date', BirthPlace = '$place', HomeAddress = '$home', PostalCode = '$postal', AFM = '$afm', IDNumber = '$id', PhoneNumber = '$phone', Email = '$email', Password = '$password',
+              IsFemale = '$isFemale', IsRetired = '$retired', IsSpecial = '$special' WHERE UserID = 3";
+
+    $result = $conn->query($query);
+
+    /* reset session variables */
+    $query = sprintf("SELECT * FROM user WHERE Email = '%s' AND Password = '%s'", $email, $password);
+    $result = $conn->query($query);
+    // echo $result->num_rows;
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $_SESSION['user'] = true;
+    $_SESSION['userID'] = $row['UserID'];
+    $_SESSION['first_name'] = $forname;
+    $_SESSION['last_name'] = $surname;
+    $_SESSION['email'] = $email;
+
+    $result->close();
+    $conn->close();
+
+    /* redirect properly */
+    $redirect_url = 'profile.php';
+    header('Location: ' . $redirect_url);
+    exit();
+  }
+?>
+
 <html lang="en">
   <head>
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Access Error</title>
+    <title>IKA Profile Update Error</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/signup.css">
 
@@ -87,8 +166,38 @@
           <hr>
         </div>
 
-        <!-- ACCESS ERROR PAGE CONTENT -->
-        <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! You cannot access this page!</strong></div>
+        <!-- SIGN-UP ERROR PAGE CONTENT -->
+        <?php
+          if ($errors['AFM_EXISTS'] and $errors['IDNUMBER_EXISTS'] and $errors['EMAIL_EXISTS']) {
+        ?>
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM, ID-Number and email already exists!</strong></div>
+        <?php
+          } else if ($errors['AFM_EXISTS'] and $errors['IDNUMBER_EXISTS']) {
+        ?>
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM and ID-Number already exists!</strong></div>
+        <?php
+          } else if ($errors['IDNUMBER_EXISTS'] and $errors['EMAIL_EXISTS']) {
+        ?>
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this ID-Number and email already exists!</strong></div>
+        <?php
+          } else if ($errors['AFM_EXISTS'] and $errors['EMAIL_EXISTS']) {
+        ?>
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM and email already exists!</strong></div>
+        <?php
+          } else if ($errors['AFM_EXISTS']) {
+        ?>
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM already exists!</strong></div>
+        <?php
+          } else if ($errors['IDNUMBER_EXISTS']) {
+        ?>
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this ID-Number already exists!</strong></div>
+        <?php
+          } elseif ($errors['EMAIL_EXISTS']) {
+        ?>
+          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this email already exists!</strong></div>
+        <?php
+          }
+        ?>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">

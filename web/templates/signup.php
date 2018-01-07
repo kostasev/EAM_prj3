@@ -219,7 +219,7 @@
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-                    <button type="button" class="btn btn-outline-danger">Clear</button>
+                    <button type="reset" class="btn btn-outline-danger">Clear</button>
                   </div>
                   <div class="col-md-3 form-group">
             				<input class="btn btn-primary" type="submit" value="Sign-up">

@@ -135,7 +135,7 @@
         <div class="container">
       		<div class="row">
       			<div class="col-md-12" style="text-align:center">
-      				<form action="***" method="post" id="signUpForm">
+      				<form action="profile_processing.php" method="post" id="signUpForm">
       					<input type="hidden" name="action" value="userProfile">
       					<br>
         				<h2><strong>Your profile</strong></h2>
@@ -331,7 +331,7 @@
                 <br>
                 <div class="row">
                   <div class="col-md-6 form-group">
-                    <button type="reset" class="btn btn-outline-danger">Cancel</button>
+                    <button type="button" onClick="window.location.reload()" class="btn btn-outline-danger">Cancel</button>
                   </div>
                   <div class="col-md-6 form-group">
             				<input class="btn btn-primary" type="submit" value="Save">
