@@ -136,7 +136,7 @@
           				</div>
                   <div class="col-md-4 form-group">
           					<label>
-          						<input class="form-control" id="daysOfEmployment" name="daysOfEmployment" type="number" placeholder="Days of employment" required requiredMessage="Please enter your days of employment" pattern=".{1,45}">
+          						<input class="form-control" id="daysOfEmployment" name="daysOfEmployment" type="number" placeholder="Days of employment" min="0" required requiredMessage="Please enter your days of employment" pattern=".{1,45}">
           					</label>
           				</div>
                   <div class="col-md-4 form-group">
