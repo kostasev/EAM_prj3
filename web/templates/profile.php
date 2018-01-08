@@ -16,6 +16,7 @@
   $result = $conn->query($query);
   if (!$result) {
     /* we have an access error */
+    $conn->close();
     /* redirect properly */
     $redirect_url = 'access_error.php';
     header('Location: ' . $redirect_url);
@@ -40,9 +41,34 @@
     $isFemale = $row['IsFemale'];
     $isRetired = $row['IsRetired'];
     $isSpecial = $row['IsSpecial'];
+
+    $result->close();
+
+    $query = "SELECT * FROM settings WHERE user_UserID = '$userID'";
+
+    $result = $conn->query($query);
+    if (!$result) {
+      /* we have an access error */
+      $conn->close();
+      /* redirect properly */
+      $redirect_url = 'access_error.php';
+      header('Location: ' . $redirect_url);
+      exit();
+    }
+    else {
+      $row = $result->fetch_array(MYSQLI_ASSOC);
+      $notificationsOn = $row['NotificationsOn'];
+      $updatesOn = $row['UpdatesOn'];
+      $historyOn = $row['HistoryOn'];
+      $autocompleteOn = $row['AutoCompleteOn'];
+      $microphoneOn = $row['MicrophoneOn'];
+      $zoomingOn = $row['ZoomingOn'];
+      $vocalGuidanceOn = $row['VocalGuidanceOn'];
+
+      $result->close();
+    }
   }
 
-  $result->close();
   $conn->close();
 ?>
 
@@ -278,13 +304,13 @@
                 <div class="row">
                   <div class="form-check col-md-6 form-group">
                     <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" checked data-toggle="tooltip" data-placement="bottom" title="You will be notified for matters concerning your applications, questions, appointments etc.">
+                      <input type="checkbox" class="form-check-input" name="notifications" <?php if ($notificationsOn) echo "checked"; ?> data-toggle="tooltip" data-placement="bottom" title="You will be notified for matters concerning your applications, questions, appointments etc.">
                       I want to receive account related notifications by email
                     </label>
                   </div>
                   <div class="form-check col-md-6 form-group">
                     <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" data-toggle="tooltip" data-placement="bottom" title="You will be updated for general matters concerning all IKA clients.">
+                      <input type="checkbox" class="form-check-input" name="updates" <?php if ($updatesOn) echo "checked"; ?> data-toggle="tooltip" data-placement="bottom" title="You will be updated for general matters concerning all IKA clients.">
                       I want to receive updates concerning IKA by email
                     </label>
                   </div>
@@ -295,13 +321,13 @@
                 <div class="row">
                   <div class="form-check col-md-6 form-group">
                     <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" checked data-toggle="tooltip" data-placement="bottom" title="This history is going to remain strictly confidential and available only to you.">
+                      <input type="checkbox" class="form-check-input" name="history" <?php if ($historyOn) echo "checked"; ?>  data-toggle="tooltip" data-placement="bottom" title="This history is going to remain strictly confidential and available only to you.">
                       I want a complete history of my actions to be kept
                     </label>
                   </div>
                   <div class="form-check col-md-6 form-group">
                     <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" checked data-toggle="tooltip" data-placement="bottom" title="For this we will need to monitor your actions, to be able to help you. Your data is going to remain strictly confidential and available only to you.">
+                      <input type="checkbox" class="form-check-input" name="autocomplete" <?php if ($autocompleteOn) echo "checked"; ?>  data-toggle="tooltip" data-placement="bottom" title="For this we will need to monitor your actions, to be able to help you. Your data is going to remain strictly confidential and available only to you.">
                       I want auto-complete in my forms
                     </label>
                   </div>
@@ -312,19 +338,19 @@
                 <div class="row">
                   <div class="form-check col-md-4 form-group">
                     <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" data-toggle="tooltip" data-placement="bottom" title="This way you can ask questions and our specialized software will be able to assist you.">
+                      <input type="checkbox" class="form-check-input" name="microphone" <?php if ($microphoneOn) echo "checked"; ?> data-toggle="tooltip" data-placement="bottom" title="This way you can ask questions and our specialized software will be able to assist you.">
                       Turn microphone on when I log-in
                     </label>
                   </div>
                   <div class="form-check col-md-4 form-group">
                     <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" data-toggle="tooltip" data-placement="bottom" title="When your cursor remains inert for more than 3 seconds, we are going to zoom-in to where it points.">
+                      <input type="checkbox" class="form-check-input" name="zooming" <?php if ($zoomingOn) echo "checked"; ?> data-toggle="tooltip" data-placement="bottom" title="When your cursor remains inert for more than 3 seconds, we are going to zoom-in to where it points.">
                       Zoom-in when my cursor focuses
                     </label>
                   </div>
                   <div class="form-check col-md-4 form-group">
                     <label class="form-check-label">
-                      <input type="checkbox" class="form-check-input" data-toggle="tooltip" data-placement="bottom" title="When you remain inert for more than 10 seconds, our specialized software will automatically step-in to assist you.">
+                      <input type="checkbox" class="form-check-input" name="vocalGuidance" <?php if ($vocalGuidanceOn) echo "checked"; ?> data-toggle="tooltip" data-placement="bottom" title="When you remain inert for more than 10 seconds, our specialized software will automatically step-in to assist you.">
                       Vocal guidance after prolongued inertia
                     </label>
                   </div>

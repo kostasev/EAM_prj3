@@ -9,7 +9,7 @@
                   'AFM_EXISTS' => false,
                   'IDNUMBER_EXISTS' => false);
 
-  /* gather details */
+  /* gather user's details */
   $forname = isset($_POST['firstName']) ? $_POST['firstName'] : '';
   $surname = isset($_POST['secondName']) ? $_POST['secondName'] : '';
   $father = isset($_POST['fathersName']) ? $_POST['fathersName'] : '';
@@ -26,6 +26,15 @@
   $password = isset($_POST['password']) ? $_POST['password'] : '';
   $retired = 0;
   $special = 0;
+
+  /* gather user's settings */
+  $notificationsOn = isset($_POST['notifications']) ? 1 : 0;
+  $updatesOn =  isset($_POST['updates']) ? 1 : 0;
+  $historyOn =  isset($_POST['history']) ? 1 : 0;
+  $autocompleteOn =  isset($_POST['autocomplete']) ? 1 : 0;
+  $microphoneOn =  isset($_POST['microphone']) ? 1 : 0;
+  $zoomingOn =  isset($_POST['zooming']) ? 1 : 0;
+  $vocalGuidanceOn =  isset($_POST['vocalGuidance']) ? 1 : 0;
 
   $userID = $_SESSION['userID'];
   /* debugging */
@@ -66,7 +75,15 @@
     if ($sex == "Female") $isFemale = 1;
     else $isFemale = 0;
 
+    /* update user's details */
     $query = "UPDATE user SET FirstName = \"$forname\", LastName = \"$surname\", FathersName = \"$father\", MothersName = \"$mother\", DateOfBirth = \"$date\", BirthPlace = \"$place\", HomeAddress = \"$home\", PostalCode = \"$postal\", AFM = \"$afm\", IDNumber = \"$id\", PhoneNumber = \"$phone\", Email = \"$email\", Password = \"$password\", IsFemale = \"$isFemale\", IsRetired = \"$retired\", IsSpecial = \"$special\" WHERE UserID = '$userID'";
+    /* debugging */
+    // echo $query; echo "\n";
+
+    $result = $conn->query($query);
+
+    /* update user's settings */
+    $query = "UPDATE settings SET NotificationsOn = \"$notificationsOn\", UpdatesOn = \"$updatesOn\", HistoryOn = \"$historyOn\", AutoCompleteOn = \"$autocompleteOn\", MicrophoneOn = \"$microphoneOn\", ZoomingOn = \"$zoomingOn\", VocalGuidanceOn = \"$vocalGuidanceOn\" WHERE user_UserID = '$userID'";
     /* debugging */
     // echo $query; echo "\n";
 

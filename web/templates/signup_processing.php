@@ -53,6 +53,7 @@
     if ($sex == "Female") $isFemale = 1;
     else $isFemale = 0;
 
+    /* insert user's details */
     $query = "INSERT INTO user(FirstName, LastName, FathersName, MothersName, DateOfBirth, BirthPlace, HomeAddress, PostalCode, AFM, IDNumber, PhoneNumber, Email, Password, IsFemale, IsRetired, IsSpecial) VALUES".
     "('$forname', '$surname', '$father', '$mother', '$date', '$place', '$home', '$postal', '$afm', '$id', '$phone', '$email', '$password', '$isFemale', '$retired', '$special')";
 
@@ -71,6 +72,12 @@
     $_SESSION['new_user'] = true;
 
     $result->close();
+
+    /* insert user's default settings */
+    $userID = $_SESSION['userID'];
+    $query = "INSERT INTO settings(user_UserID, NotificationsOn, UpdatesOn, HistoryOn, AutoCompleteOn, MicrophoneOn, ZoomingOn, VocalGuidanceOn) VALUES"."('$userID',1,1,1,1,0,0,0)";
+    $result = $conn->query($query);
+
     $conn->close();
 
     /* redirect properly */
