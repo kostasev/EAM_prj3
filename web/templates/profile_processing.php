@@ -28,25 +28,30 @@
   $special = 0;
 
   $userID = $_SESSION['userID'];
+  /* debugging */
+  echo $userID;
 
   /* Check for unique AFM */
-  $query = "SELECT * FROM user WHERE AFM=\"$afm\" AND UserID != \"$userID\"";
+  $query = "SELECT * FROM user WHERE AFM=\"$afm\" AND UserID != $userID";
   $result = $conn->query($query);
   if($result->num_rows > 0) $errors['AFM_EXISTS'] = true;
+  /* debugging */
   echo $result->num_rows;
   $result->close();
 
   /* Check for unique IDNumber */
-  $query = "SELECT * FROM user WHERE IDNumber=\"$id\" AND UserID != \"$userID\"";
+  $query = "SELECT * FROM user WHERE IDNumber=\"$id\" AND UserID != $userID";
   $result = $conn->query($query);
   if( $result->num_rows > 0 ) $errors['IDNUMBER_EXISTS'] = true;
+  /* debugging */
   echo $result->num_rows;
   $result->close();
 
   /* Check for unique email */
-  $query = "SELECT * FROM user WHERE Email=\"$email\" AND UserID != \"$userID\"";
+  $query = "SELECT * FROM user WHERE Email=\"$email\" AND UserID != $userID";
   $result = $conn->query($query);
   if( $result->num_rows > 0 ) $errors['EMAIL_EXISTS'] = true;
+  /* debugging */
   echo $result->num_rows;
   $result->close();
 
@@ -59,27 +64,30 @@
               FirstName = \"$forname\", LastName = \"$surname\", FathersName = \"$father\", MothersName = \"$mother\",
               DateOfBirth = \"$date\", BirthPlace = \"$place\", HomeAddress = \"$home\", PostalCode = \"$postal\",
               AFM = \"$afm\", IDNumber = \"$id\", PhoneNumber = \"$phone\", Email = \"$email\", Password = \"$password\",
-              IsFemale = \"$isFemale\", IsRetired = \"$retired\", IsSpecial = \"$special\" WHERE UserID = \"$userID\"";
+              IsFemale = \"$isFemale\", IsRetired = \"$retired\", IsSpecial = \"$special\" WHERE UserID = $userID";
 
     $result = $conn->query($query);
 
     /* reset session variables */
-    $query = sprintf("SELECT * FROM user WHERE Email = '%s' AND Password = '%s'", $email, $password);
+    $query = "SELECT * FROM user WHERE Email = '$email' AND Password = '$password'";
     $result = $conn->query($query);
-    // echo $result->num_rows;
+
     $row = $result->fetch_array(MYSQLI_ASSOC);
     $_SESSION['user'] = true;
     $_SESSION['userID'] = $row['UserID'];
-    $_SESSION['first_name'] = $forname;
-    $_SESSION['last_name'] = $surname;
-    $_SESSION['email'] = $email;
+    $_SESSION['first_name'] = $row['FirstName'];
+    $_SESSION['last_name'] = $row['LastName'];
+    $_SESSION['email'] = $row['Email'];
+
+    /* debugging */
+    echo $_SESSION['first_name'];
 
     $result->close();
     $conn->close();
 
-    /* redirect properly */
-    $redirect_url = 'profile.php';
-    header('Location: ' . $redirect_url);
+    // /* redirect properly */
+    // $redirect_url = 'profile.php';
+    // header('Location: ' . $redirect_url);
     // exit();
   }
 
@@ -116,10 +124,7 @@
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="signup.php">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.php">Log In</a>
+              <a class="nav-link" href="logout.php">Log Out</a>
             </li>
             <li class="navbar-item">
               <select class="custom-select">
@@ -178,31 +183,35 @@
         <?php
           if ($errors['AFM_EXISTS'] and $errors['IDNUMBER_EXISTS'] and $errors['EMAIL_EXISTS']) {
         ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM, ID-Number and email already exists!</strong></div>
+          <div class="alert alert-danger" role="alert" style="text-align:center"><strong>Problem! A user with this AFM, ID-Number and email already exists!</strong></div>
         <?php
           } else if ($errors['AFM_EXISTS'] and $errors['IDNUMBER_EXISTS']) {
         ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM and ID-Number already exists!</strong></div>
+          <div class="alert alert-danger" role="alert" style="text-align:center"><strong>Problem! A user with this AFM and ID-Number already exists!</strong></div>
         <?php
           } else if ($errors['IDNUMBER_EXISTS'] and $errors['EMAIL_EXISTS']) {
         ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this ID-Number and email already exists!</strong></div>
+          <div class="alert alert-danger" role="alert" style="text-align:center"><strong>Problem! A user with this ID-Number and email already exists!</strong></div>
         <?php
           } else if ($errors['AFM_EXISTS'] and $errors['EMAIL_EXISTS']) {
         ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM and email already exists!</strong></div>
+          <div class="alert alert-danger" role="alert" style="text-align:center"><strong>Problem! A user with this AFM and email already exists!</strong></div>
         <?php
           } else if ($errors['AFM_EXISTS']) {
         ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM already exists!</strong></div>
+          <div class="alert alert-danger" role="alert" style="text-align:center"><strong>Problem! A user with this AFM already exists!</strong></div>
         <?php
           } else if ($errors['IDNUMBER_EXISTS']) {
         ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this ID-Number already exists!</strong></div>
+          <div class="alert alert-danger" role="alert" style="text-align:center"><strong>Problem! A user with this ID-Number already exists!</strong></div>
         <?php
-          } elseif ($errors['EMAIL_EXISTS']) {
+          } else if ($errors['EMAIL_EXISTS']) {
         ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this email already exists!</strong></div>
+          <div class="alert alert-danger" role="alert" style="text-align:center"><strong>Problem! A user with this email already exists!</strong></div>
+        <?php
+          } else {
+        ?>
+          <div class="alert alert-success" role="alert" style="text-align:center"><strong>Success! Profile updated successfully!</strong></div>
         <?php
           }
         ?>

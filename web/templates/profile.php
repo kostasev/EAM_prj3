@@ -1,6 +1,6 @@
 <?php
   session_start();
-  
+
   include 'make_connection.php';
 
   if (!isset($_SESSION['user'])) {
@@ -137,7 +137,7 @@
         <div class="container">
       		<div class="row">
       			<div class="col-md-12" style="text-align:center">
-      				<form action="profile_processing.php" method="post" id="signUpForm">
+      				<form action="profile_processing.php" method="post" onsubmit="return passwordsMatching()" id="signUpForm">
       					<input type="hidden" name="action" value="userProfile">
       					<br>
         				<h2><strong>Your profile</strong></h2>
@@ -367,6 +367,24 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
         <script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBX5iDXPWX9yVKjUC5FD_hX36CttO5DmzQ&callback=initMap">
+        </script>
+        <script>
+          function passwordsMatching() {
+            var pass1 = document.getElementById("password").value;
+            var pass2 = document.getElementById("confirmPassword").value;
+            var ok = true;
+            if (pass1 != pass2) {
+              //alert("Passwords Do not match");
+              document.getElementById("password").style.borderColor = "#E34234";
+              document.getElementById("confirmPassword").style.borderColor = "#E34234";
+              ok = false;
+              alert("Passwords don't match!");
+            }
+            // else {
+            //   alert("Passwords Match!!!");
+            // }
+            return ok;
+          }
         </script>
 
   </body>
