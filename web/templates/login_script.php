@@ -1,8 +1,8 @@
 <?php
-  include 'make_connection.php';
-
   /* start a new session */
   session_start();
+
+  include 'make_connection.php';
 
   $email = isset($_POST['email']) ? $_POST['email'] : '';
   $password = isset($_POST['password']) ? $_POST['password'] : '';

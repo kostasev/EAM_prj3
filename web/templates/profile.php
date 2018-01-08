@@ -1,4 +1,6 @@
 <?php
+  session_start();
+  
   include 'make_connection.php';
 
   if (!isset($_SESSION['user'])) {

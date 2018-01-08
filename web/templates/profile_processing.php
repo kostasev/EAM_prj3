@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <?php
+  session_start();
+
   include 'make_connection.php';
 
   /* errors array */
@@ -25,25 +27,27 @@
   $retired = 0;
   $special = 0;
 
+  $userID = $_SESSION['userID'];
+
   /* Check for unique AFM */
-  $query = "SELECT * FROM user WHERE AFM='$afm' AND UserID != 3";
+  $query = "SELECT * FROM user WHERE AFM=\"$afm\" AND UserID != \"$userID\"";
   $result = $conn->query($query);
   if($result->num_rows > 0) $errors['AFM_EXISTS'] = true;
-  // echo $result->num_rows;
+  echo $result->num_rows;
   $result->close();
 
   /* Check for unique IDNumber */
-  $query = "SELECT * FROM user WHERE IDNumber='$id' AND UserID != 3";
+  $query = "SELECT * FROM user WHERE IDNumber=\"$id\" AND UserID != \"$userID\"";
   $result = $conn->query($query);
   if( $result->num_rows > 0 ) $errors['IDNUMBER_EXISTS'] = true;
-  // echo $result->num_rows;
+  echo $result->num_rows;
   $result->close();
 
   /* Check for unique email */
-  $query = "SELECT * FROM user WHERE Email='$email' AND UserID != 3";
+  $query = "SELECT * FROM user WHERE Email=\"$email\" AND UserID != \"$userID\"";
   $result = $conn->query($query);
   if( $result->num_rows > 0 ) $errors['EMAIL_EXISTS'] = true;
-  // echo $result->num_rows;
+  echo $result->num_rows;
   $result->close();
 
   if (!$errors['AFM_EXISTS'] and !$errors['IDNUMBER_EXISTS'] and !$errors['EMAIL_EXISTS']) {
@@ -52,8 +56,10 @@
     else $isFemale = 0;
 
     $query = "UPDATE user SET
-              FirstName = '$forname', LastName = '$surname', FathersName = '$father', MothersName = '$mother', DateOfBirth = '$date', BirthPlace = '$place', HomeAddress = '$home', PostalCode = '$postal', AFM = '$afm', IDNumber = '$id', PhoneNumber = '$phone', Email = '$email', Password = '$password',
-              IsFemale = '$isFemale', IsRetired = '$retired', IsSpecial = '$special' WHERE UserID = 3";
+              FirstName = \"$forname\", LastName = \"$surname\", FathersName = \"$father\", MothersName = \"$mother\",
+              DateOfBirth = \"$date\", BirthPlace = \"$place\", HomeAddress = \"$home\", PostalCode = \"$postal\",
+              AFM = \"$afm\", IDNumber = \"$id\", PhoneNumber = \"$phone\", Email = \"$email\", Password = \"$password\",
+              IsFemale = \"$isFemale\", IsRetired = \"$retired\", IsSpecial = \"$special\" WHERE UserID = \"$userID\"";
 
     $result = $conn->query($query);
 
@@ -74,8 +80,10 @@
     /* redirect properly */
     $redirect_url = 'profile.php';
     header('Location: ' . $redirect_url);
-    exit();
+    // exit();
   }
+
+  $conn->close();
 ?>
 
 <html lang="en">

@@ -2,6 +2,8 @@
 <?php
   include 'make_connection.php';
 
+  session_start();
+
   /* errors array */
   $errors = array('EMAIL_EXISTS' => false,
                   'AFM_EXISTS' => false,

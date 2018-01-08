@@ -1,5 +1,6 @@
 <?php
-  include 'make_connection.php';
+  // include 'make_connection.php';
+  session_start();
 ?>
 
 <!DOCTYPE html>
@@ -44,8 +45,6 @@
     <?php
       }
       $_SESSION['login_error'] = false;
-
-      $conn->close();
     ?>
 
   </head>
