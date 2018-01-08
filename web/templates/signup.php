@@ -129,7 +129,7 @@
                   <div class="col-md-3 form-group"></div>
                   <label for="dateOfBirth" class="col-md-1 col-form-label">Date of Birth</label>
                   <div class="col-md-3">
-                    <input class="form-control"name="dateOfBirth" type="date" value="1980-08-19" id="dateOfBirth">
+                    <input class="form-control" name="dateOfBirth" type="date" value="1980-08-19" id="dateOfBirth">
                   </div>
                   <div class="col-md-2 form-group">
                     <label>
@@ -194,7 +194,7 @@
                   <div class="col-md-3 form-group"></div>
                   <label for="email" class="col-md-3 col-form-label">Email</label>
                   <div class="col-md-3">
-                    <input class="form-control" name="email" type="email" value="joedoe@somemail.com" id="email">
+                    <input class="form-control" id="email" name="email" type="email" value="joedoe@somemail.com" required requiredMessage="Please enter your email" pattern=".{1,45}">
                   </div>
                   <div class="col-md-3 form-group"></div>
                 </div>
