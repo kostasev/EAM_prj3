@@ -29,12 +29,12 @@
 
   $userID = $_SESSION['userID'];
   /* debugging */
-  echo $userID; echo "\n";
+  // echo $userID; echo "\n";
 
   /* Check for unique AFM */
   $query = "SELECT * FROM user WHERE AFM=\"$afm\" AND UserID != '$userID'";
   /* debugging */
-  echo $query; echo "\n";
+  // echo $query; echo "\n";
   $result = $conn->query($query);
   if($result->num_rows > 0) $errors['AFM_EXISTS'] = true;
   // /* debugging */
@@ -44,7 +44,7 @@
   /* Check for unique IDNumber */
   $query = "SELECT * FROM user WHERE IDNumber=\"$id\" AND UserID != '$userID'";
   /* debugging */
-  echo $query; echo "\n";
+  // echo $query; echo "\n";
   $result = $conn->query($query);
   if($result->num_rows > 0) $errors['IDNUMBER_EXISTS'] = true;
   // /* debugging */
@@ -54,7 +54,7 @@
   /* Check for unique email */
   $query = "SELECT * FROM user WHERE Email=\"$email\" AND UserID != '$userID'";
   /* debugging */
-  echo $query; echo "\n";
+  // echo $query; echo "\n";
   $result = $conn->query($query);
   if($result->num_rows > 0) $errors['EMAIL_EXISTS'] = true;
   // /* debugging */
@@ -68,7 +68,7 @@
 
     $query = "UPDATE user SET FirstName = \"$forname\", LastName = \"$surname\", FathersName = \"$father\", MothersName = \"$mother\", DateOfBirth = \"$date\", BirthPlace = \"$place\", HomeAddress = \"$home\", PostalCode = \"$postal\", AFM = \"$afm\", IDNumber = \"$id\", PhoneNumber = \"$phone\", Email = \"$email\", Password = \"$password\", IsFemale = \"$isFemale\", IsRetired = \"$retired\", IsSpecial = \"$special\" WHERE UserID = '$userID'";
     /* debugging */
-    echo $query; echo "\n";
+    // echo $query; echo "\n";
 
     $result = $conn->query($query);
 
@@ -84,15 +84,15 @@
     $_SESSION['email'] = $row['Email'];
 
     /* debugging */
-    echo $_SESSION['first_name']; echo "\n";
+    // echo $_SESSION['first_name']; echo "\n";
 
     $result->close();
     $conn->close();
 
-    // /* redirect properly */
-    // $redirect_url = 'profile.php';
-    // header('Location: ' . $redirect_url);
-    // exit();
+    /* redirect properly */
+    $redirect_url = 'profile.php';
+    header('Location: ' . $redirect_url);
+    exit();
   }
 
   $conn->close();
