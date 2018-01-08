@@ -32,31 +32,31 @@
   echo $userID; echo "\n";
 
   /* Check for unique AFM */
-  $query = "SELECT * FROM user WHERE AFM=\"$afm\" AND UserID != $userID";
+  $query = "SELECT * FROM user WHERE AFM=\"$afm\" AND UserID != '$userID'";
   /* debugging */
   echo $query; echo "\n";
   $result = $conn->query($query);
-  if($result) $errors['AFM_EXISTS'] = true;
+  if($result->num_rows > 0) $errors['AFM_EXISTS'] = true;
   // /* debugging */
   // echo $result->num_rows;
   // $result->close();
 
   /* Check for unique IDNumber */
-  $query = "SELECT * FROM user WHERE IDNumber=\"$id\" AND UserID != $userID";
+  $query = "SELECT * FROM user WHERE IDNumber=\"$id\" AND UserID != '$userID'";
   /* debugging */
   echo $query; echo "\n";
   $result = $conn->query($query);
-  if($result) $errors['IDNUMBER_EXISTS'] = true;
+  if($result->num_rows > 0) $errors['IDNUMBER_EXISTS'] = true;
   // /* debugging */
   // echo $result->num_rows;
   // $result->close();
 
   /* Check for unique email */
-  $query = "SELECT * FROM user WHERE Email=\"$email\" AND UserID != $userID";
+  $query = "SELECT * FROM user WHERE Email=\"$email\" AND UserID != '$userID'";
   /* debugging */
   echo $query; echo "\n";
   $result = $conn->query($query);
-  if($result) $errors['EMAIL_EXISTS'] = true;
+  if($result->num_rows > 0) $errors['EMAIL_EXISTS'] = true;
   // /* debugging */
   // echo $result->num_rows;
   // $result->close();
@@ -66,7 +66,7 @@
     if ($sex == "Female") $isFemale = 1;
     else $isFemale = 0;
 
-    $query = "UPDATE user SET FirstName = \"$forname\", LastName = \"$surname\", FathersName = \"$father\", MothersName = \"$mother\", DateOfBirth = \"$date\", BirthPlace = \"$place\", HomeAddress = \"$home\", PostalCode = \"$postal\", AFM = \"$afm\", IDNumber = \"$id\", PhoneNumber = \"$phone\", Email = \"$email\", Password = \"$password\", IsFemale = \"$isFemale\", IsRetired = \"$retired\", IsSpecial = \"$special\" WHERE UserID = $userID";
+    $query = "UPDATE user SET FirstName = \"$forname\", LastName = \"$surname\", FathersName = \"$father\", MothersName = \"$mother\", DateOfBirth = \"$date\", BirthPlace = \"$place\", HomeAddress = \"$home\", PostalCode = \"$postal\", AFM = \"$afm\", IDNumber = \"$id\", PhoneNumber = \"$phone\", Email = \"$email\", Password = \"$password\", IsFemale = \"$isFemale\", IsRetired = \"$retired\", IsSpecial = \"$special\" WHERE UserID = '$userID'";
     /* debugging */
     echo $query; echo "\n";
 
