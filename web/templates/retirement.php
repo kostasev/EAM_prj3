@@ -1,10 +1,14 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Certification Reply</title>
+    <title>IKA Retirement</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/certification.css">
 
@@ -27,12 +31,27 @@
           <div class="col-md-2"></div>
           <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="logout.php">Log Out</a>
-              </li>
+              <?php
+                if (isset($_SESSION['user'])) {
+              ?>
+                <li class="nav-item">
+                  <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="logout.php">Log Out</a>
+                </li>
+              <?php
+                } else {
+              ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="signup.php">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="login.php">Log In</a>
+                </li>
+              <?php
+                }
+              ?>
               <li class="navbar-item">
                 <select class="custom-select">
                   <option value="Albanian">Albanian</option>
@@ -118,13 +137,9 @@
                 </ul>
               </div>
 
-              <!-- REQUEST RESULT -->
+              <!-- RETIREMENT OPTIONS -->
               <div class="col-md-10" style="text-align:center">
-                <h2><strong>Pension certification</strong></h2>
-                <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
-                <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
-                <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
-                <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
+
               </div>
 
             </div>

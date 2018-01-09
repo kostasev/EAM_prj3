@@ -41,6 +41,9 @@
           <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
+                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="logout.php">Log Out</a>
               </li>
               <li class="navbar-item">

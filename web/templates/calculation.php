@@ -1,14 +1,5 @@
 <?php
-  /* user must be logged-in to use this page */
   session_start();
-
-  if (!isset($_SESSION['user'])) {
-    /* we have an access error */
-    /* redirect properly */
-    $redirect_url = 'access_error.php';
-    header('Location: ' . $redirect_url);
-    exit();
-  }
 ?>
 
 <!DOCTYPE html>
@@ -41,9 +32,27 @@
         <div class="col-md-2"></div>
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="logout.php">Log out</a>
-            </li>
+            <?php
+              if (isset($_SESSION['user'])) {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="logout.php">Log Out</a>
+              </li>
+            <?php
+              } else {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link" href="signup.php">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.php">Log In</a>
+              </li>
+            <?php
+              }
+            ?>
             <li class="navbar-item">
               <select class="custom-select">
                 <option value="Albanian">Albanian</option>
@@ -100,72 +109,103 @@
         <!-- CALCULATION PAGE CONTENT - Pension calculation scenario -->
 
         <div class="container">
-      		<div class="row">
-      			<div class="col-sm-12" style="text-align:center">
-      				<form action="calculation_result.php" method="post" id="logInForm">
-      					<input type="hidden" name="action" value="userLogIn">
-      					<br>
-        				<h2><strong>Basic Pension Calculator</strong></h2>
-                <p>Please insert your details</p>
+          <div class="col-md-12">
+            <div class="row">
 
-                <div class="row">
+              <!-- SIDE MENU -->
+              <div class="col-md-2">
+                <ul class="nav inner-nav1 flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Insured</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#">Retired</a>
+                    <ul class="nav inner-nav2 flex-column">
+                      <li class="nav-item">
+                        <a class="nav-link" href="calculation.php">Pension Calculator</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Employers</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Special Abilities</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Doctor Appointment</a>
+                  </li>
+                </ul>
+              </div>
 
-                  <div class="col-md-6 form-group">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Sex
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <input type="radio" name="sex" value="Male" checked>Male</button>
-                        <input type="radio" name="sex" value="Female">Female</button>
+              <!-- CALCULATION FORM -->
+        			<div class="col-sm-10" style="text-align:center">
+        				<form action="calculation_result.php" method="post" id="logInForm">
+        					<input type="hidden" name="action" value="userLogIn">
+        					<br>
+          				<h2><strong>Basic Pension Calculator</strong></h2>
+                  <p>Please insert your details</p>
+
+                  <div class="row">
+                    <div class="col-md-2 form-group"></div>
+                    <div class="col-md-4 form-group">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Sex
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                          <input type="radio" name="sex" value="Male" checked>Male</button>
+                          <input type="radio" name="sex" value="Female">Female</button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-
-                  <div class="col-md-4 form-group">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pension Type
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <input class="dropdown-item" type="radio" name="type" value="old" checked>Old age</button>
-                        <input class="dropdown-item" type="radio" name="type" value="disabled">Disability</button>
-                        <input class="dropdown-item" type="radio" name="type" value="insured">Death of insured</button>
-                        <input class="dropdown-item" type="radio" name="type" value="retired">Death of retired</button>
+                    <div class="col-md-4 form-group">
+                      <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Pension Type
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                          <input class="dropdown-item" type="radio" name="type" value="old" checked>Old age</button>
+                          <input class="dropdown-item" type="radio" name="type" value="disabled">Disability</button>
+                          <input class="dropdown-item" type="radio" name="type" value="insured">Death of insured</button>
+                          <input class="dropdown-item" type="radio" name="type" value="retired">Death of retired</button>
+                        </div>
                       </div>
                     </div>
+                    <div class="col-md-2 form-group"></div>
                   </div>
 
-                </div>
-
-                <div class="row">
-
-                  <div class="col-md-6 form-group">
-          					<label>
-          						<input class="form-control" id="yearsOfEmployment" name="yearsOfEmployment" type="number" placeholder="Years of employment" min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
-          					</label>
-          				</div>
-                  <div class="col-md-4 form-group text-center">
-          					<label>
-          						<input class="form-control" id="avgReceivingsPerYear" name="avgReceivingsPerYear" type="number" min="0" step="0.01" placeholder="Avg yearly receivings" required requiredMessage="Please enter your average receivings per year" pattern=".{1,45}">
-          					</label>
-          				</div>
-                </div>
-
-                <br>
-                <div class="row">
-                  <div class="col-md-6 form-group">
-                    <button type="reset" class="btn btn-outline-danger">Clear</button>
+                  <div class="row">
+                    <div class="col-md-2 form-group"></div>
+                    <div class="col-md-4 form-group">
+            					<label>
+            						<input class="form-control" id="yearsOfEmployment" name="yearsOfEmployment" type="number" placeholder="Years of employment" min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
+            					</label>
+            				</div>
+                    <div class="col-md-4 form-group text-center">
+            					<label>
+            						<input class="form-control" id="avgReceivingsPerYear" name="avgReceivingsPerYear" type="number" min="0" step="0.01" placeholder="Avg yearly receivings" required requiredMessage="Please enter your average receivings per year" pattern=".{1,45}">
+            					</label>
+            				</div>
+                    <div class="col-md-2 form-group"></div>
                   </div>
-                  <div class="col-md-6 form-group">
-            				<input class="btn btn-primary" type="submit" value="Calculate">
-                    <br> <br>
-                  </div>
-                </div>
 
-              </form>
-      			</div>
-      		</div>
+                  <br>
+                  <div class="row">
+                    <div class="col-md-2 form-group"></div>
+                    <div class="col-md-4 form-group">
+                      <button type="reset" class="btn btn-outline-danger">Clear</button>
+                    </div>
+                    <div class="col-md-4 form-group">
+              				<input class="btn btn-primary" type="submit" value="Calculate">
+                    </div>
+                    <div class="col-md-2 form-group"></div>
+                  </div>
+
+                </form>
+        			</div>
+        		</div>
+          </div>
       	</div>
 
         <!-- FOOTER -->

@@ -28,9 +28,27 @@
         <div class="col-md-2"></div>
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="signup.php">Sign Up</a>
-            </li>
+            <?php
+              if (isset($_SESSION['user'])) {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="logout.php">Log Out</a>
+              </li>
+            <?php
+              } else {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link" href="signup.php">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.php">Log In</a>
+              </li>
+            <?php
+              }
+            ?>
             <li class="navbar-item">
               <select class="custom-select">
                 <option value="Albanian">Albanian</option>
@@ -88,45 +106,40 @@
         <?php
           $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
           $type = isset($_POST['type']) ? $_POST['type'] : '';
-          $employment = isset($_POST['yearsOfEmployment']) ? $_POST['yearsOfEmployment'] : -1;
-          $savings = isset($_POST['avgReceivingsPerYear']) ? $_POST['avgReceivingsPerYear'] : -1;
+          $employment = isset($_POST['yearsOfEmployment']) ? $_POST['yearsOfEmployment'] : '';
+          $savings = isset($_POST['avgReceivingsPerYear']) ? $_POST['avgReceivingsPerYear'] : '';
 
-          if ($employment < 0 || $savings < 0) {
-            echo "<div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! Pension cannot be calculated!</strong></div>";
-          }
-          else {
-            if ( $sex == "Male" ) {
-              if ( $type == "old" ) {
-                $result = $savings / 60;
-              }
-              else if ( $type == "disabled" ) {
-                $result = $savings / 65;
-              }
-              else if ( $type == "insured" ) {
-                $result = $savings / 70;
-              }
-              else if ( $type == "retired") {
-                $result = $savings / 75;
-              }
+          if ( $sex == "Male" ) {
+            if ( $type == "old" ) {
+              $result = $savings / 24;
             }
-            else if ( $sex == "Female" ) {
-              if ( $type == "old" ) {
-                $result = $savings / 63;
-              }
-              else if ( $type == "disabled" ) {
-                $result = $savings / 67;
-              }
-              else if ( $type == "insured" ) {
-                $result = $savings / 75;
-              }
-              else if ( $type == "retired") {
-                $result = $savings / 80;
-              }
+            else if ( $type == "disabled" ) {
+              $result = $savings / 26;
             }
-            $result += 1.5 *  $employment;
-            $result = round($result);
-            echo "<h2 class='text-center'> Your pension is $result euros per month </h2>";
+            else if ( $type == "insured" ) {
+              $result = $savings / 28;
+            }
+            else if ( $type == "retired") {
+              $result = $savings / 30;
+            }
           }
+          else if ( $sex == "Female" ) {
+            if ( $type == "old" ) {
+              $result = $savings / 25;
+            }
+            else if ( $type == "disabled" ) {
+              $result = $savings / 27;
+            }
+            else if ( $type == "insured" ) {
+              $result = $savings / 29;
+            }
+            else if ( $type == "retired") {
+              $result = $savings / 31;
+            }
+          }
+          $result += 1.5 *  $employment;
+          $result = round($result);
+          echo "<h2 class='text-center'> Your pension is $result euros per month </h2>";
         ?>
 
         <!-- FOOTER -->

@@ -1,5 +1,4 @@
 <?php
-  // include 'make_connection.php';
   session_start();
 ?>
 
@@ -131,13 +130,13 @@
               <a class="nav-link" href="#">News</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="#">Locations</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact Us</a>
+              <a class="nav-link" href="#">About Us</a>
             </li>
           </ul>
           <hr>
@@ -210,14 +209,14 @@
                 <div class="card card-inverse">
                   <img class="card-img" src="../images/2.jpg" alt="Card image cap" height="250" width="250">
                   <div class="card-img-overlay">
-                    <a href="#" class="btn btn-secondary ">Insurance</a>
+                    <a href="insurance.php" class="btn btn-secondary ">Insurance</a>
                   </div>
                 </div>
                 <div class="card card-inverse">
 
                   <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="250" width="250">
                   <div class="card-img-overlay">
-                    <a href="#" class="btn btn-secondary ">Retirement</a>
+                    <a href="retirement.php" class="btn btn-secondary ">Retirement</a>
                   </div>
                 </div>
               </div>
