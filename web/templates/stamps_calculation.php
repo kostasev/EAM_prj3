@@ -122,7 +122,7 @@
         <div class="container">
           <div class="row">
             <!-- CALCULATION FORM -->
-        		<div class="col-md-12" style="text-align:center">
+        		<div class="col-sm-12" style="text-align:center">
         			<form action="calculation_result.php" method="post" id="logInForm">
         				<input type="hidden" name="action" value="userLogIn">
         				<br>
@@ -130,8 +130,7 @@
                 <p>Please insert your details</p>
 
                 <div class="row">
-                  <div class="col-md-2 form-group"></div>
-                  <div class="col-md-4 form-group">
+                  <div class="col-md-6 form-group">
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Sex
@@ -155,12 +154,10 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-2 form-group"></div>
                 </div>
 
                 <div class="row">
-                  <div class="col-md-2 form-group"></div>
-                  <div class="col-md-4 form-group">
+                  <div class="col-md-6 form-group">
           					<label>
           						<input class="form-control" id="yearsOfEmployment" name="yearsOfEmployment" type="number" placeholder="Years of employment" min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
           					</label>
@@ -170,19 +167,16 @@
           						<input class="form-control" id="avgReceivingsPerYear" name="avgReceivingsPerYear" type="number" min="0" step="0.01" placeholder="Avg yearly receivings" required requiredMessage="Please enter your average receivings per year" pattern=".{1,45}">
           					</label>
           				</div>
-                    <div class="col-md-2 form-group"></div>
                 </div>
 
                 <br>
                 <div class="row">
-                  <div class="col-md-2 form-group"></div>
-                  <div class="col-md-4 form-group">
+                  <div class="col-md-6 form-group">
                     <button type="reset" class="btn btn-outline-danger">Clear</button>
                   </div>
-                  <div class="col-md-4 form-group">
+                  <div class="col-md-6 form-group">
             				<input class="btn btn-primary" type="submit" value="Calculate">
                   </div>
-                    <div class="col-md-2 form-group"></div>
                 </div>
 
               </form>
