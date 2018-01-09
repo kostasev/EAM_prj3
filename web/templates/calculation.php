@@ -73,139 +73,121 @@
           </ul>
         </div>
       </nav>
+
+      <!-- NAVBAR -->
       <div class="container">
-          <ul class="nav nav-pills nav-justified">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Insurance</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Retirement</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Disability</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Employers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">News</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">FAQ</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact Us</a>
-            </li>
-          </ul>
-          <hr>
-        </div>
+        <ul class="nav nav-pills nav-justified">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Insurance
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="insurance_certifications.php">Certifications</a>
+              <a class="dropdown-item" href="insurance_requests.php">Requests</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Retirement
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="retirement_certifications.php">Certifications</a>
+              <a class="dropdown-item" href="retirement_requests.php">Requests</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Disability</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Employers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Locations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+        </ul>
+        <hr>
+      </div>
 
         <!-- CALCULATION PAGE CONTENT - Pension calculation scenario -->
 
         <div class="container">
-          <div class="col-md-12">
-            <div class="row">
+          <div class="row">
+            <!-- CALCULATION FORM -->
+        		<div class="col-sm-10" style="text-align:center">
+        			<form action="calculation_result.php" method="post" id="logInForm">
+        				<input type="hidden" name="action" value="userLogIn">
+        				<br>
+          			<h2><strong>Basic Pension Calculator</strong></h2>
+                <p>Please insert your details</p>
 
-              <!-- SIDE MENU -->
-              <div class="col-md-2">
-                <ul class="nav inner-nav1 flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Insured</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#">Retired</a>
-                    <ul class="nav inner-nav2 flex-column">
-                      <li class="nav-item">
-                        <a class="nav-link" href="calculation.php">Pension Calculator</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Employers</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Special Abilities</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Doctor Appointment</a>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- CALCULATION FORM -->
-        			<div class="col-sm-10" style="text-align:center">
-        				<form action="calculation_result.php" method="post" id="logInForm">
-        					<input type="hidden" name="action" value="userLogIn">
-        					<br>
-          				<h2><strong>Basic Pension Calculator</strong></h2>
-                  <p>Please insert your details</p>
-
-                  <div class="row">
-                    <div class="col-md-2 form-group"></div>
-                    <div class="col-md-4 form-group">
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Sex
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                          <input type="radio" name="sex" value="Male" checked>Male</button>
-                          <input type="radio" name="sex" value="Female">Female</button>
-                        </div>
+                <div class="row">
+                  <div class="col-md-2 form-group"></div>
+                  <div class="col-md-4 form-group">
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sex
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <input type="radio" name="sex" value="Male" checked>Male</button>
+                        <input type="radio" name="sex" value="Female">Female</button>
                       </div>
                     </div>
-                    <div class="col-md-4 form-group">
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Pension Type
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                          <input class="dropdown-item" type="radio" name="type" value="old" checked>Old age</button>
-                          <input class="dropdown-item" type="radio" name="type" value="disabled">Disability</button>
-                          <input class="dropdown-item" type="radio" name="type" value="insured">Death of insured</button>
-                          <input class="dropdown-item" type="radio" name="type" value="retired">Death of retired</button>
-                        </div>
+                  </div>
+                  <div class="col-md-4 form-group">
+                    <div class="dropdown">
+                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pension Type
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                        <input class="dropdown-item" type="radio" name="type" value="old" checked>Old age</button>
+                        <input class="dropdown-item" type="radio" name="type" value="disabled">Disability</button>
+                        <input class="dropdown-item" type="radio" name="type" value="insured">Death of insured</button>
+                        <input class="dropdown-item" type="radio" name="type" value="retired">Death of retired</button>
                       </div>
                     </div>
-                    <div class="col-md-2 form-group"></div>
                   </div>
+                  <div class="col-md-2 form-group"></div>
+                </div>
 
-                  <div class="row">
-                    <div class="col-md-2 form-group"></div>
-                    <div class="col-md-4 form-group">
-            					<label>
-            						<input class="form-control" id="yearsOfEmployment" name="yearsOfEmployment" type="number" placeholder="Years of employment" min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
-            					</label>
-            				</div>
-                    <div class="col-md-4 form-group text-center">
-            					<label>
-            						<input class="form-control" id="avgReceivingsPerYear" name="avgReceivingsPerYear" type="number" min="0" step="0.01" placeholder="Avg yearly receivings" required requiredMessage="Please enter your average receivings per year" pattern=".{1,45}">
-            					</label>
-            				</div>
-                    <div class="col-md-2 form-group"></div>
+                <div class="row">
+                  <div class="col-md-2 form-group"></div>
+                  <div class="col-md-4 form-group">
+          					<label>
+          						<input class="form-control" id="yearsOfEmployment" name="yearsOfEmployment" type="number" placeholder="Years of employment" min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
+          					</label>
+          				</div>
+                  <div class="col-md-4 form-group text-center">
+          					<label>
+          						<input class="form-control" id="avgReceivingsPerYear" name="avgReceivingsPerYear" type="number" min="0" step="0.01" placeholder="Avg yearly receivings" required requiredMessage="Please enter your average receivings per year" pattern=".{1,45}">
+          					</label>
+          				</div>
+                  <div class="col-md-2 form-group"></div>
+                </div>
+
+                <br>
+                <div class="row">
+                  <div class="col-md-2 form-group"></div>
+                  <div class="col-md-4 form-group">
+                    <button type="reset" class="btn btn-outline-danger">Clear</button>
                   </div>
-
-                  <br>
-                  <div class="row">
-                    <div class="col-md-2 form-group"></div>
-                    <div class="col-md-4 form-group">
-                      <button type="reset" class="btn btn-outline-danger">Clear</button>
-                    </div>
-                    <div class="col-md-4 form-group">
-              				<input class="btn btn-primary" type="submit" value="Calculate">
-                    </div>
-                    <div class="col-md-2 form-group"></div>
+                  <div class="col-md-4 form-group">
+            				<input class="btn btn-primary" type="submit" value="Calculate">
                   </div>
+                  <div class="col-md-2 form-group"></div>
+                </div>
 
-                </form>
-        			</div>
-        		</div>
-          </div>
+              </form>
+      			</div>
+      		</div>
       	</div>
 
         <!-- FOOTER -->

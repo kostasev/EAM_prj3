@@ -142,38 +142,50 @@
           </ul>
         </div>
       </nav>
+
+
+      <!-- NAVBAR -->
       <div class="container">
-          <ul class="nav nav-pills nav-justified">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Insurance</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Retirement</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Disability</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Employers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">News</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">FAQ</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact Us</a>
-            </li>
-          </ul>
-          <hr>
-        </div>
+        <ul class="nav nav-pills nav-justified">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Insurance
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="insurance_certifications.php">Certifications</a>
+              <a class="dropdown-item" href="insurance_requests.php">Requests</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Retirement
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="retirement_certifications.php">Certifications</a>
+              <a class="dropdown-item" href="retirement_requests.php">Requests</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Disability</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Employers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Locations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+        </ul>
+        <hr>
+      </div>
 
         <!-- SIGN-UP ERROR PAGE CONTENT -->
         <?php

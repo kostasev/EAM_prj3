@@ -109,16 +109,27 @@
           </ul>
         </div>
       </nav>
+
+      <!-- NAVBAR -->
       <div class="container">
           <ul class="nav nav-pills nav-justified">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Insurance
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="insurance_certifications.php">Certifications</a>
+                <a class="dropdown-item" href="insurance_requests.php">Requests</a>
+              </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Insurance</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Retirement</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Retirement
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="retirement_certifications.php">Certifications</a>
+                <a class="dropdown-item" href="retirement_requests.php">Requests</a>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Disability</a>
@@ -141,6 +152,7 @@
           </ul>
           <hr>
         </div>
+        
         <div class="container">
           <div class="row">
             <div class="col-md-6">
