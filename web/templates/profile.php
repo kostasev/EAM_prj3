@@ -173,7 +173,7 @@
         <div class="container">
       		<div class="row">
       			<div class="col-md-12" style="text-align:center">
-      				<form action="profile_processing.php" method="post" onsubmit="return passwordsMatching()" id="signUpForm">
+      				<form action="profile_processing.php" method="post" onsubmit="return passwordsMatching()" id="profileForm">
       					<input type="hidden" name="action" value="userProfile">
       					<br>
         				<h2><strong>Your profile</strong></h2>

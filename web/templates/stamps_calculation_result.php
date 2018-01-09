@@ -1,61 +1,10 @@
-<?php
-  session_start();
-
-  include 'make_connection.php';
-
-  if (isset($_SESSION['user'])) {
-    $userID = $_SESSION['userID'];
-
-    /* gather user's information */
-    $query = "SELECT * FROM information WHERE user_UserID = '$userID'";
-
-    $result = $conn->query($query);
-    if (!$result) {
-      /* we have an access error */
-      $conn->close();
-      /* redirect properly */
-      $redirect_url = 'access_error.php';
-      header('Location: ' . $redirect_url);
-      exit();
-    }
-    else {
-      $row = $result->fetch_array(MYSQLI_ASSOC);
-      $yearsInsured = $row['YearsInsured'];
-      $yearsEmployed = $row['YearsEmployed'];
-    }
-
-    $result->close();
-
-    /* get user's sex */
-    $query = "SELECT * FROM information WHERE user_UserID = '$userID'";
-
-    $result = $conn->query($query);
-    if (!$result) {
-      /* we have an access error */
-      $conn->close();
-      /* redirect properly */
-      $redirect_url = 'access_error.php';
-      header('Location: ' . $redirect_url);
-      exit();
-    }
-    else {
-      $row = $result->fetch_array(MYSQLI_ASSOC);
-      $isFemale = $row['IsFemale'];
-    }
-
-    $result->close();
-  }
-
-  $conn->close();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Stamps Calculation</title>
+    <title>IKA Pension Calculation</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/calculation.css">
 
@@ -164,85 +113,21 @@
         <hr>
       </div>
 
-        <!-- CALCULATION PAGE CONTENT - Pension calculation scenario -->
+        <!-- CALCULATION PAGE CONTENT - Pension calculation result scenario -->
+        <?php
+          $yearsInsured = isset($_POST['yearsInsured']) ? $_POST['yearsEmployed'] : '';
+          $yearsEmployed = isset($_POST['yearsEmployed']) ? $_POST['yearsInsured'] : '';
+          $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
 
-        <div class="container">
-          <div class="row">
-            <!-- CALCULATION FORM -->
-        		<div class="col-md-12" style="text-align:center">
-        			<form action="stamps_calculation_result.php" method="post" id="stampsCalculationForm">
-        				<input type="hidden" name="action" value="userLogIn">
-        				<br>
-          			<h2><strong>Basic Stamps Calculator</strong></h2>
-
-                <?php
-                  if(isset($_SESSION['user'])) {
-                ?>
-                  <p>Please insert your details</p>
-                <?php
-                  } else {
-                ?>
-                  <p>Please verify or update your details (any update will be temporary)</p>
-                <?php
-                  }
-                ?>
-
-                <div class="row">
-                  <div class="col-md-2 form-group"></div>
-                  <div class="col-md-3 form-group">
-          					<label>
-          						<input class="form-control" id="yearsInsured" name="yearsInsured" type="number" <?php if (isset($_SESSION['user'])) { echo "value=\"$yearsInsured\""; } else { echo "placeholder=\"Years of insurance\""; } ?> min="0" required requiredMessage="Please enter your years of insurance" pattern=".{1,45}">
-          					</label>
-          				</div>
-                  <div class="col-md-3 form-group text-center">
-                    <label>
-          						<input class="form-control" id="yearsEmployed" name="yearsEmployed" type="number" <?php if (isset($_SESSION['user'])) { echo "value=\"$yearsEmployed\""; } else { echo "placeholder=\"Years of employment\""; } ?> min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
-          					</label>
-          				</div>
-                  <div class="col-md-3 form-group">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Sex
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <?php
-                          if (isset($_SESSION['user'])) {
-                            if ($isFemale) {
-                              echo '<input type="radio" name="sex" value="Male">Male</button>';
-                              echo '<input type="radio" name="sex" value="Female" checked>Female</button>';
-                            }
-                            else {
-                              echo '<input type="radio" name="sex" value="Male" checked>Male</button>';
-                              echo '<input type="radio" name="sex" value="Female">Female</button>';
-                            }
-                          }
-                          else {
-                            echo '<input type="radio" name="sex" value="Male" checked>Male</button>';
-                            echo '<input type="radio" name="sex" value="Female">Female</button>';
-                          }
-                        ?>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-1 form-group"></div>
-                </div>
-
-                <br>
-                <div class="row">
-                  <div class="col-md-2 form-group"></div>
-                  <div class="col-md-4 form-group">
-                    <button type="reset" class="btn btn-outline-danger">Clear</button>
-                  </div>
-                  <div class="col-md-4 form-group">
-            				<input class="btn btn-primary" type="submit" value="Calculate">
-                  </div>
-                    <div class="col-md-2 form-group"></div>
-                </div>
-
-              </form>
-      			</div>
-      		</div>
-      	</div>
+          if ( $sex == "Male" ) {
+            $result = 2 * $yearsInsured + 1 * $yearsEmployed;
+          }
+          else if ( $sex == "Female" ) {
+              $result = 2.25 * $yearsInsured + 1.5 * $yearsEmployed;
+          }
+          $result = round($result);
+          echo "<h2 class='text-center'> You have $result stamps</h2>";
+        ?>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">

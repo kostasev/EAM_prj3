@@ -123,7 +123,7 @@
           <div class="row">
             <!-- CALCULATION FORM -->
         		<div class="col-md-12" style="text-align:center">
-        			<form action="calculation_result.php" method="post" id="logInForm">
+        			<form action="pension_calculation_result.php" method="post" id="calculationForm">
         				<input type="hidden" name="action" value="userLogIn">
         				<br>
           			<h2><strong>Basic Pension Calculator</strong></h2>
