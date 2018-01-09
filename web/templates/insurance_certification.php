@@ -1,10 +1,81 @@
+<?php
+  session_start();
+
+  include 'make_connection.php';
+
+  if (!isset($_SESSION['user'])) {
+    /* we have an access error */
+    /* redirect properly */
+    $redirect_url = 'access_error.php';
+    header('Location: ' . $redirect_url);
+    exit();
+  }
+
+  $query = sprintf("SELECT * FROM user WHERE Email = '%s'", $_SESSION['email']);
+
+  $result = $conn->query($query);
+  if (!$result) {
+    /* we have an access error */
+    $conn->close();
+    /* redirect properly */
+    $redirect_url = 'access_error.php';
+    header('Location: ' . $redirect_url);
+    exit();
+  }
+  else {
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $userID = $row['UserID'];
+    $forname = $row['FirstName'];
+    $surname = $row['LastName'];
+    $father = $row['FathersName'];
+    $mother = $row['MothersName'];
+    $date = $row['DateOfBirth'];
+    $place = $row['BirthPlace'];
+    $home = $row['HomeAddress'];
+    $postal = $row['PostalCode'];
+    $afm = $row['AFM'];
+    $id = $row['IDNumber'];
+    $phone = $row['PhoneNumber'];
+    $email = $row['Email'];
+    $password = $row['Password'];
+    $isFemale = $row['IsFemale'];
+    $isSpecial = $row['IsSpecial'];
+
+    $result->close();
+
+    $query = "SELECT * FROM information WHERE user_UserID = '$userID'";
+
+    $result = $conn->query($query);
+    if (!$result) {
+      /* we have an access error */
+      $conn->close();
+      /* redirect properly */
+      $redirect_url = 'access_error.php';
+      header('Location: ' . $redirect_url);
+      exit();
+    }
+    else {
+      $row = $result->fetch_array(MYSQLI_ASSOC);
+      $yearsInsured = $row['YearsInsured'];
+      $yearsEmployed = $row['YearsEmployed'];
+      $avgYearlySalary = $row['AvgYearlySalary'];
+      $yearlyPension = $row['YearlyPension'];
+      $isRetired = $row['IsRetired'];
+
+      $result->close();
+    }
+  }
+
+  $conn->close();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Certification Reply</title>
+    <title>IKA Insurance Certification</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/certification.css">
 
@@ -103,13 +174,22 @@
         <div class="container">
           <div class="row">
 
-            <!-- REQUEST RESULT -->
+            <!-- CERTIFICATION RESULT -->
             <div class="col-md-12" style="text-align:center">
-              <h2><strong>Pension certification</strong></h2>
-              <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
-              <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
-              <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
-              <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
+              <h2 class='text-center'><strong>Insurance certification</strong></h2>
+
+              <?php
+                echo "<p class='text-center'>$forname $surname of $father and $mother
+                      has been insured for $yearsInsured years, employed for $yearsEmployed years and has declared an average yearly salary of $avgYearlySalary euros.</h2>";
+                if ($isRetired && $isSpecial) {
+                  echo "<p class='text-center'>$forname $surname declares retired and disabled.</h2>";
+                } else if ($isRetired && !$isSpecial) {
+                  echo "<p class='text-center'>$forname $surname declares retired.</h2>";
+                } else if (!$isRetired && $isSpecial) {
+                  echo "<p class='text-center'>$forname $surname declares disabled.</h2>";
+                }
+              ?>
+
             </div>
 
           </div>
