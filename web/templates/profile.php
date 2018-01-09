@@ -39,7 +39,6 @@
     $email = $row['Email'];
     $password = $row['Password'];
     $isFemale = $row['IsFemale'];
-    $isRetired = $row['IsRetired'];
     $isSpecial = $row['IsSpecial'];
 
     $result->close();

@@ -24,8 +24,6 @@
   $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
   $email = isset($_POST['email']) ? $_POST['email'] : '';
   $password = isset($_POST['password']) ? $_POST['password'] : '';
-  $retired = 0;
-  $special = 0;
 
   /* gather user's settings */
   $notificationsOn = isset($_POST['notifications']) ? 1 : 0;
@@ -76,7 +74,7 @@
     else $isFemale = 0;
 
     /* update user's details */
-    $query = "UPDATE user SET FirstName = \"$forname\", LastName = \"$surname\", FathersName = \"$father\", MothersName = \"$mother\", DateOfBirth = \"$date\", BirthPlace = \"$place\", HomeAddress = \"$home\", PostalCode = \"$postal\", AFM = \"$afm\", IDNumber = \"$id\", PhoneNumber = \"$phone\", Email = \"$email\", Password = \"$password\", IsFemale = \"$isFemale\", IsRetired = \"$retired\", IsSpecial = \"$special\" WHERE UserID = '$userID'";
+    $query = "UPDATE user SET FirstName = \"$forname\", LastName = \"$surname\", FathersName = \"$father\", MothersName = \"$mother\", DateOfBirth = \"$date\", BirthPlace = \"$place\", HomeAddress = \"$home\", PostalCode = \"$postal\", AFM = \"$afm\", IDNumber = \"$id\", PhoneNumber = \"$phone\", Email = \"$email\", Password = \"$password\", IsFemale = \"$isFemale\" WHERE UserID = '$userID'";
     /* debugging */
     // echo $query; echo "\n";
 

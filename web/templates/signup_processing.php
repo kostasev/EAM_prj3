@@ -24,7 +24,6 @@
   $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
   $email = isset($_POST['email']) ? $_POST['email'] : '';
   $password = isset($_POST['password']) ? $_POST['password'] : '';
-  $retired = 0;
   $special = 0;
 
   /* Check for unique AFM */
@@ -54,8 +53,8 @@
     else $isFemale = 0;
 
     /* insert user's details */
-    $query = "INSERT INTO user(FirstName, LastName, FathersName, MothersName, DateOfBirth, BirthPlace, HomeAddress, PostalCode, AFM, IDNumber, PhoneNumber, Email, Password, IsFemale, IsRetired, IsSpecial) VALUES".
-    "('$forname', '$surname', '$father', '$mother', '$date', '$place', '$home', '$postal', '$afm', '$id', '$phone', '$email', '$password', '$isFemale', '$retired', '$special')";
+    $query = "INSERT INTO user(FirstName, LastName, FathersName, MothersName, DateOfBirth, BirthPlace, HomeAddress, PostalCode, AFM, IDNumber, PhoneNumber, Email, Password, IsFemale, IsSpecial) VALUES".
+    "('$forname', '$surname', '$father', '$mother', '$date', '$place', '$home', '$postal', '$afm', '$id', '$phone', '$email', '$password', '$isFemale', '$special')";
 
     $result = $conn->query($query);
 
@@ -76,6 +75,11 @@
     /* insert user's default settings */
     $userID = $_SESSION['userID'];
     $query = "INSERT INTO settings(user_UserID, NotificationsOn, UpdatesOn, HistoryOn, AutoCompleteOn, MicrophoneOn, ZoomingOn, VocalGuidanceOn) VALUES"."('$userID',1,1,1,1,0,0,0)";
+    $result = $conn->query($query);
+
+    /* insert user's default information */
+    $userID = $_SESSION['userID'];
+    $query = "INSERT INTO settings(user_UserID, YearsInsured, YearsEmployed, AvgYearlySalary, YearlyPension, IsRetired) VALUES"."('$userID',-1,-1,-1,-1,0)";
     $result = $conn->query($query);
 
     $conn->close();
