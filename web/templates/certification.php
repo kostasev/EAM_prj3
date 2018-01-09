@@ -1,10 +1,23 @@
+<?php
+  /* user must be logged-in to use this page */
+  session_start();
+
+  if (!isset($_SESSION['user'])) {
+    /* we have an access error */
+    /* redirect properly */
+    $redirect_url = 'access_error.php';
+    header('Location: ' . $redirect_url);
+    exit();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Certificate</title>
+    <title>IKA Retirement Certification</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/certification.css">
 
@@ -28,7 +41,7 @@
           <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="#">Log Out</a>
+                <a class="nav-link" href="logout.php">Log Out</a>
               </li>
               <li class="navbar-item">
                 <select class="custom-select">
@@ -117,7 +130,7 @@
 
               <!-- CERTIFICATION FORM -->
               <div class="col-md-10" style="text-align:center">
-                <form action="***" method="post" id="signUpForm">
+                <form action="certification_reply.php" method="post" id="signUpForm">
         					<input type="hidden" name="action" value="userProfile">
         					<br>
                   <h2><strong>Pension certification</strong></h2>

@@ -4,7 +4,7 @@
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Calculation</title>
+    <title>IKA Pension Calculation</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/calculation.css">
 
@@ -88,40 +88,45 @@
         <?php
           $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
           $type = isset($_POST['type']) ? $_POST['type'] : '';
-          $employment = isset($_POST['yearsOfEmployment']) ? $_POST['yearsOfEmployment'] : '';
-          $savings = isset($_POST['avgReceivingsPerYear']) ? $_POST['avgReceivingsPerYear'] : '';
+          $employment = isset($_POST['yearsOfEmployment']) ? $_POST['yearsOfEmployment'] : -1;
+          $savings = isset($_POST['avgReceivingsPerYear']) ? $_POST['avgReceivingsPerYear'] : -1;
 
-          if ( $sex == "Male" ) {
-            if ( $type == "old" ) {
-              $result = $savings / 60;
-            }
-            else if ( $type == "disabled" ) {
-              $result = $savings / 65;
-            }
-            else if ( $type == "insured" ) {
-              $result = $savings / 70;
-            }
-            else if ( $type == "retired") {
-              $result = $savings / 75;
-            }
+          if ($employment < 0 || $savings < 0) {
+            echo "<div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! Pension cannot be calculated!</strong></div>";
           }
-          else if ( $sex == "Female" ) {
-            if ( $type == "old" ) {
-              $result = $savings / 63;
+          else {
+            if ( $sex == "Male" ) {
+              if ( $type == "old" ) {
+                $result = $savings / 60;
+              }
+              else if ( $type == "disabled" ) {
+                $result = $savings / 65;
+              }
+              else if ( $type == "insured" ) {
+                $result = $savings / 70;
+              }
+              else if ( $type == "retired") {
+                $result = $savings / 75;
+              }
             }
-            else if ( $type == "disabled" ) {
-              $result = $savings / 67;
+            else if ( $sex == "Female" ) {
+              if ( $type == "old" ) {
+                $result = $savings / 63;
+              }
+              else if ( $type == "disabled" ) {
+                $result = $savings / 67;
+              }
+              else if ( $type == "insured" ) {
+                $result = $savings / 75;
+              }
+              else if ( $type == "retired") {
+                $result = $savings / 80;
+              }
             }
-            else if ( $type == "insured" ) {
-              $result = $savings / 75;
-            }
-            else if ( $type == "retired") {
-              $result = $savings / 80;
-            }
+            $result += 1.5 *  $employment;
+            $result = round($result);
+            echo "<h2 class='text-center'> Your pension is $result euros per month </h2>";
           }
-          $result += 1.5 *  $employment;
-          $result = round($result);
-          echo "<h2 class='text-center'> Your pension is $result euros per month </h2>";
         ?>
 
         <!-- FOOTER -->

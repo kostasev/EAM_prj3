@@ -1,3 +1,16 @@
+<?php
+  /* user must be logged-in to use this page */
+  session_start();
+
+  if (!isset($_SESSION['user'])) {
+    /* we have an access error */
+    /* redirect properly */
+    $redirect_url = 'access_error.php';
+    header('Location: ' . $redirect_url);
+    exit();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,7 +42,7 @@
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="signup.php">Sign Up</a>
+              <a class="nav-link" href="logout.php">Log out</a>
             </li>
             <li class="navbar-item">
               <select class="custom-select">
