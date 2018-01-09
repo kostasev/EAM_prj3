@@ -89,19 +89,15 @@
         <div class="container">
       		<div class="row">
       			<div class="col-sm-12" style="text-align:center">
-      				<form action="***" method="post" id="logInForm">
+      				<form action="calculation_result.php" method="post" id="logInForm">
       					<input type="hidden" name="action" value="userLogIn">
       					<br>
         				<h2><strong>Basic Pension Calculator</strong></h2>
                 <p>Please insert your details</p>
 
                 <div class="row">
-                  <label for="dateOfBirth" class="col-3 col-form-label">Date of Birth</label>
-                  <div class="col-md-3">
-                    <input class="form-control" type="date" value="1980-08-19" id="dateOfBirth">
-                  </div>
 
-                  <div class="col-md-3 form-group">
+                  <div class="col-md-6 form-group">
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Sex
@@ -112,26 +108,28 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-3 form-group"></div>
-                </div>
 
-                <div class="row">
                   <div class="col-md-4 form-group">
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Pension Type
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <input class="dropdown-item" type="radio" name="pension" value="old" checked>Old age</button>
-                        <input class="dropdown-item" type="radio" name="pension" value="disabled">Disability</button>
-                        <input class="dropdown-item" type="radio" name="pension" value="insured">Death of insured</button>
-                        <input class="dropdown-item" type="radio" name="pension" value="retired">Death of retired</button>
+                        <input class="dropdown-item" type="radio" name="type" value="old" checked>Old age</button>
+                        <input class="dropdown-item" type="radio" name="type" value="disabled">Disability</button>
+                        <input class="dropdown-item" type="radio" name="type" value="insured">Death of insured</button>
+                        <input class="dropdown-item" type="radio" name="type" value="retired">Death of retired</button>
                       </div>
                     </div>
-          				</div>
-                  <div class="col-md-4 form-group">
+                  </div>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="col-md-6 form-group">
           					<label>
-          						<input class="form-control" id="daysOfEmployment" name="daysOfEmployment" type="number" placeholder="Days of employment" min="0" required requiredMessage="Please enter your days of employment" pattern=".{1,45}">
+          						<input class="form-control" id="yearsOfEmployment" name="yearsOfEmployment" type="number" placeholder="Years of employment" min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
           					</label>
           				</div>
                   <div class="col-md-4 form-group text-center">
