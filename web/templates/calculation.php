@@ -118,68 +118,75 @@
       </div>
 
         <!-- CALCULATION PAGE CONTENT - Pension calculation scenario -->
-
         <div class="container">
           <div class="row">
             <!-- CALCULATION FORM -->
         		<div class="col-md-12" style="text-align:center">
-        			<form action="pension_calculation_result.php" method="post" id="calculationForm">
+        			<form action="calculation_result.php" method="post" id="logInForm">
         				<input type="hidden" name="action" value="userLogIn">
         				<br>
           			<h2><strong>Basic Pension Calculator</strong></h2>
                 <p>Please insert your details</p>
-
+                <br>
                 <div class="row">
                   <div class="col-md-2 form-group"></div>
-                  <div class="col-md-4 form-group">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Sex
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <input type="radio" name="sex" value="Male" checked>Male</button>
-                        <input type="radio" name="sex" value="Female">Female</button>
+                  <div class="col-md-3 form-group">
+                    <label><strong>Sex</strong>
+                      <br>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                          <input type="radio" name="sex" id="male"  value="Male" checked> Male
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="radio" name="sex" id="male" value="Female">Female
+                        </label>
                       </div>
-                    </div>
+                    </label>
                   </div>
-                  <div class="col-md-4 form-group">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Pension Type
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <input class="dropdown-item" type="radio" name="type" value="old" checked>Old age</button>
-                        <input class="dropdown-item" type="radio" name="type" value="disabled">Disability</button>
-                        <input class="dropdown-item" type="radio" name="type" value="insured">Death of insured</button>
-                        <input class="dropdown-item" type="radio" name="type" value="retired">Death of retired</button>
+
+                  <div class="col-md-2 form-group">
+                    <label><strong>Pension Type</strong>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                          <input type="radio" name="type" id="old"  value="old" checked>Old age
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="radio" name="type" id="disabled" value="disabled">Disability
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="radio" name="type" id="insured" value="insured">Death of insured
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="radio" name="type" id="retired" value="retired" >Death of retired
+                        </label>
                       </div>
-                    </div>
+                    </label>
                   </div>
                   <div class="col-md-2 form-group"></div>
                 </div>
 
                 <div class="row">
                   <div class="col-md-2 form-group"></div>
-                  <div class="col-md-4 form-group">
-          					<label>
-          						<input class="form-control" id="yearsOfEmployment" name="yearsOfEmployment" type="number" placeholder="Years of employment" min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
+                  <div class="col-md-3 form-group">
+          					<label><Strong>Years of employment</strong>
+          						<input class="form-control" id="yearsOfEmployment" name="yearsOfEmployment" type="number" placeholder="Must be positive number" min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
           					</label>
           				</div>
-                  <div class="col-md-4 form-group text-center">
-          					<label>
-          						<input class="form-control" id="avgReceivingsPerYear" name="avgReceivingsPerYear" type="number" min="0" step="0.01" placeholder="Avg yearly receivings" required requiredMessage="Please enter your average receivings per year" pattern=".{1,45}">
+
+                  <div class="col-md-6 form-group text-center">
+          					<label><strong>Average receivings per year</strong>
+          						<input class="form-control" id="avgReceivingsPerYear" name="avgReceivingsPerYear" type="number" min="0" step="0.01" placeholder="Must be positive number" required requiredMessage="Please enter your average receivings per year" pattern=".{1,45}">
           					</label>
           				</div>
-                    <div class="col-md-2 form-group"></div>
                 </div>
 
                 <br>
                 <div class="row">
                   <div class="col-md-2 form-group"></div>
-                  <div class="col-md-4 form-group">
+                  <div class="col-md-3 form-group">
                     <button type="reset" class="btn btn-outline-danger">Clear</button>
                   </div>
-                  <div class="col-md-4 form-group">
+                  <div class="col-md-6 form-group">
             				<input class="btn btn-primary" type="submit" value="Calculate">
                   </div>
                     <div class="col-md-2 form-group"></div>

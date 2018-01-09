@@ -173,7 +173,7 @@
         <div class="container">
       		<div class="row">
       			<div class="col-md-12" style="text-align:center">
-      				<form action="profile_processing.php" method="post" onsubmit="return passwordsMatching()" id="profileForm">
+      				<form action="profile_processing.php" method="post" onsubmit="return passwordsMatching()" id="signUpForm">
       					<input type="hidden" name="action" value="userProfile">
       					<br>
         				<h2><strong>Your profile</strong></h2>
@@ -181,15 +181,16 @@
 
                 <br>
                 <p><strong>Details and Credentials</strong></p>
+                <br>
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-                    <label>
+                    <label><strong>First Name</strong>
                       <input class="form-control" id="firstName" name="firstName" type="text" value="<?php echo $forname; ?>" required requiredMessage="Please enter your first name" pattern=".{1,45}">
                     </label>
                   </div>
                   <div class="col-md-3 form-group">
-                    <label>
+                    <label><strong>Second Name</strong>
                       <input class="form-control" id="secondName" name="secondName" type="text" value="<?php echo $surname; ?>" required requiredMessage="Please enter your second name" pattern=".{1,45}">
                     </label>
                   </div>
@@ -199,12 +200,12 @@
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-                    <label>
+                    <label><strong>Father's Name</strong>
                       <input class="form-control" id="fathersName" name="fathersName" type="text" value="<?php echo $father; ?>" required requiredMessage="Please enter your father\'s name" pattern=".{1,45}">
                     </label>
                   </div>
                   <div class="col-md-3 form-group">
-                    <label>
+                    <label><strong>Mother's Name</strong>
                       <input class="form-control" id="mothersName" name="mothersName" type="text" value="<?php echo $mother; ?>" required requiredMessage="Please enter your mother\'s name" pattern=".{1,45}">
                     </label>
                   </div>
@@ -213,12 +214,13 @@
 
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
-                  <label for="dateOfBirth" class="col-md-1 col-form-label">Date of Birth</label>
                   <div class="col-md-3">
-                    <input class="form-control" name="dateOfBirth" type="date" value="<?php echo $date; ?>" id="dateOfBirth">
+                    <label for="dateOfBirth"><strong>Date of Birth</strong>
+                      <input class="form-control" name="dateOfBirth" type="date" value="<?php echo $date; ?>" id="dateOfBirth">
+                    </label>
                   </div>
-                  <div class="col-md-2 form-group">
-                    <label>
+                  <div class="col-md-3 form-group">
+                    <label><strong>Place of Birth</strong>
                       <input class="form-control" id="placeOfBirth" name="placeOfBirth" type="text" value="<?php echo $place; ?>" required requiredMessage="Please enter your place birth" pattern=".{1,45}">
                     </label>
                   </div>
@@ -228,28 +230,35 @@
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-                    <label>
+                    <label><strong>Home Address</strong>
                       <input class="form-control" id="homeAddress" name="homeAddress" type="text" value="<?php echo $home; ?>" required requiredMessage="Please enter your home address" pattern=".{1,45}">
                     </label>
                   </div>
+
                   <div class="col-md-3 form-group">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Sex
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <label><strong>Sex</strong>
+                      <br>
+                      <div class="btn-group" data-toggle="buttons">
                         <?php
                           if ($isFemale) {
-                            echo '<input type="radio" name="sex" value="Male">Male</button>';
-                            echo '<input type="radio" name="sex" value="Female" checked>Female</button>';
+                            echo '<label class="btn btn-secondary active">';
+                            echo '<input type="radio" name="sex" id="male"  value="Male"> Male';
+                            echo '</label>';
+                            echo '<label class="btn btn-secondary">';
+                            echo '<input type="radio" name="sex" id="male" value="Female" checked>Female';
+                            echo'</label>';
                           }
                           else {
-                            echo '<input type="radio" name="sex" value="Male" checked>Male</button>';
-                            echo '<input type="radio" name="sex" value="Female">Female</button>';
+                            echo '<label class="btn btn-secondary active">';
+                            echo '<input type="radio" name="sex" id="male"  value="Male" checked> Male';
+                            echo '</label>';
+                            echo '<label class="btn btn-secondary">';
+                            echo '<input type="radio" name="sex" id="male" value="Female">Female';
+                            echo'</label>';
                           }
                         ?>
                       </div>
-                    </div>
+                    </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
                 </div>
@@ -257,12 +266,12 @@
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-                    <label>
+                    <label><strong>Postal Code</strong>
                       <input class="form-control" id="postalCode" name="postalCode" type="text" value="<?php echo $postal; ?>" required requiredMessage="Please enter your postal code" pattern=".{1,45}">
                     </label>
                   </div>
                   <div class="col-md-3 form-group">
-          					<label>
+          					<label><strong>AFM</strong>
                       <input class="form-control" id="AFM" name="AFM" type="text" value="<?php echo $afm; ?>" required requiredMessage="Please enter your AFM" pattern=".{1,45}">
                     </label>
           				</div>
@@ -272,12 +281,12 @@
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-                    <label>
+                    <label><strong>ID Number</strong>
                       <input class="form-control" id="IDNumber" name="IDNumber" type="text" value="<?php echo $id; ?>" required requiredMessage="Please enter your ID number" pattern=".{1,45}">
                     </label>
           				</div>
           				<div class="col-md-3 form-group">
-                    <label>
+                    <label><strong>Phone Number</strong>
                       <input class="form-control" id="phone" name="phone" type="tel" value="<?php echo $phone; ?>" required requiredMessage="Please enter your phone number" pattern=".{1,45}">
                     </label>
           				</div>
@@ -286,9 +295,10 @@
 
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
-                  <label for="email" class="col-md-3 col-form-label">Email</label>
-                  <div class="col-md-3">
+                  <div class="col-md-6">
+                  <label for="email"><strong>Email</strong>
                     <input class="form-control" id="email" name="email" type="email" value="<?php echo $email; ?>" required requiredMessage="Please enter your email" pattern=".{1,45}">
+                  </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
                 </div>
@@ -297,12 +307,12 @@
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-                    <label>
+                    <label><strong>Password</strong>
                       <input class="form-control" id="password" name="password" type="password" value="<?php echo $password; ?>" required requiredMessage="Please enter your password" pattern=".{1,45}">
                     </label>
                   </div>
                   <div class="col-md-3 form-group">
-                    <label>
+                    <label><strong>Confirm Password</strong>
                       <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm password" required requiredMessage="Please confirm your password" pattern=".{1,45}">
                     </label>
                   </div>

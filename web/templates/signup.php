@@ -110,13 +110,13 @@
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-                    <label>
-                      <input class="form-control" id="firstName" name="firstName" type="text" placeholder="First name" required requiredMessage="Please enter your first name" pattern=".{1,45}">
+                    <label><strong>First Name</strong>
+                      <input class="form-control" id="firstName" name="firstName" type="text" placeholder="Max 45 characters" required requiredMessage="Please enter your first name" pattern=".{1,45}">
           				  </label>
                   </div>
                   <div class="col-md-3 form-group">
-                    <label>
-                      <input class="form-control" id="secondName" name="secondName" type="text" placeholder="Second name" required requiredMessage="Please enter your second name" pattern=".{1,45}">
+                    <label><strong>Second Name</strong>
+                      <input class="form-control" id="secondName" name="secondName" type="text" placeholder="Max 45 characters" required requiredMessage="Please enter your second name" pattern=".{1,45}">
           				  </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
@@ -125,13 +125,13 @@
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-                    <label>
-                      <input class="form-control" id="fathersName" name="fathersName" type="text" placeholder="Father's name" required requiredMessage="Please enter your father's name" pattern=".{1,45}">
+                    <label><strong>Father's Name</strong>
+                      <input class="form-control" id="fathersName" name="fathersName" type="text" placeholder="Max 45 characters" required requiredMessage="Please enter your father's name" pattern=".{1,45}">
           				  </label>
                   </div>
                   <div class="col-md-3 form-group">
-                    <label>
-                      <input class="form-control" id="mothersName" name="mothersName" type="text" placeholder="Mother's name" required requiredMessage="Please enter your mother's name" pattern=".{1,45}">
+                    <label><strong>Mother's Name</strong>
+                      <input class="form-control" id="mothersName" name="mothersName" type="text" placeholder="Max 45 characters" required requiredMessage="Please enter your mother's name" pattern=".{1,45}">
           				  </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
@@ -139,13 +139,15 @@
 
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
-                  <label for="dateOfBirth" class="col-md-1 col-form-label">Date of Birth</label>
                   <div class="col-md-3">
-                    <input class="form-control" name="dateOfBirth" type="date" value="1980-08-19" id="dateOfBirth">
+                    <label><strong> Date of Birth</strong>
+                      <input class="form-control" name="dateOfBirth" type="date" value="1980-08-19" id="dateOfBirth">
+                    </label>
                   </div>
-                  <div class="col-md-2 form-group">
-                    <label>
-                      <input class="form-control" id="placeOfBirth" name="placeOfBirth" type="text" placeholder="Enter place of birth" required requiredMessage="Please enter your place birth" pattern=".{1,45}">
+
+                  <div class="col-md-3 form-group">
+                    <label><strong>Place of Birth</strong>
+                      <input class="form-control" id="placeOfBirth" name="placeOfBirth" type="text" placeholder="Max 45 characters" required requiredMessage="Please enter your place birth" pattern=".{1,45}">
           				  </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
@@ -154,20 +156,22 @@
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-                    <label>
-                      <input class="form-control" id="homeAddress" name="homeAddress" type="text" placeholder="Home address" required requiredMessage="Please enter your home address" pattern=".{1,45}">
+                    <label><strong>Home Address</strong>
+                      <input class="form-control" id="homeAddress" name="homeAddress" type="text" placeholder="Max 45 characters" required requiredMessage="Please enter your home address" pattern=".{1,45}">
           					</label>
                   </div>
                   <div class="col-md-3 form-group">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Sex
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <input type="radio" name="sex" value="Male" checked>Male</button>
-                        <input type="radio" name="sex" value="Female">Female</button>
+                    <label><strong>Sex</strong>
+                      <br>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                          <input type="radio" name="sex" id="male"  value="Male" checked> Male
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="radio" name="sex" id="male" value="Female">Female
+                        </label>
                       </div>
-                    </div>
+                    </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
                 </div>
@@ -175,13 +179,13 @@
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-                    <label>
-                      <input class="form-control" id="postalCode" name="postalCode" type="text" placeholder="Postal code" required requiredMessage="Please enter your postal code" pattern=".{1,45}">
+                    <label><strong>Postal Code</strong>
+                      <input class="form-control" id="postalCode" name="postalCode" type="text" placeholder="Must be number" required requiredMessage="Please enter your postal code" pattern=".{1,45}">
           					</label>
                   </div>
                   <div class="col-md-3 form-group">
-          					<label>
-          						<input class="form-control" id="AFM" name="AFM" type="text" placeholder="AFM" required requiredMessage="Please enter your AFM" pattern=".{1,45}">
+          					<label><strong>AFM</strong>
+          						<input class="form-control" id="AFM" name="AFM" type="text" placeholder="Must be number" required requiredMessage="Please enter your AFM" pattern=".{1,45}">
           					</label>
           				</div>
                   <div class="col-md-3 form-group"></div>
@@ -190,13 +194,13 @@
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-                    <label>
-          						<input class="form-control" id="IDNumber" name="IDNumber" type="text" placeholder="ID number" required requiredMessage="Please enter your ID number" pattern=".{1,45}">
+                    <label><strong>ID Number</strong>
+          						<input class="form-control" id="IDNumber" name="IDNumber" type="text" placeholder="Max 45 characters" required requiredMessage="Please enter your ID number" pattern=".{1,45}">
           					</label>
           				</div>
           				<div class="col-md-3 form-group">
-                    <label>
-          						<input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone number" required requiredMessage="Please enter your phone number" pattern=".{1,45}">
+                    <label><strong>Phone Number</strong>
+          						<input class="form-control" id="phone" name="phone" type="tel" placeholder="Must be number" required requiredMessage="Please enter your phone number" pattern=".{1,45}">
           					</label>
           				</div>
                   <div class="col-md-3 form-group"></div>
@@ -204,9 +208,10 @@
 
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
-                  <label for="email" class="col-md-3 col-form-label">Email</label>
-                  <div class="col-md-3">
-                    <input class="form-control" id="email" name="email" type="email" value="joedoe@somemail.com" required requiredMessage="Please enter your email" pattern=".{1,45}">
+                  <div class="col-md-6">
+                    <label for="email"><strong>Email</strong>
+                      <input class="form-control" id="email" name="email" type="email" placeholder="joedoe@somemail.com" required requiredMessage="Please enter your email" pattern=".{1,45}">
+                    </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
                 </div>
@@ -215,13 +220,13 @@
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
-                    <label>
-                      <input class="form-control" id="password" name="password" type="password" placeholder="Password" required requiredMessage="Please enter your password" pattern=".{1,45}">
+                    <label><strong>Password</strong>
+                      <input class="form-control" id="password" name="password" type="password" placeholder="Max 45 characters" required requiredMessage="Please enter your password" pattern=".{1,45}">
           			    </label>
                   </div>
                   <div class="col-md-3 form-group">
-                    <label>
-                      <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm password" required requiredMessage="Please confirm your password" pattern=".{1,45}">
+                    <label><strong>Confirm Password</strong>
+                      <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Max 45 characters" required requiredMessage="Please confirm your password" pattern=".{1,45}">
           					</label>
                   </div>
                   <div class="col-md-3 form-group"></div>
