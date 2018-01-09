@@ -1,12 +1,16 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Request Reply</title>
+    <title>IKA Insurance</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/request.css">
+    <link rel="stylesheet" href="../css/certification.css">
 
   </head>
   <body>
@@ -27,12 +31,27 @@
           <div class="col-md-2"></div>
           <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="logout.php">Log Out</a>
-              </li>
+              <?php
+                if (isset($_SESSION['user'])) {
+              ?>
+                <li class="nav-item">
+                  <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="logout.php">Log Out</a>
+                </li>
+              <?php
+                } else {
+              ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="signup.php">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="login.php">Log In</a>
+                </li>
+              <?php
+                }
+              ?>
               <li class="navbar-item">
                 <select class="custom-select">
                   <option value="Albanian">Albanian</option>
@@ -53,7 +72,6 @@
             </ul>
           </div>
         </nav>
-
 
         <!-- NAVBAR -->
         <div class="container">
@@ -98,49 +116,16 @@
           <hr>
         </div>
 
-        <!-- REQUEST RESULT CONTENT -->
+        <!-- INSURANCE OPTIONS -->
 
         <div class="container">
-          <div class="col-md-12">
-            <div class="row">
+          <div class="row">
 
-              <!-- SIDE MENU -->
-              <div class="col-md-2">
-                <ul class="nav inner-nav1 flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Insured</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#">Retired</a>
-                    <ul class="nav inner-nav2 flex-column">
-                      <li class="nav-item">
-                        <a class="nav-link" href="calculation.php">Pension Calculator</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Employers</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Special Abilities</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Doctor Appointment</a>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- REQUEST RESULT -->
-              <div class="col-md-10" style="text-align:center">
-                <h2><strong>Retirement request</strong></h2>
-                <p><strong>TEXT THAT DECLARES THE USER IS NOW RETIRED</strong></p>
-                <p><strong>TEXT THAT DECLARES THE USER IS NOW RETIRED</strong></p>
-                <p><strong>TEXT THAT DECLARES THE USER IS NOW RETIRED</strong></p>
-                <p><strong>TEXT THAT DECLARES THE USER IS NOW RETIRED</strong></p>
-              </div>
+            <div class="col-md-12" style="text-align:center">
 
             </div>
-      		</div>
+
+          </div>
       	</div>
 
         <!-- FOOTER -->

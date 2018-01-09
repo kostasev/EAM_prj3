@@ -17,7 +17,7 @@
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Retirement Certification</title>
+    <title>IKA Retirement Requests</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/certification.css">
 
@@ -116,127 +116,7 @@
         <div class="container">
           <div class="row">
 
-            <!-- CERTIFICATION FORM -->
-            <div class="col-md-10" style="text-align:center">
-              <form action="certification_reply.php" method="post" id="signUpForm">
-        				<input type="hidden" name="action" value="userProfile">
-        				<br>
-                <h2><strong>Pension certification</strong></h2>
-                <p>Please verify that your details are correct and proceed</p>
-
-                <br>
-                <div class="row">
-                  <div class="col-md-3 form-group"></div>
-                  <div class="col-md-3 form-group">
-                    <label>
-                      <input class="form-control" id="firstName" name="firstName" type="text" placeholder="First name FROM DATABASE" required requiredMessage="Please enter your first name" pattern=".{1,45}">
-          				  </label>
-                  </div>
-                  <div class="col-md-3 form-group">
-                    <label>
-                      <input class="form-control" id="secondName" name="secondName" type="text" placeholder="Second name FROM DATABASE" required requiredMessage="Please enter your second name" pattern=".{1,45}">
-          				  </label>
-                  </div>
-                  <div class="col-md-3 form-group"></div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-3 form-group"></div>
-                  <div class="col-md-3 form-group">
-                    <label>
-                      <input class="form-control" id="fathersName" name="fathersName" type="text" placeholder="Father's name FROM DATABASE" required requiredMessage="Please enter your father's name" pattern=".{1,45}">
-          				  </label>
-                  </div>
-                  <div class="col-md-3 form-group">
-                    <label>
-                      <input class="form-control" id="mothersName" name="mothersName" type="text" placeholder="Mother's name FROM DATABASE" required requiredMessage="Please enter your mother's name" pattern=".{1,45}">
-          				  </label>
-                  </div>
-                  <div class="col-md-3 form-group"></div>
-                </div>
-
-                <div class="row">
-                <div class="col-md-3 form-group"></div>
-                  <div class="col-md-3 form-group">
-                    <label>
-                      <input class="form-control" id="homeAddress" name="homeAddress" type="text" placeholder="Home address FROM DATABASE" required requiredMessage="Please enter your home address" pattern=".{1,45}">
-          					</label>
-                  </div>
-                  <div class="col-md-3 form-group">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        DB_Sex
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <input type="radio" name="sex" value="Male" checked>Male</button>
-                        <input type="radio" name="sex" value="Female">Female</button>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 form-group"></div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-3 form-group"></div>
-                  <label for="dateOfBirth" class="col-md-3 col-form-label">***Date of Birth FROM DATABASE***</label>
-                  <div class="col-md-3">
-                    <input class="form-control" type="date" value="1980-08-19" id="dateOfBirth">
-                  </div>
-                  <div class="col-md-3 form-group"></div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-3 form-group"></div>
-                  <label for="email" class="col-md-3 col-form-label">AFM</label>
-                  <div class="col-md-3">
-                    <input class="form-control" type="text" value="FETCH_AFM_FROM_DATABASE" id="AFM">
-                  </div>
-                  <div class="col-md-3 form-group"></div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-3 form-group"></div>
-                  <label for="email" class="col-md-3 col-form-label">ID Number</label>
-                  <div class="col-md-3">
-                    <input class="form-control" type="text" value="FETCH_IDNUMBER_FROM_DATABASE" id="IDNumber">
-                  </div>
-                  <div class="col-md-3 form-group"></div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-3 form-group"></div>
-                  <label for="email" class="col-md-3 col-form-label">Email</label>
-                  <div class="col-md-3">
-                    <input class="form-control" type="email" value="FETCH_EMAIL@FROM.DATABASE" id="email">
-                  </div>
-                  <div class="col-md-3 form-group"></div>
-                </div>
-                <br>
-
-                <div class="row">
-                  <div class="col-md-4 form-group"></div>
-                  <div class="col-md-4 form-group">
-                    <label>
-                      <input class="form-control" id="password" name="password" type="password" placeholder="Password" required requiredMessage="Please enter your password" pattern=".{1,45}">
-          			    </label>
-                  </div>
-                  <div class="col-md-4 form-group"></div>
-                </div>
-
-                <br>
-                <div class="row">
-                  <div class="col-md-3 form-group"></div>
-                  <div class="col-md-3 form-group">
-                    <button type="reset" class="btn btn-outline-danger">Clear</button>
-                  </div>
-                  <div class="col-md-3 form-group">
-            				<input class="btn btn-primary" type="submit" value="Proceed">
-                    <br> <br>
-                  </div>
-                  <div class="col-md-3 form-group"></div>
-                </div>
-              </form>
-            </div>
+            <!-- REQUEST OPTIONS -->
 
           </div>
     	</div>

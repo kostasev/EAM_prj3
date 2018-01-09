@@ -26,6 +26,20 @@ a {
   margin-right:5px;
 }
 
+.inner-nav1 > li {
+	padding-top:5px;
+  padding-left:5px;
+  padding-right:5px;
+  padding-bottom:5px;
+}
+
+.inner-nav2 > li {
+	padding-top:5px;
+  padding-left:30px;
+  padding-right:30px;
+  padding-bottom:5px;
+}
+
 .row {
   padding-bottom:5px;
 }

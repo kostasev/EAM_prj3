@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,9 +32,27 @@
         <div class="col-md-2"></div>
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="signup.php">Sign Up</a>
-            </li>
+            <?php
+              if (isset($_SESSION['user'])) {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="logout.php">Log Out</a>
+              </li>
+            <?php
+              } else {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link" href="signup.php">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.php">Log In</a>
+              </li>
+            <?php
+              }
+            ?>
             <li class="navbar-item">
               <select class="custom-select">
                 <option value="Albanian">Albanian</option>
@@ -51,57 +73,64 @@
           </ul>
         </div>
       </nav>
+
+      <!-- NAVBAR -->
       <div class="container">
-          <ul class="nav nav-pills nav-justified">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Insurance</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Retirement</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Disability</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Employers</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">News</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">FAQ</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact Us</a>
-            </li>
-          </ul>
-          <hr>
-        </div>
+        <ul class="nav nav-pills nav-justified">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Insurance
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="insurance_certifications.php">Certifications</a>
+              <a class="dropdown-item" href="insurance_requests.php">Requests</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Retirement
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="retirement_certifications.php">Certifications</a>
+              <a class="dropdown-item" href="retirement_requests.php">Requests</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Disability</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Employers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Locations</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">FAQ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+        </ul>
+        <hr>
+      </div>
 
         <!-- CALCULATION PAGE CONTENT - Pension calculation scenario -->
 
         <div class="container">
-      		<div class="row">
-      			<div class="col-sm-12" style="text-align:center">
-      				<form action="***" method="post" id="logInForm">
-      					<input type="hidden" name="action" value="userLogIn">
-      					<br>
-        				<h2><strong>Basic Pension Calculator</strong></h2>
+          <div class="row">
+            <!-- CALCULATION FORM -->
+        		<div class="col-sm-12" style="text-align:center">
+        			<form action="calculation_result.php" method="post" id="logInForm">
+        				<input type="hidden" name="action" value="userLogIn">
+        				<br>
+          			<h2><strong>Basic Pension Calculator</strong></h2>
                 <p>Please insert your details</p>
 
                 <div class="row">
-                  <label for="dateOfBirth" class="col-3 col-form-label">Date of Birth</label>
-                  <div class="col-md-3">
-                    <input class="form-control" type="date" value="1980-08-19" id="dateOfBirth">
-                  </div>
-
-                  <div class="col-md-3 form-group">
+                  <div class="col-md-6 form-group">
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Sex
@@ -112,26 +141,25 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-3 form-group"></div>
-                </div>
-
-                <div class="row">
                   <div class="col-md-4 form-group">
                     <div class="dropdown">
                       <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Pension Type
                       </button>
                       <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                        <input class="dropdown-item" type="radio" name="pension" value="old" checked>Old age</button>
-                        <input class="dropdown-item" type="radio" name="pension" value="disabled">Disability</button>
-                        <input class="dropdown-item" type="radio" name="pension" value="insured">Death of insured</button>
-                        <input class="dropdown-item" type="radio" name="pension" value="retired">Death of retired</button>
+                        <input class="dropdown-item" type="radio" name="type" value="old" checked>Old age</button>
+                        <input class="dropdown-item" type="radio" name="type" value="disabled">Disability</button>
+                        <input class="dropdown-item" type="radio" name="type" value="insured">Death of insured</button>
+                        <input class="dropdown-item" type="radio" name="type" value="retired">Death of retired</button>
                       </div>
                     </div>
-          				</div>
-                  <div class="col-md-4 form-group">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6 form-group">
           					<label>
-          						<input class="form-control" id="daysOfEmployment" name="daysOfEmployment" type="number" placeholder="Days of employment" min="0" required requiredMessage="Please enter your days of employment" pattern=".{1,45}">
+          						<input class="form-control" id="yearsOfEmployment" name="yearsOfEmployment" type="number" placeholder="Years of employment" min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
           					</label>
           				</div>
                   <div class="col-md-4 form-group text-center">
@@ -148,7 +176,6 @@
                   </div>
                   <div class="col-md-6 form-group">
             				<input class="btn btn-primary" type="submit" value="Calculate">
-                    <br> <br>
                   </div>
                 </div>
 

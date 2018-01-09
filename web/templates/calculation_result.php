@@ -1,100 +1,12 @@
 <!DOCTYPE html>
-<?php
-  include 'make_connection.php';
-
-  session_start();
-
-  /* errors array */
-  $errors = array('EMAIL_EXISTS' => false,
-                  'AFM_EXISTS' => false,
-                  'IDNUMBER_EXISTS' => false);
-
-  /* gather details */
-  $forname = isset($_POST['firstName']) ? $_POST['firstName'] : '';
-  $surname = isset($_POST['secondName']) ? $_POST['secondName'] : '';
-  $father = isset($_POST['fathersName']) ? $_POST['fathersName'] : '';
-  $mother = isset($_POST['mothersName']) ? $_POST['mothersName'] : '';
-  $date = isset($_POST['dateOfBirth']) ? $_POST['dateOfBirth'] : '';
-  $place = isset($_POST['placeOfBirth']) ? $_POST['placeOfBirth'] : '';
-  $home = isset($_POST['homeAddress']) ? $_POST['homeAddress'] : '';
-  $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
-  $postal = isset($_POST['postalCode']) ? $_POST['postalCode'] : '';
-  $afm = isset($_POST['AFM']) ? $_POST['AFM'] : '';
-  $id = isset($_POST['IDNumber']) ? $_POST['IDNumber'] : '';
-  $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
-  $email = isset($_POST['email']) ? $_POST['email'] : '';
-  $password = isset($_POST['password']) ? $_POST['password'] : '';
-  $retired = 0;
-  $special = 0;
-
-  /* Check for unique AFM */
-  $query = "SELECT * FROM user WHERE AFM='$afm'";
-  $result = $conn->query($query);
-  if($result->num_rows > 0) $errors['AFM_EXISTS'] = true;
-  // echo $result->num_rows;
-  $result->close();
-
-  /* Check for unique IDNumber */
-  $query = "SELECT * FROM user WHERE IDNumber='$id'";
-  $result = $conn->query($query);
-  if( $result->num_rows > 0 ) $errors['IDNUMBER_EXISTS'] = true;
-  // echo $result->num_rows;
-  $result->close();
-
-  /* Check for unique email */
-  $query = "SELECT * FROM user WHERE Email='$email'";
-  $result = $conn->query($query);
-  if( $result->num_rows > 0 ) $errors['EMAIL_EXISTS'] = true;
-  // echo $result->num_rows;
-  $result->close();
-
-  if (!$errors['AFM_EXISTS'] and !$errors['IDNUMBER_EXISTS'] and !$errors['EMAIL_EXISTS']) {
-    /* find IsFemale field's value */
-    if ($sex == "Female") $isFemale = 1;
-    else $isFemale = 0;
-
-    /* insert user's details */
-    $query = "INSERT INTO user(FirstName, LastName, FathersName, MothersName, DateOfBirth, BirthPlace, HomeAddress, PostalCode, AFM, IDNumber, PhoneNumber, Email, Password, IsFemale, IsRetired, IsSpecial) VALUES".
-    "('$forname', '$surname', '$father', '$mother', '$date', '$place', '$home', '$postal', '$afm', '$id', '$phone', '$email', '$password', '$isFemale', '$retired', '$special')";
-
-    $result = $conn->query($query);
-
-    /* set session variables */
-    $query = sprintf("SELECT * FROM user WHERE Email = '%s' AND Password = '%s'", $email, $password);
-    $result = $conn->query($query);
-    // echo $result->num_rows;
-    $row = $result->fetch_array(MYSQLI_ASSOC);
-    $_SESSION['user'] = true;
-    $_SESSION['userID'] = $row['UserID'];
-    $_SESSION['first_name'] = $forname;
-    $_SESSION['last_name'] = $surname;
-    $_SESSION['email'] = $email;
-    $_SESSION['new_user'] = true;
-
-    $result->close();
-
-    /* insert user's default settings */
-    $userID = $_SESSION['userID'];
-    $query = "INSERT INTO settings(user_UserID, NotificationsOn, UpdatesOn, HistoryOn, AutoCompleteOn, MicrophoneOn, ZoomingOn, VocalGuidanceOn) VALUES"."('$userID',1,1,1,1,0,0,0)";
-    $result = $conn->query($query);
-
-    $conn->close();
-
-    /* redirect properly */
-    $redirect_url = 'main.php';
-    header('Location: ' . $redirect_url);
-    exit();
-  }
-?>
-
 <html lang="en">
   <head>
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Sign up Error</title>
+    <title>IKA Pension Calculation</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/signup.css">
+    <link rel="stylesheet" href="../css/calculation.css">
 
   </head>
   <body>
@@ -116,12 +28,27 @@
         <div class="col-md-2"></div>
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="signup.php">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.php">Log In</a>
-            </li>
+            <?php
+              if (isset($_SESSION['user'])) {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="logout.php">Log Out</a>
+              </li>
+            <?php
+              } else {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link" href="signup.php">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.php">Log In</a>
+              </li>
+            <?php
+              }
+            ?>
             <li class="navbar-item">
               <select class="custom-select">
                 <option value="Albanian">Albanian</option>
@@ -142,7 +69,6 @@
           </ul>
         </div>
       </nav>
-
 
       <!-- NAVBAR -->
       <div class="container">
@@ -187,37 +113,44 @@
         <hr>
       </div>
 
-        <!-- SIGN-UP ERROR PAGE CONTENT -->
+        <!-- CALCULATION PAGE CONTENT - Pension calculation result scenario -->
         <?php
-          if ($errors['AFM_EXISTS'] and $errors['IDNUMBER_EXISTS'] and $errors['EMAIL_EXISTS']) {
-        ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM, ID-Number and email already exists!</strong></div>
-        <?php
-          } else if ($errors['AFM_EXISTS'] and $errors['IDNUMBER_EXISTS']) {
-        ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM and ID-Number already exists!</strong></div>
-        <?php
-          } else if ($errors['IDNUMBER_EXISTS'] and $errors['EMAIL_EXISTS']) {
-        ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this ID-Number and email already exists!</strong></div>
-        <?php
-          } else if ($errors['AFM_EXISTS'] and $errors['EMAIL_EXISTS']) {
-        ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM and email already exists!</strong></div>
-        <?php
-          } else if ($errors['AFM_EXISTS']) {
-        ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this AFM already exists!</strong></div>
-        <?php
-          } else if ($errors['IDNUMBER_EXISTS']) {
-        ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this ID-Number already exists!</strong></div>
-        <?php
-          } elseif ($errors['EMAIL_EXISTS']) {
-        ?>
-          <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! A user with this email already exists!</strong></div>
-        <?php
+          $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
+          $type = isset($_POST['type']) ? $_POST['type'] : '';
+          $employment = isset($_POST['yearsOfEmployment']) ? $_POST['yearsOfEmployment'] : '';
+          $savings = isset($_POST['avgReceivingsPerYear']) ? $_POST['avgReceivingsPerYear'] : '';
+
+          if ( $sex == "Male" ) {
+            if ( $type == "old" ) {
+              $result = $savings / 24;
+            }
+            else if ( $type == "disabled" ) {
+              $result = $savings / 26;
+            }
+            else if ( $type == "insured" ) {
+              $result = $savings / 28;
+            }
+            else if ( $type == "retired") {
+              $result = $savings / 30;
+            }
           }
+          else if ( $sex == "Female" ) {
+            if ( $type == "old" ) {
+              $result = $savings / 25;
+            }
+            else if ( $type == "disabled" ) {
+              $result = $savings / 27;
+            }
+            else if ( $type == "insured" ) {
+              $result = $savings / 29;
+            }
+            else if ( $type == "retired") {
+              $result = $savings / 31;
+            }
+          }
+          $result += 1.5 *  $employment;
+          $result = round($result);
+          echo "<h2 class='text-center'> Your pension is $result euros per month </h2>";
         ?>
 
         <!-- FOOTER -->
@@ -245,4 +178,5 @@
         </script>
 
   </body>
+
 </html>

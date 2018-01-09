@@ -1,10 +1,23 @@
+<?php
+  /* user must be logged-in to use this page */
+  session_start();
+
+  if (!isset($_SESSION['user'])) {
+    /* we have an access error */
+    /* redirect properly */
+    $redirect_url = 'access_error.php';
+    header('Location: ' . $redirect_url);
+    exit();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Request</title>
+    <title>IKA Retirement Request</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/request.css">
 
@@ -28,7 +41,10 @@
           <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="#">Log Out</a>
+                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="logout.php">Log Out</a>
               </li>
               <li class="navbar-item">
                 <select class="custom-select">
@@ -50,16 +66,28 @@
             </ul>
           </div>
         </nav>
+
+
+        <!-- NAVBAR -->
         <div class="container">
           <ul class="nav nav-pills nav-justified">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Insurance
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="insurance_certifications.php">Certifications</a>
+                <a class="dropdown-item" href="insurance_requests.php">Requests</a>
+              </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Insurance</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Retirement</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Retirement
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="retirement_certifications.php">Certifications</a>
+                <a class="dropdown-item" href="retirement_requests.php">Requests</a>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Disability</a>
@@ -71,13 +99,13 @@
               <a class="nav-link" href="#">News</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="#">Locations</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact Us</a>
+              <a class="nav-link" href="#">About Us</a>
             </li>
           </ul>
           <hr>
@@ -117,7 +145,7 @@
 
               <!-- REQUEST FORM -->
               <div class="col-md-10" style="text-align:center">
-        				<form action="***" method="post" id="signUpForm">
+        				<form action="request_reply.php" method="post" id="signUpForm">
         					<input type="hidden" name="action" value="userProfile">
         					<br>
                   <h2><strong>Retirement request</strong></h2>

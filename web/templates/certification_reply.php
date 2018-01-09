@@ -28,7 +28,10 @@
           <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="#">Log Out</a>
+                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="logout.php">Log Out</a>
               </li>
               <li class="navbar-item">
                 <select class="custom-select">
@@ -50,16 +53,28 @@
             </ul>
           </div>
         </nav>
+
+
+        <!-- NAVBAR -->
         <div class="container">
           <ul class="nav nav-pills nav-justified">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Services</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Insurance
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="insurance_certifications.php">Certifications</a>
+                <a class="dropdown-item" href="insurance_requests.php">Requests</a>
+              </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Insurance</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Retirement</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                Retirement
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="retirement_certifications.php">Certifications</a>
+                <a class="dropdown-item" href="retirement_requests.php">Requests</a>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Disability</a>
@@ -71,13 +86,13 @@
               <a class="nav-link" href="#">News</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="#">Locations</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact Us</a>
+              <a class="nav-link" href="#">About Us</a>
             </li>
           </ul>
           <hr>
@@ -86,46 +101,18 @@
         <!-- REQUEST RESULT CONTENT -->
 
         <div class="container">
-          <div class="col-md-12">
-            <div class="row">
+          <div class="row">
 
-              <!-- SIDE MENU -->
-              <div class="col-md-2">
-                <ul class="nav inner-nav1 flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Insured</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#">Retired</a>
-                    <ul class="nav inner-nav2 flex-column">
-                      <li class="nav-item">
-                        <a class="nav-link" href="calculation.php">Pension Calculator</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Employers</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Special Abilities</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Doctor Appointment</a>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- REQUEST RESULT -->
-              <div class="col-md-10" style="text-align:center">
-                <h2><strong>Pension certification</strong></h2>
-                <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
-                <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
-                <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
-                <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
-              </div>
-
+            <!-- REQUEST RESULT -->
+            <div class="col-md-12" style="text-align:center">
+              <h2><strong>Pension certification</strong></h2>
+              <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
+              <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
+              <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
+              <p><strong>TEXT THAT DECLARES THE USER RECEIVES PENSION AND STATES THE EXACT AMOUNT + ANALYTICS</strong></p>
             </div>
-      		</div>
+
+          </div>
       	</div>
 
         <!-- FOOTER -->
