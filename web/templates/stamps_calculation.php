@@ -190,39 +190,49 @@
                 <div class="row">
                   <div class="col-md-2 form-group"></div>
                   <div class="col-md-3 form-group">
-          					<label>
+          					<label><strong>Years Insured</strong>
           						<input class="form-control" id="yearsInsured" name="yearsInsured" type="number" <?php if (isset($_SESSION['user'])) { echo "value=\"$yearsInsured\""; } else { echo "placeholder=\"Years of insurance\""; } ?> min="0" required requiredMessage="Please enter your years of insurance" pattern=".{1,45}">
           					</label>
           				</div>
                   <div class="col-md-3 form-group text-center">
-                    <label>
+                    <label><strong>Years Employed</strong>
           						<input class="form-control" id="yearsEmployed" name="yearsEmployed" type="number" <?php if (isset($_SESSION['user'])) { echo "value=\"$yearsEmployed\""; } else { echo "placeholder=\"Years of employment\""; } ?> min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
           					</label>
           				</div>
                   <div class="col-md-3 form-group">
-                    <div class="dropdown">
-                      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Sex
-                      </button>
-                      <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                    <label><strong>Sex</strong>
+                      <br>
+                      <div class="btn-group" data-toggle="buttons">
                         <?php
                           if (isset($_SESSION['user'])) {
                             if ($isFemale) {
-                              echo '<input type="radio" name="sex" value="Male">Male</button>';
-                              echo '<input type="radio" name="sex" value="Female" checked>Female</button>';
+                              echo '<label class="btn btn-secondary active">';
+                              echo '<input type="radio" name="sex" id="male"  value="Male"> Male';
+                              echo '</label>';
+                              echo '<label class="btn btn-secondary">';
+                              echo '<input type="radio" name="sex" id="male" value="Female" checked>Female';
+                              echo'</label>';
                             }
                             else {
-                              echo '<input type="radio" name="sex" value="Male" checked>Male</button>';
-                              echo '<input type="radio" name="sex" value="Female">Female</button>';
+                              echo '<label class="btn btn-secondary active">';
+                              echo '<input type="radio" name="sex" id="male"  value="Male" checked> Male';
+                              echo '</label>';
+                              echo '<label class="btn btn-secondary">';
+                              echo '<input type="radio" name="sex" id="male" value="Female">Female';
+                              echo'</label>';
                             }
                           }
                           else {
-                            echo '<input type="radio" name="sex" value="Male" checked>Male</button>';
-                            echo '<input type="radio" name="sex" value="Female">Female</button>';
+                            echo '<label class="btn btn-secondary active">';
+                            echo '<input type="radio" name="sex" id="male"  value="Male" checked> Male';
+                            echo '</label>';
+                            echo '<label class="btn btn-secondary">';
+                            echo '<input type="radio" name="sex" id="male" value="Female">Female';
+                            echo'</label>';
                           }
                         ?>
                       </div>
-                    </div>
+                    </label>
                   </div>
                   <div class="col-md-1 form-group"></div>
                 </div>

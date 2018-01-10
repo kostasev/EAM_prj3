@@ -4,7 +4,7 @@
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Pension Calculation</title>
+    <title>IKA Pension Calculation Result</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/calculation.css">
 
@@ -113,13 +113,24 @@
         <hr>
       </div>
 
+
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
+            <li class="breadcrumb-item"><a href="calculation.php">IKA Pension Calculation</a></li>
+            <li class="breadcrumb-item"><a href="#">IKA Pension Calculation Result</a><li>
+          </ol>
+        </nav>
+      </div>
+
         <!-- CALCULATION PAGE CONTENT - Pension calculation result scenario -->
         <?php
           $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
           $type = isset($_POST['type']) ? $_POST['type'] : '';
-          $employment = isset($_POST['yearsOfEmployment']) ? $_POST['yearsOfEmployment'] : '';
-          $savings = isset($_POST['avgReceivingsPerYear']) ? $_POST['avgReceivingsPerYear'] : '';
-
+          $employment = isset($_POST['yearsOfEmployment']) ? $_POST['yearsOfEmployment'] : 0;
+          $savings = isset($_POST['avgReceivingsPerYear']) ? $_POST['avgReceivingsPerYear'] : 0;
+          $result = 0;
           if ( $sex == "Male" ) {
             if ( $type == "old" ) {
               $result = $savings / 24;
@@ -148,7 +159,7 @@
               $result = $savings / 31;
             }
           }
-          $result += 1.5 *  $employment;
+          $result += 1.5 * $employment;
           $result = round($result);
           echo "<h2 class='text-center'> Your pension is $result euros per month </h2>";
         ?>

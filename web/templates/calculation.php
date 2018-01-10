@@ -8,7 +8,7 @@
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Calculation</title>
+    <title>IKA Pension Calculation</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/calculation.css">
 
@@ -117,14 +117,23 @@
         <hr>
       </div>
 
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
+            <li class="breadcrumb-item"><a href="#">IKA Pension Calculation</a></li>
+          </ol>
+        </nav>
+      </div>
+
+
         <!-- CALCULATION PAGE CONTENT - Pension calculation scenario -->
         <div class="container">
           <div class="row">
             <!-- CALCULATION FORM -->
         		<div class="col-md-12" style="text-align:center">
-        			<form action="calculation_result.php" method="post" id="logInForm">
+        			<form action="pension_calculation_result.php" method="post" id="logInForm">
         				<input type="hidden" name="action" value="userLogIn">
-        				<br>
           			<h2><strong>Basic Pension Calculator</strong></h2>
                 <p>Please insert your details</p>
                 <br>

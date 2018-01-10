@@ -115,10 +115,10 @@
 
         <!-- CALCULATION PAGE CONTENT - Pension calculation result scenario -->
         <?php
-          $yearsInsured = isset($_POST['yearsInsured']) ? $_POST['yearsEmployed'] : '';
-          $yearsEmployed = isset($_POST['yearsEmployed']) ? $_POST['yearsInsured'] : '';
+          $yearsInsured = isset($_POST['yearsInsured']) ? $_POST['yearsEmployed'] : 0;
+          $yearsEmployed = isset($_POST['yearsEmployed']) ? $_POST['yearsInsured'] : 0;
           $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
-
+          $result = 0;
           if ( $sex == "Male" ) {
             $result = 2 * $yearsInsured + 1 * $yearsEmployed;
           }

@@ -103,7 +103,6 @@
       			<div class="col-md-12" style="text-align:center">
       				<form action="signup_processing.php" method="post" onsubmit="return passwordsMatching()" id="signUpForm">
       					<input type="hidden" name="action" value="userSignUp">
-      					<br>
         				<h2><strong>Sign-up</strong></h2>
                 <p>Please insert your details and your credentials</p>
 
