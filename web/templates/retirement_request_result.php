@@ -1,16 +1,45 @@
+<!DOCTYPE html>
 <?php
   session_start();
+
+  include 'make_connection.php';
+
+  if (!isset($_SESSION['user'])) {
+    /* we have an access error */
+    /* redirect properly */
+    $redirect_url = 'access_error.php';
+    header('Location: ' . $redirect_url);
+    exit();
+  }
+
+  $userID = $_SESSION['userID'];
+
+  /* gather user's information */
+  $yearsInsured = isset($_POST['yearsInsured']) ? $_POST['yearsInsured'] : 0;
+  $yearsEmployed =  isset($_POST['yearsEmployed']) ? $_POST['yearsEmployed'] : 0;
+  $stampsCollected =  isset($_POST['stampsCollected']) ? $_POST['stampsCollected'] : 0;
+  $avgYearlySalary=  isset($_POST['avgYearlySalary']) ? $_POST['avgYearlySalary'] : 0;
+
+  /* update user's information */
+  if ($yearsEmployed > 45) {
+    $query = "UPDATE information SET YearsInsured = $yearsInsured, YearsEmployed = $yearsEmployed, StampsCollected = $stampsCollected, AvgYearlySalary = $avgYearlySalary, IsRetired = 1 WHERE user_UserID = '$userID'";
+  }
+  else {
+    $query = "UPDATE information SET YearsInsured = $yearsInsured, YearsEmployed = $yearsEmployed, StampsCollected = $stampsCollected, AvgYearlySalary = $avgYearlySalary, IsRetired = 0 WHERE user_UserID = '$userID'";
+  }
+  $result = $conn->query($query);
+
+  $conn->close();
 ?>
 
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Pension Calculation</title>
+    <title>IKA Retirement Request Result</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/calculation.css">
+    <link rel="stylesheet" href="../css/signup.css">
 
   </head>
   <body>
@@ -32,27 +61,9 @@
         <div class="col-md-2"></div>
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
-            <?php
-              if (isset($_SESSION['user'])) {
-            ?>
-              <li class="nav-item">
-                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="logout.php">Log Out</a>
-              </li>
-            <?php
-              } else {
-            ?>
-              <li class="nav-item">
-                <a class="nav-link" href="signup.php">Sign Up</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="login.php">Log In</a>
-              </li>
-            <?php
-              }
-            ?>
+            <li class="nav-item">
+              <a class="nav-link" href="logout.php">Log Out</a>
+            </li>
             <li class="navbar-item">
               <select class="custom-select">
                 <option value="Albanian">Albanian</option>
@@ -117,94 +128,23 @@
         <hr>
       </div>
 
-      <div class="container">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
-            <li class="breadcrumb-item"><a href="#">IKA Pension Calculation</a></li>
-          </ol>
-        </nav>
-      </div>
-
-
-        <!-- CALCULATION PAGE CONTENT - Pension calculation scenario -->
-        <div class="container">
-          <div class="row">
-            <!-- CALCULATION FORM -->
-        		<div class="col-md-12" style="text-align:center">
-        			<form action="pension_calculation_result.php" method="post" id="logInForm">
-        				<input type="hidden" name="action" value="userLogIn">
-          			<h2><strong>Basic Pension Calculator</strong></h2>
-                <p>Please insert your details</p>
-                <br>
-                <div class="row">
-                  <div class="col-md-2 form-group"></div>
-                  <div class="col-md-3 form-group">
-                    <label><strong>Sex</strong>
-                      <br>
-                      <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-secondary active">
-                          <input type="radio" name="sex" id="male"  value="Male" checked>&nbsp;&nbsp;Male&nbsp;&nbsp;
-                        </label>
-                        <label class="btn btn-secondary">
-                          <input type="radio" name="sex" id="male" value="Female">Female
-                        </label>
-                      </div>
-                    </label>
-                  </div>
-
-                  <div class="col-md-2 form-group">
-                    <label><strong>Pension Type</strong>
-                      <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-secondary active">
-                          <input type="radio" name="type" id="old"  value="old" checked>&nbsp;&nbsp;Old age&nbsp;&nbsp;
-                        </label>
-                        <label class="btn btn-secondary">
-                          <input type="radio" name="type" id="disabled" value="disabled">&nbsp;Disability&nbsp;
-                        </label>
-                        <label class="btn btn-secondary">
-                          <input type="radio" name="type" id="insured" value="insured">Death of insured
-                        </label>
-                        <label class="btn btn-secondary">
-                          <input type="radio" name="type" id="retired" value="retired">Death of retired
-                        </label>
-                      </div>
-                    </label>
-                  </div>
-                  <div class="col-md-2 form-group"></div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-2 form-group"></div>
-                  <div class="col-md-3 form-group">
-          					<label><Strong>Years of employment</strong>
-          						<input class="form-control" id="yearsOfEmployment" name="yearsOfEmployment" type="number" placeholder="Must be positive number" min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
-          					</label>
-          				</div>
-
-                  <div class="col-md-6 form-group text-center">
-          					<label><strong>Average receivings per year</strong>
-          						<input class="form-control" id="avgReceivingsPerYear" name="avgReceivingsPerYear" type="number" min="0" step="0.01" placeholder="Must be positive number" required requiredMessage="Please enter your average receivings per year" pattern=".{1,45}">
-          					</label>
-          				</div>
-                </div>
-
-                <br>
-                <div class="row">
-                  <div class="col-md-2 form-group"></div>
-                  <div class="col-md-3 form-group">
-                    <button type="reset" class="btn btn-outline-danger">Clear</button>
-                  </div>
-                  <div class="col-md-6 form-group">
-            				<input class="btn btn-primary" type="submit" value="Calculate">
-                  </div>
-                    <div class="col-md-2 form-group"></div>
-                </div>
-
-              </form>
-      			</div>
-      		</div>
-      	</div>
+        <!-- RETIREMENT REQUEST RESULT PAGE CONTENT -->
+        <?php
+          if ($yearsEmployed > 45) {
+            echo "<h2 class='text-center'>Your request has been successfully sent!</h2>";
+            echo "<p class='text-center'><strong>Since you have been working for many years you have been automatically classified as retired.</strong></p>";
+            echo "<p class='text-center'>Enjoy your new life!</p>";
+          }
+          else if ($yearsEmployed < 20) {
+            echo "<h2 class='text-center'>Your request has been successfully sent!</h2>";
+            echo "<p class='text-center'><strong>Since you have been working for few years, it's likely for your application to be rejected.</strong></p>";
+            echo "<p class='text-center'>Keep working and wait for your time to come!</p>";
+          }
+          else {
+            echo "<h2 class='text-center'>Your request has been successfully sent!</h2>";
+            echo "<p class='text-center'>You will hear from us soon!</p>";
+          }
+        ?>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">
@@ -231,5 +171,4 @@
         </script>
 
   </body>
-
 </html>
