@@ -96,6 +96,16 @@
         <hr>
       </div>
 
+      <!-- BREADCRUMB -->
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
+            <li class="breadcrumb-item"><a href="#">IKA Log-In</a></li>
+          </ol>
+        </nav>
+      </div>
+
         <!-- LOG-IN PAGE CONTENT -->
 
         <div class="container">
@@ -121,7 +131,7 @@
                 <br>
         				<input class="btn btn-primary" type="submit" value="Log-in">
                 <br> <br>
-                <p><a href="./signup.html">Don't have an account?</a></p>
+                <p><a href="./signup.php">Don't have an account?</a></p>
               </form>
       			</div>
       		</div>

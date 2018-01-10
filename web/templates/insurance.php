@@ -1,7 +1,3 @@
-<?php
-  session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,89 +6,61 @@
 
     <title>IKA Insurance</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/certification.css">
+    <link rel="stylesheet" href="../css/login.css">
 
   </head>
   <body>
-        <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-          <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="col-md-2"></div>
-          <div>
-            <a class="navbar-brand" href="main.php"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
-          </div>
-          <div class="col-md-3">
-            <form class="navbar-collapse collapse" id="navbarsExampleDefault2">
-              <input class="form-control mr-sm-2" type="text" placeholder="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-          </div>
-          <div class="col-md-2"></div>
-          <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
-            <ul class="navbar-nav ml-auto">
-              <?php
-                if (isset($_SESSION['user'])) {
-              ?>
-                <li class="nav-item">
-                  <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="logout.php">Log Out</a>
-                </li>
-              <?php
-                } else {
-              ?>
-                <li class="nav-item">
-                  <a class="nav-link" href="signup.php">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="login.php">Log In</a>
-                </li>
-              <?php
-                }
-              ?>
-              <li class="navbar-item">
-                <select class="custom-select">
-                  <option value="Albanian">Albanian</option>
-                  <option value="Bulgarian">Bulgarian</option>
-                  <option value="Egyptian">Egyptian</option>
-                  <option value="English" selected>English</option>
-                  <option value="French">French</option>
-                  <option value="German">German</option>
-                  <option value="Greek">Greek</option>
-                  <option value="Italian">Italian</option>
-                  <option value="Polish">Polish</option>
-                  <option value="Romanian">Romanian</option>
-                  <option value="Russian">Russian</option>
-                  <option value="Serbian">Serbian</option>
-                  <option value="Turkish">Turkish</option>
-                </select>
-              </li>
-            </ul>
-          </div>
-        </nav>
 
-        <!-- NAVBAR -->
-        <div class="container">
-          <ul class="nav nav-pills nav-justified">
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                Insurance
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="insurance_certifications.php">Certifications</a>
-                <a class="dropdown-item" href="insurance_requests.php">Requests</a>
-              </div>
+      <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right collapsed" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="col-md-2"></div>
+        <div>
+          <a class="navbar-brand" href="main.php"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
+        </div>
+        <div class="col-md-3">
+          <form class="navbar-collapse collapse" id="navbarsExampleDefault2">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+        <div class="col-md-2"></div>
+        <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="signup.php">Sign Up</a>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                Retirement
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="retirement_certifications.php">Certifications</a>
-                <a class="dropdown-item" href="retirement_requests.php">Requests</a>
-              </div>
+            <li class="navbar-item">
+              <select class="custom-select">
+                <option value="Albanian">Albanian</option>
+                <option value="Bulgarian">Bulgarian</option>
+                <option value="Egyptian">Egyptian</option>
+                <option value="English" selected>English</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Greek">Greek</option>
+                <option value="Italian">Italian</option>
+                <option value="Polish">Polish</option>
+                <option value="Romanian">Romanian</option>
+                <option value="Russian">Russian</option>
+                <option value="Serbian">Serbian</option>
+                <option value="Turkish">Turkish</option>
+              </select>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="container">
+          <ul class="nav nav-pills nav-justified">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Services</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Insurance</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Retirement</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Disability</a>
@@ -104,29 +72,49 @@
               <a class="nav-link" href="#">News</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Locations</a>
+              <a class="nav-link" href="#">About Us</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">FAQ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="#">Contact Us</a>
             </li>
           </ul>
           <hr>
         </div>
 
-        <!-- INSURANCE OPTIONS -->
-
+        <!-- BREADCRUMB -->
         <div class="container">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
+              <li class="breadcrumb-item"><a href="#">IKA Insurance</a></li>
+            </ol>
+          </nav>
+        </div>
+
+        <!--  PAGE CONTENT -->
+        <div class="container">
+          <h3>Insurance</h3>
+          <br>
           <div class="row">
-
-            <div class="col-md-12" style="text-align:center">
-
+            <div class="col-md-6">
+              <img src="../images/diss.jpg" class="rounded d-block"
+              style="height: 400px;width: 580px">
             </div>
-
+            <div class="col-md-6">
+                <div class="container-fluid">
+                  <div class="row">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" style="height: 195px;width: 400px">Request</button>
+                  </div>
+                  <div class="row">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" style="height: 195px;width: 400px">Certification</button>
+                  </div>
+                </div>
+            </div>
           </div>
-      	</div>
+        </div>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">

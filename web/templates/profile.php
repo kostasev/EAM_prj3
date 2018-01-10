@@ -168,6 +168,16 @@
         <hr>
       </div>
 
+      <!-- BREADCRUMB -->
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
+            <li class="breadcrumb-item"><a href="#">IKA Profile</a></li>
+          </ol>
+        </nav>
+      </div>
+
         <!-- PROFILE PAGE CONTENT -->
 
         <div class="container">
@@ -241,10 +251,10 @@
                       <div class="btn-group" data-toggle="buttons">
                         <?php
                           if ($isFemale) {
-                            echo '<label class="btn btn-secondary active">';
+                            echo '<label class="btn btn-secondary">';
                             echo '<input type="radio" name="sex" id="male"  value="Male">&nbsp;&nbsp;Male&nbsp;&nbsp;';
                             echo '</label>';
-                            echo '<label class="btn btn-secondary">';
+                            echo '<label class="btn btn-secondary active">';
                             echo '<input type="radio" name="sex" id="male" value="Female" checked>Female';
                             echo'</label>';
                           }

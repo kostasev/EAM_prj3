@@ -96,6 +96,16 @@
         <hr>
       </div>
 
+      <!-- BREADCRUMB -->
+      <div class="container">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
+            <li class="breadcrumb-item"><a href="#">IKA Sign-Up</a></li>
+          </ol>
+        </nav>
+      </div>
+
         <!-- SIGN-UP PAGE CONTENT -->
 
         <div class="container">
@@ -110,7 +120,7 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label><strong>First Name</strong>
-                      <input class="form-control" id="firstName" name="firstName" type="text" placeholder="Forname" required requiredMessage="Please enter your first name" pattern=".{1,45}" title="No more than 45 characters please.">
+                      <input class="form-control" id="firstName" name="firstName" type="text" placeholder="Forename" required requiredMessage="Please enter your first name" pattern=".{1,45}" title="No more than 45 characters please.">
           				  </label>
                   </div>
                   <div class="col-md-3 form-group">
@@ -243,7 +253,7 @@
                   </div>
                   <div class="col-md-3 form-group"></div>
                 </div>
-                <p><a href="./login.html">Just remembered that you already have an account?</a></p>
+                <p><a href="./login.php">Just remembered that you already have an account?</a></p>
               </form>
       			</div>
       		</div>

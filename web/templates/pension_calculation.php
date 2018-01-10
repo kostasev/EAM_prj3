@@ -117,6 +117,7 @@
         <hr>
       </div>
 
+      <!-- BREADCRUMB -->
       <div class="container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
@@ -125,7 +126,6 @@
           </ol>
         </nav>
       </div>
-
 
         <!-- CALCULATION PAGE CONTENT - Pension calculation scenario -->
         <div class="container">
@@ -156,16 +156,16 @@
                   <div class="col-md-2 form-group">
                     <label><strong>Pension Type</strong>
                       <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-secondary active">
-                          <input type="radio" name="type" id="old"  value="old" checked>&nbsp;&nbsp;Old age&nbsp;&nbsp;
+                        <label class="btn btn-secondary active" for="old">
+                          <input type="radio" name="type" id="old"  value="old">&nbsp;&nbsp;Old age&nbsp;&nbsp;
                         </label>
-                        <label class="btn btn-secondary">
+                        <label class="btn btn-secondary" for="disabled">
                           <input type="radio" name="type" id="disabled" value="disabled">&nbsp;Disability&nbsp;
                         </label>
-                        <label class="btn btn-secondary">
-                          <input type="radio" name="type" id="insured" value="insured">Death of insured
+                        <label class="btn btn-secondary" for="insured">
+                          <input type="radio" name="type" id="insured" value="insured">&nbsp;Death of insured&nbsp;
                         </label>
-                        <label class="btn btn-secondary">
+                        <label class="btn btn-secondary" for="retired">
                           <input type="radio" name="type" id="retired" value="retired">Death of retired
                         </label>
                       </div>
