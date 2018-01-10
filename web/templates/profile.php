@@ -242,7 +242,7 @@
                         <?php
                           if ($isFemale) {
                             echo '<label class="btn btn-secondary active">';
-                            echo '<input type="radio" name="sex" id="male"  value="Male"> Male';
+                            echo '<input type="radio" name="sex" id="male"  value="Male">&nbsp;&nbsp;Male&nbsp;&nbsp;';
                             echo '</label>';
                             echo '<label class="btn btn-secondary">';
                             echo '<input type="radio" name="sex" id="male" value="Female" checked>Female';
@@ -250,7 +250,7 @@
                           }
                           else {
                             echo '<label class="btn btn-secondary active">';
-                            echo '<input type="radio" name="sex" id="male"  value="Male" checked> Male';
+                            echo '<input type="radio" name="sex" id="male"  value="Male" checked>&nbsp;&nbsp;Male&nbsp;&nbsp;';
                             echo '</label>';
                             echo '<label class="btn btn-secondary">';
                             echo '<input type="radio" name="sex" id="male" value="Female">Female';

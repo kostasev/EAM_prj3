@@ -79,7 +79,7 @@
 
     /* insert user's default information */
     $userID = $_SESSION['userID'];
-    $query = "INSERT INTO settings(user_UserID, YearsInsured, YearsEmployed, AvgYearlySalary, YearlyPension, IsRetired) VALUES"."('$userID',0,0,0,0,0)";
+    $query = "INSERT INTO settings(user_UserID, YearsInsured, YearsEmployed, StampsCollected, AvgYearlySalary, IsRetired, YearlyPension, InsuredChildren) VALUES"."('$userID',0,0,0,0,0,0,0)";
     $result = $conn->query($query);
 
     $conn->close();
