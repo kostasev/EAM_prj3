@@ -118,7 +118,7 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
-            <li class="breadcrumb-item"><a href="calculation.php">IKA Pension Calculation</a></li>
+            <li class="breadcrumb-item"><a href="pension_calculation.php">IKA Pension Calculation</a></li>
             <li class="breadcrumb-item"><a href="#">IKA Pension Calculation Result</a><li>
           </ol>
         </nav>

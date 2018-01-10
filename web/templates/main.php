@@ -152,7 +152,7 @@
           </ul>
           <hr>
         </div>
-        
+
         <div class="container">
           <div class="row">
             <div class="col-md-6">
@@ -271,7 +271,7 @@
             <p style="padding-left: 10px;">Are you feeling weird lately? Don't wait any longer! Schedule an appointment with a doctor or a specialist.</p>
           </div>
           <div class="col-md-3">
-            <a href="calculation.php">
+            <a href="pension_calculation.php">
               <img src="../images/calc.png"/>
             </a>
             <h4 style="padding-top: 15px; padding-left: 15px;">Pension Calculator</h4>
