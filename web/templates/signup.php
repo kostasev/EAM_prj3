@@ -110,12 +110,12 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label><strong>First Name</strong>
-                      <input class="form-control" id="firstName" name="firstName" type="text" placeholder="Forname" required requiredMessage="Please enter your first name" pattern=".{1,45}" title="No more than 45 characters please">
+                      <input class="form-control" id="firstName" name="firstName" type="text" placeholder="Forname" required requiredMessage="Please enter your first name" pattern=".{1,45}" title="No more than 45 characters please.">
           				  </label>
                   </div>
                   <div class="col-md-3 form-group">
                     <label><strong>Second Name</strong>
-                      <input class="form-control" id="secondName" name="secondName" type="text" placeholder="Surname" required requiredMessage="Please enter your second name" pattern=".{1,45}" title="No more than 45 characters please">
+                      <input class="form-control" id="secondName" name="secondName" type="text" placeholder="Surname" required requiredMessage="Please enter your second name" pattern=".{1,45}" title="No more than 45 characters please.">
           				  </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
@@ -125,12 +125,12 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label><strong>Father's Name</strong>
-                      <input class="form-control" id="fathersName" name="fathersName" type="text" placeholder="Father" required requiredMessage="Please enter your father's name" pattern=".{1,45}" title="No more than 45 characters please">
+                      <input class="form-control" id="fathersName" name="fathersName" type="text" placeholder="Father" required requiredMessage="Please enter your father's name" pattern=".{1,45}" title="No more than 45 characters please.">
           				  </label>
                   </div>
                   <div class="col-md-3 form-group">
                     <label><strong>Mother's Name</strong>
-                      <input class="form-control" id="mothersName" name="mothersName" type="text" placeholder="Mother" required requiredMessage="Please enter your mother's name" pattern=".{1,45}" title="No more than 45 characters please">
+                      <input class="form-control" id="mothersName" name="mothersName" type="text" placeholder="Mother" required requiredMessage="Please enter your mother's name" pattern=".{1,45}" title="No more than 45 characters please.">
           				  </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
@@ -146,7 +146,7 @@
 
                   <div class="col-md-3 form-group">
                     <label><strong>Place of Birth</strong>
-                      <input class="form-control" id="placeOfBirth" name="placeOfBirth" type="text" placeholder="Birthplace" required requiredMessage="Please enter your place birth" pattern=".{1,45}" title="No more than 45 characters please">
+                      <input class="form-control" id="placeOfBirth" name="placeOfBirth" type="text" placeholder="Birthplace" required requiredMessage="Please enter your place birth" pattern=".{1,45}" title="No more than 45 characters please.">
           				  </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
@@ -156,7 +156,7 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label><strong>Home Address</strong>
-                      <input class="form-control" id="homeAddress" name="homeAddress" type="text" placeholder="Home" required requiredMessage="Please enter your home address" pattern=".{1,45}" title="No more than 45 characters please">
+                      <input class="form-control" id="homeAddress" name="homeAddress" type="text" placeholder="Home" required requiredMessage="Please enter your home address" pattern=".{1,45}" title="No more than 45 characters please.">
           					</label>
                   </div>
                   <div class="col-md-3 form-group">
@@ -179,12 +179,12 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label><strong>Postal Code</strong>
-                      <input class="form-control" id="postalCode" name="postalCode" type="text" placeholder="Postal code" required requiredMessage="Please enter your postal code" pattern=".{1,45}" title="No more than 45 characters please">
+                      <input class="form-control" id="postalCode" name="postalCode" type="text" placeholder="Postal code" required requiredMessage="Please enter your postal code" pattern=".{1,45}" title="No more than 45 characters please.">
           					</label>
                   </div>
                   <div class="col-md-3 form-group">
           					<label><strong>AFM</strong>
-          						<input class="form-control" id="AFM" name="AFM" type="text" placeholder="AFM" required requiredMessage="Please enter your AFM" pattern=".{1,45}" title="No more than 45 characters please">
+          						<input class="form-control" id="AFM" name="AFM" type="text" placeholder="AFM" required requiredMessage="Please enter your AFM" pattern=".{1,45}" title="No more than 45 characters please.">
           					</label>
           				</div>
                   <div class="col-md-3 form-group"></div>
@@ -194,12 +194,12 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label><strong>ID Number</strong>
-          						<input class="form-control" id="IDNumber" name="IDNumber" type="text" placeholder="ID" required requiredMessage="Please enter your ID number" pattern=".{1,45}" title="No more than 45 characters please">
+          						<input class="form-control" id="IDNumber" name="IDNumber" type="text" placeholder="ID" required requiredMessage="Please enter your ID number" pattern=".{1,45}" title="No more than 45 characters please.">
           					</label>
           				</div>
           				<div class="col-md-3 form-group">
                     <label><strong>Phone Number</strong>
-          						<input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone" required requiredMessage="Please enter your phone number" pattern=".{1,45}" title="No more than 45 characters please">
+          						<input class="form-control" id="phone" name="phone" type="tel" placeholder="Phone" required requiredMessage="Please enter your phone number" pattern=".{1,45}" title="No more than 45 characters please.">
           					</label>
           				</div>
                   <div class="col-md-3 form-group"></div>
@@ -209,7 +209,7 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-6">
                     <label for="email"><strong>Email</strong>
-                      <input class="form-control" id="email" name="email" type="email" placeholder="joedoe@somemail.com" required requiredMessage="Please enter your email" pattern=".{1,45}" title="No more than 45 characters please">
+                      <input class="form-control" id="email" name="email" type="email" placeholder="joedoe@somemail.com" required requiredMessage="Please enter your email" pattern=".{1,45}" title="No more than 45 characters please.">
                     </label>
                   </div>
                   <div class="col-md-3 form-group"></div>
@@ -220,12 +220,12 @@
                   <div class="col-md-3 form-group"></div>
                   <div class="col-md-3 form-group">
                     <label><strong>Password</strong>
-                      <input class="form-control" id="password" name="password" type="password" placeholder="Password" required requiredMessage="Please enter your password" pattern=".{1,45}" title="No more than 45 characters please">
+                      <input class="form-control" id="password" name="password" type="password" placeholder="Password" required requiredMessage="Please enter your password" pattern=".{1,45}" title="No more than 45 characters please.">
           			    </label>
                   </div>
                   <div class="col-md-3 form-group">
                     <label><strong>Confirm Password</strong>
-                      <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm password" required requiredMessage="Please confirm your password" pattern=".{1,45}" title="No more than 45 characters please">
+                      <input class="form-control" id="confirmPassword" name="confirmPassword" type="password" placeholder="Confirm password" required requiredMessage="Please confirm your password" pattern=".{1,45}" title="No more than 45 characters please.">
           					</label>
                   </div>
                   <div class="col-md-3 form-group"></div>
