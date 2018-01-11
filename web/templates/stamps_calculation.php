@@ -27,7 +27,7 @@
     $result->close();
 
     /* get user's sex */
-    $query = "SELECT * FROM information WHERE user_UserID = '$userID'";
+    $query = "SELECT * FROM user WHERE UserID = '$userID'";
 
     $result = $conn->query($query);
     if (!$result) {
