@@ -11,7 +11,7 @@
 
     <title>IKA Retirement Requests</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/certification.css">
+    <link rel="stylesheet" href="../css/main.css">
 
   </head>
   <body>
@@ -123,24 +123,24 @@
           <h3>Retirement Requests</h3>
           <br>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
               <img src="../images/ret.jpg" class="rounded d-block"
-              style="height: 500px; width: 500px">
+              style="height: 500px; width: 640px">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div class="row">
                 <div class="card-deck">
                   <div class="card card-inverse">
-                    <img class="card-img" src="../images/2.jpg" alt="Card image cap" height="200" width="250">
+                    <img class="card-img" src="../images/2.jpg" alt="Card image cap" height="240" width="240">
                     <div class="card-img-overlay">
-                      <a href="retirement_request.php" class="btn btn-secondary ">Request pension for special needs</a>
+                      <a href="retirement_request.php" class="btn btn-secondary ">Request pension for <br>special needs</a>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="row">
                   <div class="card card-inverse">
-                    <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="200" width="250">
+                    <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="240" width="240">
                     <div class="card-img-overlay">
                       <a href="#" class="btn btn-secondary ">Request home care</a>
                     </div>
