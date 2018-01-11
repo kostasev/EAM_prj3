@@ -11,7 +11,7 @@
 
     <title>IKA Insurance Certifications</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/certification.css">
+    <link rel="stylesheet" href="../css/main.css">
 
   </head>
   <body>
@@ -124,26 +124,26 @@
           <h3>Insurance Certifications</h3>
           <br>
           <div class="row">
-            <div class="col-md-6">
-              <img src="../images/ret.jpg" class="rounded d-block"
-              style="height: 500px; width: 500px">
+            <div class="col-md-7">
+              <img src="../images/family.jpg" class="rounded d-block"
+              style="height: 500px; width: 640px">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div class="row">
                 <div class="card-deck">
                   <div class="card card-inverse">
-                    <img class="card-img" src="../images/2.jpg" alt="Card image cap" height="200" width="250">
+                    <img class="card-img" src="../images/2.jpg" alt="Card image cap" height="250" width="250">
                     <div class="card-img-overlay">
-                      <a href="insurance_certification.php" class="btn btn-secondary ">Personal insurance certification</a>
+                      <a href="insurance_certification.php" class="btn btn-secondary ">Personal insurance <br>certification</a>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="row">
                   <div class="card card-inverse">
-                    <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="200" width="250">
+                    <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="250" width="250">
                     <div class="card-img-overlay">
-                      <a href="#" class="btn btn-secondary ">Protected members insurance certification</a>
+                      <a href="#" class="btn btn-secondary ">Protected members <br>insurance certification</a>
                     </div>
                   </div>
                 </div>
