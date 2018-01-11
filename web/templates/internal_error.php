@@ -8,7 +8,7 @@
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Access Error</title>
+    <title>IKA Internal Error</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/signup.css">
 
@@ -120,7 +120,7 @@
         </div>
 
         <!-- ACCESS ERROR PAGE CONTENT -->
-        <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! You cannot access this page!</strong></div>
+        <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! Internal error!</strong></div>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">

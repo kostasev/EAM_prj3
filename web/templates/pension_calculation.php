@@ -1,5 +1,57 @@
 <?php
   session_start();
+
+  include 'make_connection.php';
+
+  $sex = 'Male';
+  $pensionType = 'Old age';
+  $yearsEmployed = 0;
+  $avgYearlySalary = 0;
+
+  if (isset($_SESSION['user'])) {
+    $userID = $_SESSION['userID'];
+
+    /* fetch user's details */
+    $query = "SELECT * FROM user WHERE UserID = '$userID'";
+    $result = $conn->query($query);
+
+    if (!$result) {
+      /* we have an internal error */
+      $conn->close();
+      /* redirect properly */
+      $redirect_url = 'internal_error.php';
+      header('Location: ' . $redirect_url);
+      exit();
+    }
+    else {
+      $row = $result->fetch_array(MYSQLI_ASSOC);
+      $isFemale = $row['IsFemale'];
+
+      $result->close();
+
+      $query = "SELECT * FROM information WHERE user_UserID = '$userID'";
+      $result = $conn->query($query);
+
+      if (!$result) {
+        /* we have an internal error */
+        $conn->close();
+        /* redirect properly */
+        $redirect_url = 'internal_error.php';
+        header('Location: ' . $redirect_url);
+        exit();
+      }
+      else {
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $pensionType = $row['PensionType'];
+        $yearsEmployed = $row['YearsEmployed'];
+        $avgYearlySalary = $row['AvgYearlySalary'];
+
+        $result->close();
+      }
+    }
+  }
+
+  $conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -144,10 +196,10 @@
                       <br>
                       <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-secondary active">
-                          <input type="radio" name="sex" id="male"  value="Male" checked>&nbsp;&nbsp;Male&nbsp;&nbsp;
+                          <input type="radio" name="sex" id="male"  value="Male" <?php if ($sex == "Male") echo "checked"; ?> >&nbsp;&nbsp;Male&nbsp;&nbsp;
                         </label>
                         <label class="btn btn-secondary">
-                          <input type="radio" name="sex" id="male" value="Female">Female
+                          <input type="radio" name="sex" id="male" value="Female" <?php if ($sex == "Female") echo "checked"; ?> >Female
                         </label>
                       </div>
                     </label>
@@ -156,17 +208,17 @@
                   <div class="col-md-2 form-group">
                     <label><strong>Pension Type</strong>
                       <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-secondary active" for="old">
-                          <input type="radio" name="type" id="old"  value="old">&nbsp;&nbsp;Old age&nbsp;&nbsp;
+                        <label class="btn btn-secondary <?php if ($pensionType == "Old age") echo "active"; ?> " for="old">
+                          <input type="radio" name="type" id="old" value="oldAge">&nbsp;&nbsp;Old age&nbsp;&nbsp;
                         </label>
-                        <label class="btn btn-secondary" for="disabled">
-                          <input type="radio" name="type" id="disabled" value="disabled">&nbsp;Disability&nbsp;
+                        <label class="btn btn-secondary <?php if ($pensionType == "Disability") echo "active"; ?> " for="disabled">
+                          <input type="radio" name="type" id="disabled" value="disability">&nbsp;Disability&nbsp;
                         </label>
-                        <label class="btn btn-secondary" for="insured">
-                          <input type="radio" name="type" id="insured" value="insured">&nbsp;Death of insured&nbsp;
+                        <label class="btn btn-secondary <?php if ($pensionType == "Death of insured") echo "active"; ?> " for="insured">
+                          <input type="radio" name="type" id="insured" value="deathOfInsured">&nbsp;Death of insured&nbsp;
                         </label>
-                        <label class="btn btn-secondary" for="retired">
-                          <input type="radio" name="type" id="retired" value="retired">Death of retired
+                        <label class="btn btn-secondary <?php if ($pensionType == "Death of retired") echo "active"; ?> " for="retired">
+                          <input type="radio" name="type" id="retired" value="deathOfRetired">Death of retired
                         </label>
                       </div>
                     </label>
@@ -178,13 +230,13 @@
                   <div class="col-md-2 form-group"></div>
                   <div class="col-md-3 form-group">
           					<label><Strong>Years of employment</strong>
-          						<input class="form-control" id="yearsOfEmployment" name="yearsOfEmployment" type="number" placeholder="Must be positive number" min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
+          						<input class="form-control" id="yearsEmployed" name="yearsEmployed" <?php echo "value=\"$yearsEmployed\""; ?> type="number" placeholder="Must be positive number" min="0" required requiredMessage="Please enter your years of employment">
           					</label>
           				</div>
 
                   <div class="col-md-6 form-group text-center">
           					<label><strong>Average receivings per year</strong>
-          						<input class="form-control" id="avgReceivingsPerYear" name="avgReceivingsPerYear" type="number" min="0" step="0.01" placeholder="Must be positive number" required requiredMessage="Please enter your average receivings per year" pattern=".{1,45}">
+          						<input class="form-control" id="avgYearlySalary" name="avgYearlySalary" <?php echo "value=\"$avgYearlySalary\""; ?> type="number" min="0" step="0.01" placeholder="Must be positive number" required requiredMessage="Please enter your average receivings per year">
           					</label>
           				</div>
                 </div>

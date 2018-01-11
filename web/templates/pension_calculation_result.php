@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -128,35 +132,35 @@
         <?php
           $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
           $type = isset($_POST['type']) ? $_POST['type'] : '';
-          $employment = isset($_POST['yearsOfEmployment']) ? $_POST['yearsOfEmployment'] : 0;
-          $savings = isset($_POST['avgReceivingsPerYear']) ? $_POST['avgReceivingsPerYear'] : 0;
+          $employment = isset($_POST['yearsEmployed']) ? $_POST['yearsEmployed'] : 0;
+          $salary = isset($_POST['avgYearlySalary']) ? $_POST['avgYearlySalary'] : 0;
           $result = 0;
           if ( $sex == "Male" ) {
             if ( $type == "old" ) {
-              $result = $savings / 24;
+              $result = $salary / 24;
             }
             else if ( $type == "disabled" ) {
-              $result = $savings / 26;
+              $result = $salary / 26;
             }
             else if ( $type == "insured" ) {
-              $result = $savings / 28;
+              $result = $salary / 28;
             }
             else if ( $type == "retired") {
-              $result = $savings / 30;
+              $result = $salary / 30;
             }
           }
           else if ( $sex == "Female" ) {
             if ( $type == "old" ) {
-              $result = $savings / 25;
+              $result = $salary / 25;
             }
             else if ( $type == "disabled" ) {
-              $result = $savings / 27;
+              $result = $salary / 27;
             }
             else if ( $type == "insured" ) {
-              $result = $savings / 29;
+              $result = $salary / 29;
             }
             else if ( $type == "retired") {
-              $result = $savings / 31;
+              $result = $salary / 31;
             }
           }
           $result += 1.5 * $employment;
