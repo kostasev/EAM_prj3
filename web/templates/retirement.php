@@ -73,12 +73,11 @@
           </div>
         </nav>
 
-
         <!-- NAVBAR -->
         <div class="container">
           <ul class="nav nav-pills nav-justified">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="insurance.php" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 Insurance
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -87,7 +86,7 @@
               </div>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="retirement.php" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 Retirement
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -117,46 +116,29 @@
           <hr>
         </div>
 
-        <!-- REQUEST RESULT CONTENT -->
+        <!--  PAGE CONTENT -->
+
 
         <div class="container">
-          <div class="col-md-12">
-            <div class="row">
-
-              <!-- SIDE MENU -->
-              <div class="col-md-2">
-                <ul class="nav inner-nav1 flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Insured</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#">Retired</a>
-                    <ul class="nav inner-nav2 flex-column">
-                      <li class="nav-item">
-                        <a class="nav-link" href="pension_calculation.php">Pension Calculator</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Employers</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Special Abilities</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Doctor Appointment</a>
-                  </li>
-                </ul>
-              </div>
-
-              <!-- RETIREMENT OPTIONS -->
-              <div class="col-md-10" style="text-align:center">
-
-              </div>
-
+          <h3>Retirement</h3>
+          <br>
+          <div class="row">
+            <div class="col-md-6">
+              <img src="../images/ret.jpg" class="rounded d-block"
+              style="height: 400px;width: 580px">
             </div>
-      		</div>
-      	</div>
+            <div class="col-md-6">
+                <div class="container-fluid">
+                  <div class="row">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" style="height: 195px;width: 400px">Requests</button>
+                  </div>
+                  <div class="row">
+                    <button type="button" class="btn btn-secondary btn-lg btn-block" style="height: 195px;width: 400px">Certifications</button>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">
