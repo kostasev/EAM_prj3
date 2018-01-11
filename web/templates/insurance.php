@@ -134,11 +134,11 @@
           <h3>Insurance</h3>
           <br>
           <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-7">
               <img src="../images/family.jpg" class="rounded d-block"
               style="height: 500px; width: 640px">
             </div>
-            <div class="col-md-6">
+            <div class="col-md-5">
               <div class="row">
                 <div class="card-deck">
                   <div class="card card-inverse">
