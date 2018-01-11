@@ -135,14 +135,14 @@
           <br>
           <div class="row">
             <div class="col-md-6">
-              <img src="../images/ret.jpg" class="rounded d-block"
-              style="height: 500px; width: 500px">
+              <img src="../images/family.jpg" class="rounded d-block"
+              style="height: 500px; width: 640px">
             </div>
             <div class="col-md-6">
               <div class="row">
                 <div class="card-deck">
                   <div class="card card-inverse">
-                    <img class="card-img" src="../images/2.jpg" alt="Card image cap" height="200" width="250">
+                    <img class="card-img" src="../images/2.jpg" alt="Card image cap" height="250" width="250">
                     <div class="card-img-overlay">
                       <a href="insurance_requests.php" class="btn btn-secondary ">Insurance requests</a>
                     </div>
@@ -151,7 +151,7 @@
               </div>
               <div class="row">
                   <div class="card card-inverse">
-                    <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="200" width="250">
+                    <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="250" width="250">
                     <div class="card-img-overlay">
                       <a href="insurance_certifications.php" class="btn btn-secondary ">Insurance certifications</a>
                     </div>
