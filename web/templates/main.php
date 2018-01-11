@@ -14,36 +14,14 @@
 
     <?php
       if (isset($_SESSION['user']) and isset($_SESSION['new_user']) and $_SESSION['new_user']) {
-    ?>
-    <script>
-      $(document).ready(function(){
-          var message = "Sign-up was successful!";
-          $('#profile').tooltip({title: message, trigger: 'manual'}).tooltip("show");
-      });
-      $(document).click(function(e) {
-         $('#profile').tooltip("destroy");
-      });
-    </script>
-    <?php
+        echo "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button>
+          Your sign-up was successful. <strong>Welcome!</strong>
+        </div>";
         $_SESSION['new_user'] = false;
       }
-      if (isset($_SESSION['login_error']) and $_SESSION['login_error']) {
-    ?>
-    <script>
-      $(document).ready(function(){
-          var message = "Your credentials were wrong!";
-          $('#login-btn').removeAttr('data-container');
-          $('#login-btn').addClass('danger-tooltip');
-          $('#login-btn').tooltip({title: message, trigger: 'manual', animation: false}).tooltip("show");
-      });
-      $(document).on('click', function (e) {
-         $('#login-btn').tooltip('destroy');
-         $('#login-btn').attr('data-container', 'body');
-      });
-    </script>
-    <?php
-      }
-      $_SESSION['login_error'] = false;
     ?>
 
   </head>

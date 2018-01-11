@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,6 +11,18 @@
     <title>IKA Log In</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/login.css">
+
+    <?php
+      if (isset($_SESSION['login_error']) and $_SESSION['login_error']) {
+        echo "<div class=\"alert alert-danger alert-dismissible fade show\" role=\"alert\">
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button>
+          <strong>Invalid credentials!</strong> There is no user with the details that you entered.
+        </div>";
+        $_SESSION['login_error'] = false;
+      }
+    ?>
 
   </head>
   <body>

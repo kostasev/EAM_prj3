@@ -4,14 +4,17 @@
 
   include 'make_connection.php';
 
+  $redirect_url = 'main.php';
+
   $email = isset($_POST['email']) ? $_POST['email'] : '';
   $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-  $query = sprintf("SELECT * FROM user WHERE Email = '%s' AND Password = '%s'", $email, $password);
+  $query = "SELECT * FROM user WHERE Email = '$email' AND Password = '$password'";
 
   $result = $conn->query($query);
-  if (!$result) {
+  if ($result->num_rows == 0) {
     $_SESSION['login_error'] = true;
+    $redirect_url = 'login.php';
   }
   else {
     $row = $result->fetch_array(MYSQLI_ASSOC);
@@ -26,6 +29,5 @@
   $conn->close();
 
   /* redirect properly */
-  $redirect_url = 'main.php';
   header('Location: ' . $redirect_url);
 ?>
