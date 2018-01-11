@@ -10,7 +10,7 @@
 
     <title>IKA Insurance</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/login.css">
 
   </head>
   <body>
@@ -131,17 +131,12 @@
 
         <!--  PAGE CONTENT -->
         <div class="container">
-          <h3>Retirement</h3>
+          <h3>Insurance</h3>
           <br>
           <div class="row">
             <div class="col-md-6">
-<<<<<<< HEAD
-              <img src="../images/family.jpg" class="rounded d-block"
-              style="height: 400px;width: 550px">
-=======
               <img src="../images/ret.jpg" class="rounded d-block"
               style="height: 500px; width: 500px">
->>>>>>> c2d4107aa51a212c4ce764f88a16db62ab498392
             </div>
             <div class="col-md-6">
               <div class="row">
@@ -158,7 +153,7 @@
                   <div class="card card-inverse">
                     <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="200" width="250">
                     <div class="card-img-overlay">
-                      <a href="insurance_cetificates.php" class="btn btn-secondary ">Insurance Certificates</a>
+                      <a href="insurance_certifications.php" class="btn btn-secondary ">Insurance certifications</a>
                     </div>
                   </div>
                 </div>
