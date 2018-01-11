@@ -2,6 +2,8 @@
   /* user must be logged-in to use this page */
   session_start();
 
+  include 'make_connection.php';
+
   if (!isset($_SESSION['user'])) {
     /* we have an access error */
     /* redirect properly */
@@ -9,6 +11,74 @@
     header('Location: ' . $redirect_url);
     exit();
   }
+
+  $query = sprintf("SELECT * FROM user WHERE Email = '%s'", $_SESSION['email']);
+
+  $result = $conn->query($query);
+  if (!$result) {
+    /* we have an access error */
+    $conn->close();
+    /* redirect properly */
+    $redirect_url = 'access_error.php';
+    header('Location: ' . $redirect_url);
+    exit();
+  }
+  else {
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $userID = $row['UserID'];
+    $forname = $row['FirstName'];
+    $surname = $row['LastName'];
+    $father = $row['FathersName'];
+    $mother = $row['MothersName'];
+    $date = $row['DateOfBirth'];
+    $place = $row['BirthPlace'];
+    $home = $row['HomeAddress'];
+    $postal = $row['PostalCode'];
+    $afm = $row['AFM'];
+    $id = $row['IDNumber'];
+    $phone = $row['PhoneNumber'];
+    $email = $row['Email'];
+    $password = $row['Password'];
+    $isFemale = $row['IsFemale'];
+    $isSpecial = $row['IsSpecial'];
+
+    $result->close();
+
+    $query = "SELECT * FROM information WHERE user_UserID = '$userID'";
+
+    $result = $conn->query($query);
+    if (!$result) {
+      /* we have an access error */
+      $conn->close();
+      /* redirect properly */
+      $redirect_url = 'access_error.php';
+      header('Location: ' . $redirect_url);
+      exit();
+    }
+    else {
+      $row = $result->fetch_array(MYSQLI_ASSOC);
+      $yearsInsured = $row['YearsInsured'];
+      $yearsEmployed = $row['YearsEmployed'];
+      $stampsCollected = $row['StampsCollected'];
+      $avgYearlySalary = $row['AvgYearlySalary'];
+      $yearlyPension = $row['YearlyPension'];
+      $isRetired = $row['IsRetired'];
+      $insuredChildren = $row['InsuredChildren'];
+
+      $result->close();
+
+      if ($isRetired) {
+        /* we have an access error */
+        $conn->close();
+        /* redirect properly */
+        $redirect_url = 'insurance_request_error.php';
+        header('Location: ' . $redirect_url);
+        exit();
+      }
+    }
+  }
+
+  $conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +87,7 @@
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Insurance Requests</title>
+    <title>IKA Retirement Request</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/certification.css">
 
@@ -40,29 +110,12 @@
           <div class="col-md-2"></div>
           <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
             <ul class="navbar-nav ml-auto">
-
-              <?php
-                if (isset($_SESSION['user'])) {
-              ?>
-                <li class="nav-item">
-                  <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="logout.php">Log Out</a>
-                </li>
-              <?php
-                } else {
-              ?>
-                <li class="nav-item">
-                  <a class="nav-link" href="signup.php">Sign Up</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="login.php">Log In</a>
-                </li>
-              <?php
-                }
-              ?>
-
+              <li class="nav-item">
+                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="logout.php">Log Out</a>
+              </li>
               <li class="navbar-item">
                 <select class="custom-select">
                   <option value="Albanian">Albanian</option>
@@ -83,6 +136,7 @@
             </ul>
           </div>
         </nav>
+
 
         <!-- NAVBAR -->
         <div class="container">
@@ -127,38 +181,78 @@
           <hr>
         </div>
 
-        <!--  PAGE CONTENT -->
+        <!-- REQUEST RETIREMENT PAGE CONTENT -->
+
         <div class="container">
-          <h3>Insurance Requests</h3>
-          <br>
-          <div class="row">
-            <div class="col-md-6">
-              <img src="../images/ret.jpg" class="rounded d-block"
-              style="height: 500px; width: 500px">
-            </div>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="card-deck">
-                  <div class="card card-inverse">
-                    <img class="card-img" src="../images/2.jpg" alt="Card image cap" height="200" width="250">
-                    <div class="card-img-overlay">
-                      <a href="insurance_request.php" class="btn btn-secondary ">Request retirement</a>
-                    </div>
+      		<div class="row">
+      			<div class="col-md-12" style="text-align:center">
+      				<form action="insurance_request_result.php" method="post" onsubmit="return passwordsMatching()" id="retireRequestForm">
+      					<input type="hidden" name="action" value="userProfile">
+      					<br>
+        				<h2><strong>Your insurance info</strong></h2>
+                <p>You are about to request your retirement.
+                   You can update your following information as desired.
+                   We will process your request and we will inform you accordingly.</p>
+
+                <div class="row">
+                  <div class="col-md-3 form-group"></div>
+                  <div class="col-md-3 form-group">
+                    <label><strong>First Name</strong>
+                      <input class="form-control" id="firstName" name="firstName" type="text" value="<?php echo $forname; ?>" required requiredMessage="Please enter your first name" pattern=".{1,45}" title="No more than 45 characters please.">
+                    </label>
+                  </div>
+                  <div class="col-md-3 form-group">
+                    <label><strong>Second Name</strong>
+                      <input class="form-control" id="secondName" name="secondName" type="text" value="<?php echo $surname; ?>" required requiredMessage="Please enter your second name" pattern=".{1,45}" title="No more than 45 characters please.">
+                    </label>
+                  </div>
+                  <div class="col-md-3 form-group"></div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3 form-group"></div>
+                  <div class="col-md-3 form-group">
+                    <label><strong>Years Insured</strong>
+                      <input class="form-control" id="yearsInsured" name="yearsInsured" type="number" min="0" value="<?php echo $yearsInsured; ?>" required requiredMessage="Please enter your years of insurance">
+                    </label>
+                  </div>
+                  <div class="col-md-3 form-group">
+                    <label><strong>Years Employed</strong>
+                      <input class="form-control" id="yearsEmployed" name="yearsEmployed" type="number" min="0" value="<?php echo $yearsEmployed; ?>" required requiredMessage="Please enter your years of employment">
+                    </label>
+                  </div>
+                  <div class="col-md-3 form-group"></div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3 form-group"></div>
+                  <div class="col-md-3 form-group">
+                    <label><strong>Stamps Collected</strong>
+                      <input class="form-control" id="stampsCollected" name="stampsCollected" type="number" min="0" value="<?php echo $stampsCollected; ?>" required requiredMessage="Please enter the number of stamps you have collected">
+                    </label>
+                  </div>
+                  <div class="col-md-3 form-group">
+                    <label><strong>Average Yearly Salary</strong>
+                      <input class="form-control" id="avgYearlySalary" name="avgYearlySalary" type="number" min="0" value="<?php echo $avgYearlySalary; ?>" required requiredMessage="Please enter your average yearly salary">
+                    </label>
+                  </div>
+                  <div class="col-md-3 form-group"></div>
+                </div>
+
+                <br>
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <button type="button" onClick="window.location.reload()" class="btn btn-outline-danger">Cancel</button>
+                  </div>
+                  <div class="col-md-6 form-group">
+            				<input class="btn btn-primary" type="submit" value="Save">
+                    <br> <br>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                  <div class="card card-inverse">
-                    <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="200" width="250">
-                    <div class="card-img-overlay">
-                      <a href="#" class="btn btn-secondary ">Request insurance for protected members</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+              </form>
+      			</div>
+      		</div>
+      	</div>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">
