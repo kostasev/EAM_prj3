@@ -1,14 +1,6 @@
 <?php
   /* user must be logged-in to use this page */
   session_start();
-
-  if (!isset($_SESSION['user'])) {
-    /* we have an access error */
-    /* redirect properly */
-    $redirect_url = 'access_error.php';
-    header('Location: ' . $redirect_url);
-    exit();
-  }
 ?>
 
 <!DOCTYPE html>
@@ -127,15 +119,38 @@
           <hr>
         </div>
 
-        <!-- CERTIFICATE PAGE CONTENT -->
-
+        <!--  PAGE CONTENT -->
         <div class="container">
+          <h3>Insurance Certifications</h3>
+          <br>
           <div class="row">
-
-            <!-- CERTIFICATION OPTIONS -->
-
+            <div class="col-md-6">
+              <img src="../images/ret.jpg" class="rounded d-block"
+              style="height: 500px; width: 500px">
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="card-deck">
+                  <div class="card card-inverse">
+                    <img class="card-img" src="../images/2.jpg" alt="Card image cap" height="200" width="250">
+                    <div class="card-img-overlay">
+                      <a href="insurance_certification.php" class="btn btn-secondary ">Personal insurance certification</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="card card-inverse">
+                    <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="200" width="250">
+                    <div class="card-img-overlay">
+                      <a href="#" class="btn btn-secondary ">Protected members insurance certification</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-    	</div>
+        </div>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">

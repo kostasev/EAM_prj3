@@ -1,16 +1,12 @@
-<?php
-  session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Insurance</title>
+    <title>IKA Retirement Request Error</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/signup.css">
 
   </head>
   <body>
@@ -32,29 +28,12 @@
         <div class="col-md-2"></div>
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
-
-            <?php
-              if (isset($_SESSION['user'])) {
-            ?>
-              <li class="nav-item">
-                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="logout.php">Log Out</a>
-              </li>
-            <?php
-              } else {
-            ?>
-              <li class="nav-item">
-                <a class="nav-link" href="signup.php">Sign Up</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="login.php">Log In</a>
-              </li>
-            <?php
-              }
-            ?>
-
+            <li class="nav-item">
+              <a class="nav-link" href="signup.php">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login.php">Log In</a>
+            </li>
             <li class="navbar-item">
               <select class="custom-select">
                 <option value="Albanian">Albanian</option>
@@ -76,8 +55,8 @@
         </div>
       </nav>
 
-      <!-- NAVBAR -->
-      <div class="container">
+        <!-- NAVBAR -->
+        <div class="container">
           <ul class="nav nav-pills nav-justified">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="insurance.php" id="navbarDropdownMenuLink" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -119,53 +98,8 @@
           <hr>
         </div>
 
-        <!-- BREADCRUMB -->
-        <div class="container">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
-              <li class="breadcrumb-item"><a href="#">IKA Insurance</a></li>
-            </ol>
-          </nav>
-        </div>
-
-        <!--  PAGE CONTENT -->
-        <div class="container">
-          <h3>Retirement</h3>
-          <br>
-          <div class="row">
-            <div class="col-md-6">
-<<<<<<< HEAD
-              <img src="../images/family.jpg" class="rounded d-block"
-              style="height: 400px;width: 550px">
-=======
-              <img src="../images/ret.jpg" class="rounded d-block"
-              style="height: 500px; width: 500px">
->>>>>>> c2d4107aa51a212c4ce764f88a16db62ab498392
-            </div>
-            <div class="col-md-6">
-              <div class="row">
-                <div class="card-deck">
-                  <div class="card card-inverse">
-                    <img class="card-img" src="../images/2.jpg" alt="Card image cap" height="200" width="250">
-                    <div class="card-img-overlay">
-                      <a href="insurance_requests.php" class="btn btn-secondary ">Insurance requests</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                  <div class="card card-inverse">
-                    <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="200" width="250">
-                    <div class="card-img-overlay">
-                      <a href="insurance_cetificates.php" class="btn btn-secondary ">Insurance Certificates</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- RETIRE REQUEST ERROR PAGE CONTENT -->
+        <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! You cannot access this request, as your are already retired!</strong></div>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">
@@ -192,5 +126,4 @@
         </script>
 
   </body>
-
 </html>

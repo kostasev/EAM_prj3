@@ -1,14 +1,6 @@
 <?php
   /* user must be logged-in to use this page */
   session_start();
-
-  if (!isset($_SESSION['user'])) {
-    /* we have an access error */
-    /* redirect properly */
-    $redirect_url = 'access_error.php';
-    header('Location: ' . $redirect_url);
-    exit();
-  }
 ?>
 
 <!DOCTYPE html>
@@ -40,12 +32,27 @@
           <div class="col-md-2"></div>
           <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="logout.php">Log Out</a>
-              </li>
+              <?php
+                if (isset($_SESSION['user'])) {
+              ?>
+                <li class="nav-item">
+                  <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="logout.php">Log Out</a>
+                </li>
+              <?php
+                } else {
+              ?>
+                <li class="nav-item">
+                  <a class="nav-link" href="signup.php">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="login.php">Log In</a>
+                </li>
+              <?php
+                }
+              ?>
               <li class="navbar-item">
                 <select class="custom-select">
                   <option value="Albanian">Albanian</option>
@@ -110,15 +117,38 @@
           <hr>
         </div>
 
-        <!-- CERTIFICATE PAGE CONTENT -->
-
+        <!--  PAGE CONTENT -->
         <div class="container">
+          <h3>Retirement Certifications</h3>
+          <br>
           <div class="row">
-
-            <!-- CERTIFICATION OPTIONS -->
-
+            <div class="col-md-6">
+              <img src="../images/ret.jpg" class="rounded d-block"
+              style="height: 500px; width: 500px">
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <div class="card-deck">
+                  <div class="card card-inverse">
+                    <img class="card-img" src="../images/2.jpg" alt="Card image cap" height="200" width="250">
+                    <div class="card-img-overlay">
+                      <a href="retirement_certification.php" class="btn btn-secondary ">Retirement certification</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                  <div class="card card-inverse">
+                    <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="200" width="250">
+                    <div class="card-img-overlay">
+                      <a href="#" class="btn btn-secondary ">Special needs pension certification</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-    	</div>
+        </div>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">

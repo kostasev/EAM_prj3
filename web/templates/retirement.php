@@ -117,25 +117,38 @@
         </div>
 
         <!--  PAGE CONTENT -->
-
-
         <div class="container">
           <h3>Retirement</h3>
           <br>
           <div class="row">
             <div class="col-md-6">
               <img src="../images/ret.jpg" class="rounded d-block"
+<<<<<<< HEAD
               style="height: 400px;width: 550px">
+=======
+              style="height: 500px; width: 500px">
+>>>>>>> c2d4107aa51a212c4ce764f88a16db62ab498392
             </div>
             <div class="col-md-6">
-                <div class="container-fluid">
-                  <div class="row">
-                    <button type="button" class="btn btn-secondary btn-lg btn-block" style="height: 195px;width: 400px">Requests</button>
-                  </div>
-                  <div class="row">
-                    <button type="button" class="btn btn-secondary btn-lg btn-block" style="height: 195px;width: 400px">Certifications</button>
+              <div class="row">
+                <div class="card-deck">
+                  <div class="card card-inverse">
+                    <img class="card-img" src="../images/2.jpg" alt="Card image cap" height="200" width="250">
+                    <div class="card-img-overlay">
+                      <a href="retirement_requests.php" class="btn btn-secondary ">Retirement requests</a>
+                    </div>
                   </div>
                 </div>
+              </div>
+              <div class="row">
+                  <div class="card card-inverse">
+                    <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="200" width="250">
+                    <div class="card-img-overlay">
+                      <a href="retirement_cetificates.php" class="btn btn-secondary ">Retirement Certificates</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
