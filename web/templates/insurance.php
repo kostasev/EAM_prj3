@@ -10,7 +10,7 @@
 
     <title>IKA Insurance</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/main.css">
 
   </head>
   <body>
@@ -135,8 +135,8 @@
           <br>
           <div class="row">
             <div class="col-md-6">
-              <img src="#" class="rounded d-block"
-              style="height: 400px;width: 580px">
+              <img src="../images/family.jpg" class="rounded d-block"
+              style="height: 400px;width: 550px">
             </div>
             <div class="col-md-6">
                 <div class="container-fluid">
