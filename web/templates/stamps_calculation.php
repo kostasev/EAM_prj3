@@ -202,12 +202,12 @@
                   <div class="col-md-2 form-group"></div>
                   <div class="col-md-3 form-group">
           					<label><strong>Years Insured</strong>
-          						<input class="form-control" id="yearsInsured" name="yearsInsured" type="number" <?php if (isset($_SESSION['user'])) { echo "value=\"$yearsInsured\""; } else { echo "placeholder=\"Years of insurance\""; } ?> min="0" required requiredMessage="Please enter your years of insurance" pattern=".{1,45}">
+          						<input class="form-control" id="yearsInsured" name="yearsInsured" type="number" <?php if (isset($_SESSION['user'])) { echo "value=\"$yearsInsured\""; } else { echo "placeholder=\"Years of insurance\""; } ?> min="0" required requiredMessage="Please enter your years of insurance">
           					</label>
           				</div>
                   <div class="col-md-3 form-group text-center">
                     <label><strong>Years Employed</strong>
-          						<input class="form-control" id="yearsEmployed" name="yearsEmployed" type="number" <?php if (isset($_SESSION['user'])) { echo "value=\"$yearsEmployed\""; } else { echo "placeholder=\"Years of employment\""; } ?> min="0" required requiredMessage="Please enter your years of employment" pattern=".{1,45}">
+          						<input class="form-control" id="yearsEmployed" name="yearsEmployed" type="number" <?php if (isset($_SESSION['user'])) { echo "value=\"$yearsEmployed\""; } else { echo "placeholder=\"Years of employment\""; } ?> min="0" required requiredMessage="Please enter your years of employment">
           					</label>
           				</div>
                   <div class="col-md-3 form-group">

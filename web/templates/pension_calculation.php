@@ -184,10 +184,22 @@
           <div class="row">
             <!-- CALCULATION FORM -->
         		<div class="col-md-12" style="text-align:center">
-        			<form action="pension_calculation_result.php" method="post" id="logInForm">
+        			<form action="pension_calculation_result.php" method="post" id="pensionCalculationForm">
         				<input type="hidden" name="action" value="userLogIn">
           			<h2><strong>Basic Pension Calculator</strong></h2>
-                <p>Please insert your details</p>
+                
+                <?php
+                  if(isset($_SESSION['user'])) {
+                ?>
+                  <p>Please insert your details</p>
+                <?php
+                  } else {
+                ?>
+                  <p>Please verify or update your details (any update will be temporary)</p>
+                <?php
+                  }
+                ?>
+
                 <br>
                 <div class="row">
                   <div class="col-md-2 form-group"></div>
@@ -205,7 +217,7 @@
                     </label>
                   </div>
 
-                  <div class="col-md-2 form-group">
+                  <div class="col-md-5 form-group">
                     <label><strong>Pension Type</strong>
                       <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-secondary <?php if ($pensionType == "Old age") echo "active"; ?> " for="old">
@@ -215,7 +227,7 @@
                           <input type="radio" name="type" id="disabled" value="disability">&nbsp;Disability&nbsp;
                         </label>
                         <label class="btn btn-secondary <?php if ($pensionType == "Death of insured") echo "active"; ?> " for="insured">
-                          <input type="radio" name="type" id="insured" value="deathOfInsured">&nbsp;Death of insured&nbsp;
+                          <input type="radio" name="type" id="insured" value="deathOfInsured">Death of insured
                         </label>
                         <label class="btn btn-secondary <?php if ($pensionType == "Death of retired") echo "active"; ?> " for="retired">
                           <input type="radio" name="type" id="retired" value="deathOfRetired">Death of retired
