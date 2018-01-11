@@ -209,6 +209,16 @@
         <hr>
       </div>
 
+      <div class="container">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
+              <li class="breadcrumb-item"><a href="#">IKA Profile</a></li>
+              <li class="breadcrumb-item"><a href="#">Update</a></li>
+            </ol>
+          </nav>
+        </div>
+
         <!-- SIGN-UP ERROR PAGE CONTENT -->
         <?php
           if ($errors['AFM_EXISTS'] and $errors['IDNUMBER_EXISTS'] and $errors['EMAIL_EXISTS']) {

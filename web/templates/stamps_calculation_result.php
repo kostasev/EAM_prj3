@@ -112,6 +112,15 @@
         </ul>
         <hr>
       </div>
+        <div class="container">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
+              <li class="breadcrumb-item"><a href="#">IKA Insurance</a></li>
+              <li class="breadcrumb-item"><a href="#">Stamps Calculator</a></li>
+            </ol>
+          </nav>
+        </div>
 
         <!-- CALCULATION PAGE CONTENT - Pension calculation result scenario -->
         <?php
