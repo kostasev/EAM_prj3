@@ -62,7 +62,7 @@
 
     <title>IKA Pension Calculation</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/calculation.css">
 
   </head>
   <body>
@@ -136,8 +136,6 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="insurance_certifications.php">Certifications</a>
               <a class="dropdown-item" href="insurance_requests.php">Requests</a>
-              <a class="dropdown-item" href="stamps_calculation.php">Stamps Calculation</a>
-              <a class="dropdown-item" href="pension_calculation.php">Pension Calculation</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -147,7 +145,6 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="retirement_certifications.php">Certifications</a>
               <a class="dropdown-item" href="retirement_requests.php">Requests</a>
-              <a class="dropdown-item" href="pension_calculation.php">Pension Calculation</a>
             </div>
           </li>
           <li class="nav-item">
@@ -187,22 +184,10 @@
           <div class="row">
             <!-- CALCULATION FORM -->
         		<div class="col-md-12" style="text-align:center">
-        			<form action="pension_calculation_result.php" method="post" id="pensionCalculationForm">
+        			<form action="pension_calculation_result.php" method="post" id="logInForm">
         				<input type="hidden" name="action" value="userLogIn">
           			<h2><strong>Basic Pension Calculator</strong></h2>
-
-                <?php
-                  if(isset($_SESSION['user'])) {
-                ?>
-                  <p>Please insert your details</p>
-                <?php
-                  } else {
-                ?>
-                  <p>Please verify or update your details (any update will be temporary)</p>
-                <?php
-                  }
-                ?>
-
+                <p>Please insert your details</p>
                 <br>
                 <div class="row">
                   <div class="col-md-2 form-group"></div>
@@ -220,7 +205,7 @@
                     </label>
                   </div>
 
-                  <div class="col-md-5 form-group">
+                  <div class="col-md-2 form-group">
                     <label><strong>Pension Type</strong>
                       <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-secondary <?php if ($pensionType == "Old age") echo "active"; ?> " for="old">
@@ -230,7 +215,7 @@
                           <input type="radio" name="type" id="disabled" value="disability">&nbsp;Disability&nbsp;
                         </label>
                         <label class="btn btn-secondary <?php if ($pensionType == "Death of insured") echo "active"; ?> " for="insured">
-                          <input type="radio" name="type" id="insured" value="deathOfInsured">Death of insured
+                          <input type="radio" name="type" id="insured" value="deathOfInsured">&nbsp;Death of insured&nbsp;
                         </label>
                         <label class="btn btn-secondary <?php if ($pensionType == "Death of retired") echo "active"; ?> " for="retired">
                           <input type="radio" name="type" id="retired" value="deathOfRetired">Death of retired
