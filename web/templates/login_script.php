@@ -28,6 +28,13 @@
   $result->close();
   $conn->close();
 
+  /* we are an intermediate page for a user that needs to be logged-in to use some service,
+    send a request or receive a cetificate */
+  if (isset($_SESSION['intermediate']) and $_SESSION['intermediate'] and !$_SESSION['login_error']) {
+    $redirect_url = $_SESSION['intermediate_for'];
+    $_SESSION['intermediate'] = false;
+  }
+
   /* redirect properly */
   header('Location: ' . $redirect_url);
 ?>

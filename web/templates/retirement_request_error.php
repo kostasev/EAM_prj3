@@ -1,10 +1,14 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Retirement Request Error</title>
+    <title>IKA Disability Pension Request Error</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
 
@@ -102,7 +106,21 @@
         </div>
 
         <!-- RETIRE REQUEST ERROR PAGE CONTENT -->
-        <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! You cannot access this request, as your are already retired!</strong></div>
+        <?php
+          if (isset($_SESSION['notRetired']) and $_SESSION['notRetired']) {
+            echo "<div class=\"alert alert-danger\" role=\"alert\" style=\"text-align:center\"> <strong>Problem! You cannot access this request, as you are currently not retired!</strong></div>";
+          }
+          else if (isset($_SESSION['notRetired']) and !$_SESSION['notRetired'])  {
+            echo "<div class=\"alert alert-danger\" role=\"alert\" style=\"text-align:center\"> <strong>Problem! You cannot access this request, as you are already disabled!</strong></div>";
+          }
+          else {
+            /* some internal error may have occured */
+            /* redirect properly */
+            $redirect_url = 'internal_error.php';
+            header('Location: ' . $redirect_url);
+            exit();
+          }
+        ?>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">

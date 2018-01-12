@@ -102,7 +102,7 @@
         </div>
 
         <!-- RETIRE REQUEST ERROR PAGE CONTENT -->
-        <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! You cannot access this request, as your are already retired!</strong></div>
+        <div class="alert alert-danger" role="alert" style="text-align:center"> <strong>Problem! You cannot access this request, as you are already retired!</strong></div>
 
         <!-- FOOTER -->
         <footer class="footer" style="background-color: #ffffff;padding-top: 50px;">

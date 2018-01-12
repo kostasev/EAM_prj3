@@ -5,9 +5,11 @@
   include 'make_connection.php';
 
   if (!isset($_SESSION['user'])) {
-    /* we have an access error */
+    /* user is not logged-in */
+    $_SESSION['intermediate'] = true;
+    $_SESSION['intermediate_for'] = 'retirement_request.php';
     /* redirect properly */
-    $redirect_url = 'access_error.php';
+    $redirect_url = 'login.php';
     header('Location: ' . $redirect_url);
     exit();
   }
@@ -67,7 +69,8 @@
 
       $result->close();
 
-      if ($isRetired) {
+      if (!$isRetired or $isSpecial) {
+        $_SESSION['notRetired'] = !$isRetired;
         /* we have an access error */
         $conn->close();
         /* redirect properly */
@@ -87,7 +90,7 @@
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Retirement Request</title>
+    <title>IKA Disability Pension Request</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
 
@@ -205,7 +208,7 @@
       					<input type="hidden" name="action" value="userProfile">
       					<br>
         				<h2><strong>Your insurance info</strong></h2>
-                <p>You are about to request your retirement for special needs.
+                <p>You are about to request additional pension for special needs.
                    You can update your following information as desired.
                    We will process your request and we will inform you accordingly.</p>
 
@@ -251,24 +254,29 @@
                       <input class="form-control" id="avgYearlySalary" name="avgYearlySalary" type="number" min="0" value="<?php echo $avgYearlySalary; ?>" required requiredMessage="Please enter your average yearly salary">
                     </label>
                   </div>
-                  <div class="col-md-3 form-group"></div>
                 </div>
 
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
-                  <div class="col-md-6 form-group">
+                  <div class="col-md-3 form-group">
+                    <label><strong>Current Yearly Pension</strong>
+                      <input class="form-control" id="yearlyPension" name="yearlyPension" type="number" min="0" value="<?php echo $yearlyPension; ?>" required requiredMessage="Please enter your current yearly pension">
+                    </label>
+                  </div>
+                  <div class="col-md-3 form-group">
                     <label><strong>Disability</strong>
                       <br>
                       <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-secondary active">
-                          <input type="radio" name="disability" id="disability" value="Accident" checked style="width: 20%;">Accident
+                          <input type="radio" name="accident" id="accident" value="accident" checked style="width: 20%;">Accident
                         </label>
                         <label class="btn btn-secondary">
-                          <input type="radio" name="disability" id="disability" value="Disease">Disease
+                          <input type="radio" name="disease" id="disease" value="disease">Disease
                         </label>
                       </div>
                     </label>
                   </div>
+                  <div class="col-md-3 form-group"></div>
                 </div>
 
                 <br>

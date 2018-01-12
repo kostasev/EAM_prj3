@@ -4,9 +4,11 @@
   include 'make_connection.php';
 
   if (!isset($_SESSION['user'])) {
-    /* we have an access error */
+    /* user is not logged-in */
+    $_SESSION['intermediate'] = true;
+    $_SESSION['intermediate_for'] = 'insurance_certification.php';
     /* redirect properly */
-    $redirect_url = 'access_error.php';
+    $redirect_url = 'login.php';
     header('Location: ' . $redirect_url);
     exit();
   }
