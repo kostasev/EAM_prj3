@@ -179,7 +179,7 @@
                           <input type="radio" name="sex" id="male" value="Male" checked style="width: 20%;">&nbsp;&nbsp;Male&nbsp;&nbsp;
                         </label>
                         <label class="btn btn-secondary">
-                          <input type="radio" name="sex" id="male" value="Female">Female
+                          <input type="radio" name="sex" id="female" value="Female">Female
                         </label>
                       </div>
                     </label>

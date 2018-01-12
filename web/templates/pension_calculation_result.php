@@ -133,36 +133,36 @@
 
         <!-- CALCULATION PAGE CONTENT - Pension calculation result scenario -->
         <?php
-          $sex = isset($_POST['sex']) ? $_POST['sex'] : '';
-          $type = isset($_POST['type']) ? $_POST['type'] : '';
+          $sex = isset($_POST['sex']) ? $_POST['sex'] : 'Male';
+          $type = isset($_POST['type']) ? $_POST['type'] : 'Old age';
           $employment = isset($_POST['yearsEmployed']) ? $_POST['yearsEmployed'] : 0;
           $salary = isset($_POST['avgYearlySalary']) ? $_POST['avgYearlySalary'] : 0;
           $result = 0;
           if ( $sex == "Male" ) {
-            if ( $type == "old" ) {
+            if ( $type == "Old age" ) {
               $result = $salary / 24;
             }
-            else if ( $type == "disabled" ) {
+            else if ( $type == "Disability" ) {
               $result = $salary / 26;
             }
-            else if ( $type == "insured" ) {
+            else if ( $type == "Death of insured" ) {
               $result = $salary / 28;
             }
-            else if ( $type == "retired") {
+            else if ( $type == "Death of retired") {
               $result = $salary / 30;
             }
           }
           else if ( $sex == "Female" ) {
-            if ( $type == "old" ) {
+            if ( $type == "Old age" ) {
               $result = $salary / 25;
             }
-            else if ( $type == "disabled" ) {
+            else if ( $type == "Disability" ) {
               $result = $salary / 27;
             }
-            else if ( $type == "insured" ) {
+            else if ( $type == "Death of insured" ) {
               $result = $salary / 29;
             }
-            else if ( $type == "retired") {
+            else if ( $type == "Death of retired") {
               $result = $salary / 31;
             }
           }

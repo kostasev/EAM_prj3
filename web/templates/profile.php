@@ -80,6 +80,18 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/main.css">
 
+    <?php
+      if (isset($_SESSION['profile_updated']) and $_SESSION['profile_updated']) {
+        echo "<div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">
+          <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button>
+          Profile updated successfully. <strong>Thank you!</strong>
+        </div>";
+        $_SESSION['profile_updated'] = false;
+      }
+    ?>
+
   </head>
   <body>
 

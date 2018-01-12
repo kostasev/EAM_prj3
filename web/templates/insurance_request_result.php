@@ -18,7 +18,7 @@
   $yearsInsured = isset($_POST['yearsInsured']) ? $_POST['yearsInsured'] : 0;
   $yearsEmployed =  isset($_POST['yearsEmployed']) ? $_POST['yearsEmployed'] : 0;
   $stampsCollected =  isset($_POST['stampsCollected']) ? $_POST['stampsCollected'] : 0;
-  $avgYearlySalary=  isset($_POST['avgYearlySalary']) ? $_POST['avgYearlySalary'] : 0;
+  $avgYearlySalary =  isset($_POST['avgYearlySalary']) ? $_POST['avgYearlySalary'] : 0;
 
   /* update user's information */
   if ($yearsEmployed > 45) {

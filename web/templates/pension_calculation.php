@@ -136,6 +136,8 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="insurance_certifications.php">Certifications</a>
               <a class="dropdown-item" href="insurance_requests.php">Requests</a>
+              <a class="dropdown-item" href="stamps_calculation.php">Stamps Calculation</a>
+              <a class="dropdown-item" href="pension_calculation.php">Pension Calculation</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -145,6 +147,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="retirement_certifications.php">Certifications</a>
               <a class="dropdown-item" href="retirement_requests.php">Requests</a>
+              <a class="dropdown-item" href="pension_calculation.php">Pension Calculation</a>
             </div>
           </li>
           <li class="nav-item">
@@ -195,30 +198,30 @@
                     <label><strong>Sex</strong>
                       <br>
                       <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-secondary active">
-                          <input type="radio" name="sex" id="male"  value="Male" <?php if ($sex == "Male") echo "checked"; ?> >&nbsp;&nbsp;Male&nbsp;&nbsp;
+                        <label class="btn btn-secondary active" for="Male">
+                          <input type="radio" name="sex" id="Male"  value="Male" <?php if ($sex == "Male") echo "checked"; ?> >&nbsp;&nbsp;Male&nbsp;&nbsp;
                         </label>
-                        <label class="btn btn-secondary">
-                          <input type="radio" name="sex" id="male" value="Female" <?php if ($sex == "Female") echo "checked"; ?> >Female
+                        <label class="btn btn-secondary" for="Female">
+                          <input type="radio" name="sex" id="Female" value="Female" <?php if ($sex == "Female") echo "checked"; ?> >Female
                         </label>
                       </div>
                     </label>
                   </div>
 
-                  <div class="col-md-2 form-group">
+                  <div class="col-md-5 form-group">
                     <label><strong>Pension Type</strong>
                       <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-secondary <?php if ($pensionType == "Old age") echo "active"; ?> " for="old">
-                          <input type="radio" name="type" id="old" value="oldAge">&nbsp;&nbsp;Old age&nbsp;&nbsp;
+                        <label class="btn btn-secondary <?php if ($pensionType == "Old age") echo "active"; ?> " for="Old age">
+                          <input type="radio" name="type" id="Old age" value="Old age">&nbsp;&nbsp;Old age&nbsp;&nbsp;
                         </label>
-                        <label class="btn btn-secondary <?php if ($pensionType == "Disability") echo "active"; ?> " for="disabled">
-                          <input type="radio" name="type" id="disabled" value="disability">&nbsp;Disability&nbsp;
+                        <label class="btn btn-secondary <?php if ($pensionType == "Disability") echo "active"; ?> " for="Disability">
+                          <input type="radio" name="type" id="Disability" value="Disability">&nbsp;Disability&nbsp;
                         </label>
-                        <label class="btn btn-secondary <?php if ($pensionType == "Death of insured") echo "active"; ?> " for="insured">
-                          <input type="radio" name="type" id="insured" value="deathOfInsured">&nbsp;Death of insured&nbsp;
+                        <label class="btn btn-secondary <?php if ($pensionType == "Death of insured") echo "active"; ?> " for="Death of insured">
+                          <input type="radio" name="type" id="Death of insured" value="Death of insured">&nbsp;Death of insured&nbsp;
                         </label>
-                        <label class="btn btn-secondary <?php if ($pensionType == "Death of retired") echo "active"; ?> " for="retired">
-                          <input type="radio" name="type" id="retired" value="deathOfRetired">Death of retired
+                        <label class="btn btn-secondary <?php if ($pensionType == "Death of retired") echo "active"; ?> " for="Death of retired">
+                          <input type="radio" name="type" id="Death of retired" value="Death of retired">Death of retired
                         </label>
                       </div>
                     </label>

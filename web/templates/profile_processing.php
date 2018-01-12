@@ -97,6 +97,7 @@
     $_SESSION['first_name'] = $row['FirstName'];
     $_SESSION['last_name'] = $row['LastName'];
     $_SESSION['email'] = $row['Email'];
+    $_SESSION['profile_updated'] = true;
 
     /* debugging */
     // echo $_SESSION['first_name']; echo "\n";
