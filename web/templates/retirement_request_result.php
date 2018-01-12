@@ -18,15 +18,17 @@
   $yearsInsured = isset($_POST['yearsInsured']) ? $_POST['yearsInsured'] : 0;
   $yearsEmployed =  isset($_POST['yearsEmployed']) ? $_POST['yearsEmployed'] : 0;
   $stampsCollected =  isset($_POST['stampsCollected']) ? $_POST['stampsCollected'] : 0;
-  $avgYearlySalary=  isset($_POST['avgYearlySalary']) ? $_POST['avgYearlySalary'] : 0;
+  $avgYearlySalary =  isset($_POST['avgYearlySalary']) ? $_POST['avgYearlySalary'] : 0;
+  $yearlyPension =  isset($_POST['yearlyPension']) ? $_POST['yearlyPension'] : 0;
+  $disabilityReason =  isset($_POST['disabilityReason']) ? $_POST['disabilityReason'] : 'Accident';
+
+  /* update user's details */
+  $query = "UPDATE user SET IsDisabled = 1 WHERE UserID = '$userID'";
+  $result = $conn->query($query);
 
   /* update user's information */
-  if ($yearsEmployed > 45) {
-    $query = "UPDATE information SET YearsInsured = $yearsInsured, YearsEmployed = $yearsEmployed, StampsCollected = $stampsCollected, AvgYearlySalary = $avgYearlySalary, IsRetired = 1 WHERE user_UserID = '$userID'";
-  }
-  else {
-    $query = "UPDATE information SET YearsInsured = $yearsInsured, YearsEmployed = $yearsEmployed, StampsCollected = $stampsCollected, AvgYearlySalary = $avgYearlySalary, IsRetired = 0 WHERE user_UserID = '$userID'";
-  }
+  $newPension = $yearlyPension * 1.25;
+  $query = "UPDATE information SET YearlyPension = $newPension WHERE user_UserID = '$userID'";
   $result = $conn->query($query);
 
   $conn->close();
@@ -144,22 +146,10 @@
         </nav>
       </div>
 
-        <!-- RETIREMENT REQUEST RESULT PAGE CONTENT -->
+        <!-- DISABILITY PENSION REQUEST RESULT PAGE CONTENT -->
         <?php
-          if ($yearsEmployed > 45) {
-            echo "<h2 class='text-center'>Your request has been successfully sent!</h2>";
-            echo "<p class='text-center'><strong>Since you have been working for many years you have been automatically classified as retired.</strong></p>";
-            echo "<p class='text-center'>Enjoy your new life!</p>";
-          }
-          else if ($yearsEmployed < 20) {
-            echo "<h2 class='text-center'>Your request has been successfully sent!</h2>";
-            echo "<p class='text-center'><strong>Since you have been working for few years, it's likely for your application to be rejected.</strong></p>";
-            echo "<p class='text-center'>Keep working and wait for your time to come!</p>";
-          }
-          else {
-            echo "<h2 class='text-center'>Your request has been successfully sent!</h2>";
-            echo "<p class='text-center'>You will hear from us soon!</p>";
-          }
+          echo "<h2 class='text-center'>Your request has been successfully sent!</h2>";
+          echo "<p class='text-center'>You will hear from us soon!</p>";
         ?>
 
         <!-- FOOTER -->
