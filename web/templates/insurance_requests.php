@@ -1,14 +1,6 @@
 <?php
   /* user must be logged-in to use this page */
   session_start();
-
-  if (!isset($_SESSION['user'])) {
-    /* we have an access error */
-    /* redirect properly */
-    $redirect_url = 'access_error.php';
-    header('Location: ' . $redirect_url);
-    exit();
-  }
 ?>
 
 <!DOCTYPE html>
