@@ -4,9 +4,9 @@
     <link rel="icon" href="../images/toplogo.png">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>IKA Pension Calculation</title>
+    <title>IKA Stamps Calculation Result</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/calculation.css">
+    <link rel="stylesheet" href="../css/main.css">
 
   </head>
   <body>
@@ -80,6 +80,8 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="insurance_certifications.php">Certifications</a>
               <a class="dropdown-item" href="insurance_requests.php">Requests</a>
+              <a class="dropdown-item" href="stamps_calculation.php">Stamps Calculation</a>
+              <a class="dropdown-item" href="pension_calculation.php">Pension Calculation</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -89,6 +91,7 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <a class="dropdown-item" href="retirement_certifications.php">Certifications</a>
               <a class="dropdown-item" href="retirement_requests.php">Requests</a>
+              <a class="dropdown-item" href="pension_calculation.php">Pension Calculation</a>
             </div>
           </li>
           <li class="nav-item">
@@ -112,12 +115,15 @@
         </ul>
         <hr>
       </div>
+
+        <!-- BREADCRUMB -->
         <div class="container">
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
-              <li class="breadcrumb-item"><a href="#">IKA Insurance</a></li>
-              <li class="breadcrumb-item"><a href="#">Stamps Calculator</a></li>
+              <li class="breadcrumb-item"><a href="insurance.php">Insurance</a></li>
+              <li class="breadcrumb-item"><a href="stamps_calculation.php">Stamps Calculation</a></li>
+              <li class="breadcrumb-item"><a href="#">Stamps Calculation Result</a></li>
             </ol>
           </nav>
         </div>

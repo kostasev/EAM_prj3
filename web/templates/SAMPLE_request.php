@@ -78,6 +78,8 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="insurance_certifications.php">Certifications</a>
                 <a class="dropdown-item" href="insurance_requests.php">Requests</a>
+                <a class="dropdown-item" href="stamps_calculation.php">Stamps Calculation</a>
+                <a class="dropdown-item" href="pension_calculation.php">Pension Calculation</a>
               </div>
             </li>
             <li class="nav-item dropdown">

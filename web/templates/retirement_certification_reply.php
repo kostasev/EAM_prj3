@@ -77,7 +77,7 @@
 
     <title>IKA Retirement Certification</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/certification.css">
+    <link rel="stylesheet" href="../css/main.css">
 
   </head>
   <body>
@@ -136,6 +136,8 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="insurance_certifications.php">Certifications</a>
                 <a class="dropdown-item" href="insurance_requests.php">Requests</a>
+                <a class="dropdown-item" href="stamps_calculation.php">Stamps Calculation</a>
+                <a class="dropdown-item" href="pension_calculation.php">Pension Calculation</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -145,6 +147,7 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="retirement_certifications.php">Certifications</a>
                 <a class="dropdown-item" href="retirement_requests.php">Requests</a>
+                <a class="dropdown-item" href="pension_calculation.php">Pension Calculation</a>
               </div>
             </li>
             <li class="nav-item">

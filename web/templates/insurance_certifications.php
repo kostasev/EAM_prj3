@@ -86,6 +86,8 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="insurance_certifications.php">Certifications</a>
                 <a class="dropdown-item" href="insurance_requests.php">Requests</a>
+                <a class="dropdown-item" href="stamps_calculation.php">Stamps Calculation</a>
+                <a class="dropdown-item" href="pension_calculation.php">Pension Calculation</a>
               </div>
             </li>
             <li class="nav-item dropdown">
@@ -95,6 +97,7 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="retirement_certifications.php">Certifications</a>
                 <a class="dropdown-item" href="retirement_requests.php">Requests</a>
+                <a class="dropdown-item" href="pension_calculation.php">Pension Calculation</a>
               </div>
             </li>
             <li class="nav-item">
@@ -123,8 +126,8 @@
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
-              <li class="breadcrumb-item"><a href="#">Insurance</a></li>
-              <li class="breadcrumb-item"><a href="#">Certifications</a></li>
+              <li class="breadcrumb-item"><a href="insurance.php">Insurance</a></li>
+              <li class="breadcrumb-item"><a href="#">Insurance Certifications</a></li>
             </ol>
           </nav>
         </div>
