@@ -22,13 +22,9 @@
   $yearlyPension =  isset($_POST['yearlyPension']) ? $_POST['yearlyPension'] : 0;
   $disabilityReason =  isset($_POST['disabilityReason']) ? $_POST['disabilityReason'] : 'Accident';
 
-  /* update user's details */
-  $query = "UPDATE user SET IsDisabled = 1 WHERE UserID = '$userID'";
-  $result = $conn->query($query);
-
   /* update user's information */
   $newPension = $yearlyPension * 1.25;
-  $query = "UPDATE information SET YearlyPension = $newPension WHERE user_UserID = '$userID'";
+  $query = "UPDATE information SET YearlyPension = $newPension, IsDisabled = 1, DisabilityReason = $disabilityReason WHERE user_UserID = '$userID'";
   $result = $conn->query($query);
 
   $conn->close();

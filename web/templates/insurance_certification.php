@@ -41,7 +41,6 @@
     $email = $row['Email'];
     $password = $row['Password'];
     $isFemale = $row['IsFemale'];
-    $isSpecial = $row['IsSpecial'];
 
     $result->close();
 
@@ -65,6 +64,8 @@
       $yearlyPension = $row['YearlyPension'];
       $isRetired = $row['IsRetired'];
       $insuredChildren = $row['InsuredChildren'];
+      $isDisabled = $row['IsDisabled'];
+      $disabilityReason = $row['DisabilityReason'];
 
       $result->close();
     }
@@ -202,11 +203,11 @@
                       has been insured for $yearsInsured years, employed for $yearsEmployed years
                       in which he has collected $stampsCollected stamps and has declared an average yearly salary of $avgYearlySalary euros.
                       $forname $surname has $insuredChildren insured children.</h2>";
-                if ($isRetired && $isSpecial) {
+                if ($isRetired && $isDisabled) {
                   echo "<p class='text-center'>$forname $surname declares retired and disabled.</h2>";
-                } else if ($isRetired && !$isSpecial) {
+                } else if ($isRetired && !$isDisabled) {
                   echo "<p class='text-center'>$forname $surname declares retired.</h2>";
-                } else if (!$isRetired && $isSpecial) {
+                } else if (!$isRetired && $isDisabled) {
                   echo "<p class='text-center'>$forname $surname declares disabled.</h2>";
                 }
               ?>

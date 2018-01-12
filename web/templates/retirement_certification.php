@@ -4,11 +4,9 @@
   include 'make_connection.php';
 
   if (!isset($_SESSION['user'])) {
-    /* user is not logged-in */
-    $_SESSION['intermediate'] = true;
-    $_SESSION['intermediate_for'] = 'retirement_certification.php';
+    /* we have an access error */
     /* redirect properly */
-    $redirect_url = 'login.php';
+    $redirect_url = 'access_error.php';
     header('Location: ' . $redirect_url);
     exit();
   }
@@ -41,7 +39,6 @@
     $email = $row['Email'];
     $password = $row['Password'];
     $isFemale = $row['IsFemale'];
-    $isSpecial = $row['IsSpecial'];
 
     $result->close();
 
@@ -63,6 +60,8 @@
       $avgYearlySalary = $row['AvgYearlySalary'];
       $yearlyPension = $row['YearlyPension'];
       $isRetired = $row['IsRetired'];
+      $isDisabled = $row['IsDisabled'];
+      $disabilityReason = $row['DisabilityReason'];
 
       $result->close();
     }
@@ -174,18 +173,6 @@
           <hr>
         </div>
 
-        <!-- BREADCRUMB -->
-        <div class="container">
-          <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
-              <li class="breadcrumb-item"><a href="retirement.php">Retirement</a></li>
-              <li class="breadcrumb-item"><a href="retirement_certifications.php">Retirement Certifications</a></li>
-              <li class="breadcrumb-item"><a href="#">Retirement Certification</a></li>
-            </ol>
-          </nav>
-        </div>
-
         <!-- REQUEST RESULT CONTENT -->
 
         <div class="container">
@@ -200,6 +187,9 @@
                       has been insured for $yearsInsured years, employed for $yearsEmployed years and has declared an average yearly salary of $avgYearlySalary euros.</h2>";
                 if ($isRetired) {
                   echo "<p class='text-center'>$forname $surname has been retired and receives a yearly pension of $yearlyPension euros.</h2>";
+                  if ($isDisabled) {
+                    echo "<p class='text-center'>$forname $surname is also disable due to $disabilityReason.</h2>";
+                  }
                 } else {
                   echo "<p class='text-center'>$forname $surname has not been retired yet and receives no pension.</h2>";
                 }

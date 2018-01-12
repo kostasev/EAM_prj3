@@ -42,7 +42,6 @@
     $email = $row['Email'];
     $password = $row['Password'];
     $isFemale = $row['IsFemale'];
-    $isSpecial = $row['IsSpecial'];
 
     $result->close();
 
@@ -66,6 +65,8 @@
       $yearlyPension = $row['YearlyPension'];
       $isRetired = $row['IsRetired'];
       $insuredChildren = $row['InsuredChildren'];
+      $isDisabled = $row['IsDisabled'];
+      $disabilityReason = $row['DisabilityReason'];
 
       $result->close();
 

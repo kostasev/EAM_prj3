@@ -156,7 +156,7 @@
                   <div class="card card-inverse">
                     <img class="card-img" src="../images/1.jpg" alt="Card image cap" height="250" width="250">
                     <div class="card-img-overlay">
-                      <a href="#" class="btn btn-secondary ">Request insurance for protected members</a>
+                      <a href="#" class="btn btn-secondary ">Request insurance for <br> protected members</a>
                     </div>
                   </div>
                 </div>

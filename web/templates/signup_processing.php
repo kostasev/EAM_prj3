@@ -24,7 +24,6 @@
   $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
   $email = isset($_POST['email']) ? $_POST['email'] : '';
   $password = isset($_POST['password']) ? $_POST['password'] : '';
-  $special = 0;
 
   /* Check for unique AFM */
   $query = "SELECT * FROM user WHERE AFM='$afm'";
@@ -53,8 +52,8 @@
     else $isFemale = 0;
 
     /* insert user's details */
-    $query = "INSERT INTO user(FirstName, LastName, FathersName, MothersName, DateOfBirth, BirthPlace, HomeAddress, PostalCode, AFM, IDNumber, PhoneNumber, Email, Password, IsFemale, IsSpecial) VALUES".
-    "('$forname', '$surname', '$father', '$mother', '$date', '$place', '$home', '$postal', '$afm', '$id', '$phone', '$email', '$password', '$isFemale', '$special')";
+    $query = "INSERT INTO user(FirstName, LastName, FathersName, MothersName, DateOfBirth, BirthPlace, HomeAddress, PostalCode, AFM, IDNumber, PhoneNumber, Email, Password, IsFemale) VALUES".
+    "('$forname', '$surname', '$father', '$mother', '$date', '$place', '$home', '$postal', '$afm', '$id', '$phone', '$email', '$password', '$isFemale')";
 
     $result = $conn->query($query);
 
