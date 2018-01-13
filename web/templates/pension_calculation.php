@@ -26,6 +26,7 @@
     else {
       $row = $result->fetch_array(MYSQLI_ASSOC);
       $isFemale = $row['IsFemale'];
+      if ($isFemale) $sex = "Female";
 
       $result->close();
 
@@ -198,10 +199,10 @@
                     <label><strong>Sex</strong>
                       <br>
                       <div class="btn-group" data-toggle="buttons">
-                        <label class="btn btn-secondary active" for="Male">
+                        <label class="btn btn-secondary <?php if ($sex == "Male") echo "active"; ?>" for="Male">
                           <input type="radio" name="sex" id="Male"  value="Male" <?php if ($sex == "Male") echo "checked"; ?> >&nbsp;&nbsp;Male&nbsp;&nbsp;
                         </label>
-                        <label class="btn btn-secondary" for="Female">
+                        <label class="btn btn-secondary <?php if ($sex == "Female") echo "active"; ?>" for="Female">
                           <input type="radio" name="sex" id="Female" value="Female" <?php if ($sex == "Female") echo "checked"; ?> >Female
                         </label>
                       </div>

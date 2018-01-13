@@ -269,10 +269,10 @@
                       <br>
                       <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-secondary <?php if ($disabilityReason == "Accident") echo "active"; ?>" for="Accident">
-                          <input type="radio" name="disabilityReason" id="Accident" value="Accident" checked style="width: 20%;">Accident
+                          <input type="radio" name="disabilityReason" id="Accident" value="Accident" <?php if ($disabilityReason == "Accident") echo "checked"; ?> style="width: 20%;">Accident
                         </label>
                         <label class="btn btn-secondary <?php if ($disabilityReason == "Disease") echo "active"; ?>" for="Disease">
-                          <input type="radio" name="disabilityReason" id="Disease" value="Disease">Disease
+                          <input type="radio" name="disabilityReason" id="Disease" value="Disease" <?php if ($disabilityReason == "Disease") echo "checked"; ?>>Disease
                         </label>
                       </div>
                     </label>

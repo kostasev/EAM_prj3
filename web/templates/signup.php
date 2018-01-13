@@ -176,10 +176,10 @@
                       <br>
                       <div class="btn-group" data-toggle="buttons">
                         <label class="btn btn-secondary active">
-                          <input type="radio" name="sex" id="male" value="Male" checked style="width: 20%;">&nbsp;&nbsp;Male&nbsp;&nbsp;
+                          <input type="radio" name="sex" id="Male" value="Male" checked>&nbsp;&nbsp;Male&nbsp;&nbsp;
                         </label>
                         <label class="btn btn-secondary">
-                          <input type="radio" name="sex" id="female" value="Female">Female
+                          <input type="radio" name="sex" id="Female" value="Female">Female
                         </label>
                       </div>
                     </label>

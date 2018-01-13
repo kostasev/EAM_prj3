@@ -220,28 +220,28 @@
                         <?php
                           if (isset($_SESSION['user'])) {
                             if ($isFemale) {
-                              echo '<label class="btn btn-secondary active">';
-                              echo '<input type="radio" name="sex" id="male"  value="Male"> Male';
-                              echo '</label>';
                               echo '<label class="btn btn-secondary">';
-                              echo '<input type="radio" name="sex" id="male" value="Female" checked>Female';
+                              echo '<input type="radio" name="sex" id="Male" value="Male">&nbsp;&nbsp;Male&nbsp;&nbsp;';
+                              echo '</label>';
+                              echo '<label class="btn btn-secondary active">';
+                              echo '<input type="radio" name="sex" id="Female" value="Female" checked>Female';
                               echo'</label>';
                             }
                             else {
                               echo '<label class="btn btn-secondary active">';
-                              echo '<input type="radio" name="sex" id="male"  value="Male" checked> Male';
+                              echo '<input type="radio" name="sex" id="Male" value="Male" checked>&nbsp;&nbsp;Male&nbsp;&nbsp;';
                               echo '</label>';
                               echo '<label class="btn btn-secondary">';
-                              echo '<input type="radio" name="sex" id="male" value="Female">Female';
+                              echo '<input type="radio" name="sex" id="Female" value="Female">Female';
                               echo'</label>';
                             }
                           }
                           else {
                             echo '<label class="btn btn-secondary active">';
-                            echo '<input type="radio" name="sex" id="male"  value="Male" checked> Male';
+                            echo '<input type="radio" name="sex" id="Male" value="Male" checked>&nbsp;&nbsp;Male&nbsp;&nbsp;';
                             echo '</label>';
                             echo '<label class="btn btn-secondary">';
-                            echo '<input type="radio" name="sex" id="male" value="Female">Female';
+                            echo '<input type="radio" name="sex" id="Female" value="Female">Female';
                             echo'</label>';
                           }
                         ?>
