@@ -231,7 +231,20 @@
 
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
-                  <div class="col-md-6">
+                  <div class="col-md-3 form-group">
+                    <label><strong>Are you retired?</strong>
+                      <br>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-secondary active">
+                          <input type="radio" name="retired" id="Yes" value="Yes" checked>Yes
+                        </label>
+                        <label class="btn btn-secondary">
+                          <input type="radio" name="retired" id="No" value="No">&nbsp;No&nbsp;
+                        </label>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="col-md-3">
                     <label for="email"><strong>Email</strong>
                       <input class="form-control" id="email" name="email" type="email" placeholder="joedoe@somemail.com" required requiredMessage="Please enter your email" pattern=".{1,45}" title="No more than 45 characters please.">
                     </label>

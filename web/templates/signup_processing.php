@@ -23,6 +23,7 @@
   $id = isset($_POST['IDNumber']) ? $_POST['IDNumber'] : '';
   $phone = isset($_POST['phone']) ? $_POST['phone'] : '';
   $email = isset($_POST['email']) ? $_POST['email'] : '';
+  $retired = isset($_POST['retired']) ? $_POST['retired'] : '';
   $password = isset($_POST['password']) ? $_POST['password'] : '';
 
   /* Check for unique AFM */
@@ -51,6 +52,10 @@
     if ($sex == "Female") $isFemale = 1;
     else $isFemale = 0;
 
+    /* find IsRetired field's value */
+    if ($retired == "Yes") $isRetired = 1;
+    else $isRetired = 0;
+
     /* insert user's details */
     $query = "INSERT INTO user(FirstName, LastName, FathersName, MothersName, DateOfBirth, BirthPlace, HomeAddress, PostalCode, AFM, IDNumber, PhoneNumber, Email, Password, IsFemale) VALUES".
     "('$forname', '$surname', '$father', '$mother', '$date', '$place', '$home', '$postal', '$afm', '$id', '$phone', '$email', '$password', '$isFemale')";
@@ -78,7 +83,7 @@
 
     /* insert user's default information */
     $userID = $_SESSION['userID'];
-    $query = "INSERT INTO information(user_UserID, YearsInsured, YearsEmployed, StampsCollected, AvgYearlySalary, InsuredChildren, IsRetired, YearlyPension, PensionType) VALUES"."('$userID',0,0,0,0,0,0,0,'Old age')";
+    $query = "INSERT INTO information(user_UserID, YearsInsured, YearsEmployed, StampsCollected, AvgYearlySalary, InsuredChildren, IsRetired, YearlyPension, PensionType) VALUES"."('$userID',0,0,0,0,0,'$isRetired',0,'Old age')";
     $result = $conn->query($query);
 
     $conn->close();
