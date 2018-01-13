@@ -11,6 +11,7 @@
     exit();
   }
 
+  /* fetch user's details */
   $query = sprintf("SELECT * FROM user WHERE Email = '%s'", $_SESSION['email']);
 
   $result = $conn->query($query);
@@ -42,6 +43,7 @@
 
     $result->close();
 
+    /* fetch user's settings */
     $query = "SELECT * FROM settings WHERE user_UserID = '$userID'";
 
     $result = $conn->query($query);
@@ -64,6 +66,27 @@
       $vocalGuidanceOn = $row['VocalGuidanceOn'];
 
       $result->close();
+
+      /* fetch user's information */
+      $query = "SELECT * FROM information WHERE user_UserID = '$userID'";
+      $result = $conn->query($query);
+      if (!$result) {
+        /* we have an access error */
+        $conn->close();
+        /* redirect properly */
+        $redirect_url = 'access_error.php';
+        header('Location: ' . $redirect_url);
+        exit();
+      }
+      else {
+        $row = $result->fetch_array(MYSQLI_ASSOC);
+        $isRetired = $row['IsRetired'];
+
+        /* for debugging */
+        // echo $isRetired;
+
+        $result->close();
+      }
     }
   }
 
@@ -201,7 +224,9 @@
       					<input type="hidden" name="action" value="userProfile">
       					<br>
         				<h2><strong>Your profile</strong></h2>
-                <p>You can modify your details, credentials and preferences as desired</p>
+                <p>You can modify your details, credentials and preferences as desired.</p>
+                <p>Retirement status can be viewed but not modified. To change it contact as or, if you are currently
+                  not retired, just fill a retirement request. </p>
 
                 <br>
                 <p><strong>Details and Credentials</strong></p>
@@ -319,7 +344,20 @@
 
                 <div class="row">
                   <div class="col-md-3 form-group"></div>
-                  <div class="col-md-6">
+                  <div class="col-md-3 form-group">
+                    <label><strong>Are you retired?</strong>
+                      <br>
+                      <div class="btn-group" data-toggle="buttons">
+                        <label class="btn btn-secondary <?php if ($isRetired) echo "active"; ?>">
+                          <input type="radio" name="retired" id="Yes" value="Yes" <?php if ($isRetired) echo "checked"; ?> disabled>Yes
+                        </label>
+                        <label class="btn btn-secondary <?php if (!$isRetired) echo "active"; ?>">
+                          <input type="radio" name="retired" id="No" value="No" <?php if (!$isRetired) echo "checked"; ?> disabled>&nbsp;No&nbsp;
+                        </label>
+                      </div>
+                    </label>
+                  </div>
+                  <div class="col-md-3">
                   <label for="email"><strong>Email</strong>
                     <input class="form-control" id="email" name="email" type="email" value="<?php echo $email; ?>" required requiredMessage="Please enter your email" pattern=".{1,45}" title="No more than 45 characters please.">
                   </label>

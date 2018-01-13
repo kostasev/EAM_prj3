@@ -8,12 +8,14 @@
 
 ## Σημαντικές πληροφορίες
   Για τη σύνδεση με τη Βάση Δεδομένων μας απαιτείται η δημιουργία χρήστη με στοιχεία:
-  * hostname: 127.0.0.1
-  * for database: sdi1400058
-  * username: eam_user
-  * password: pass  
-  Όπως φαίνεται και στο αρχείο *web/templates/db_connection.php*:
 
+  * hostname: 127.0.0.1  
+  * for database: sdi1400058  
+  * username: eam_user  
+  * password: pass  
+
+  Όπως φαίνεται και στο αρχείο *web/templates/db_connection.php*:  
+  
   ```
   <?php
     $hn = '127.0.0.1';
@@ -25,6 +27,6 @@
 
 ## Επικοινωνία
 
-* Γκέργκη Κλεάνθης: <sdi1400034@di.uoa.gr>
-* Ευαγγέλου Κωνσταντίνος: <sdi1400042@di.uoa.gr>
-* Γεώργιος Καμάρας: <sdi1400058@di.uoa.gr>
+* Γκέργκη Κλεάνθης: sdi1400034@di.uoa.gr
+* Ευαγγέλου Κωνσταντίνος: sdi1400042@di.uoa.gr
+* Γεώργιος Καμάρας: sdi1400058@di.uoa.gr
