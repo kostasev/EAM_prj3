@@ -4,7 +4,7 @@
 
   include 'make_connection.php';
 
-  $redirect_url = 'main.php';
+  $redirect_url = 'index.php';
 
   $email = isset($_POST['email']) ? $_POST['email'] : '';
   $password = isset($_POST['password']) ? $_POST['password'] : '';

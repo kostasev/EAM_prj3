@@ -15,6 +15,6 @@
   session_destroy();
 
   /* redirect properly */
-  $redirect_url = 'main.php';
+  $redirect_url = 'index.php';
   header('Location: ' . $redirect_url);
 ?>

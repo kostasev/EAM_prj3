@@ -62,7 +62,7 @@
 
     <title>IKA Basic Pension Calculation</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../css/calculation.css">
+    <link rel="stylesheet" href="../css/main.css">
 
   </head>
   <body>
@@ -73,7 +73,7 @@
         </button>
         <div class="col-md-2"></div>
         <div>
-          <a class="navbar-brand" href="main.php"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
+          <a class="navbar-brand" href="index.php"><img src="../images/ikalogo.png" style="width:120px;" alt="logo"></a>
         </div>
         <div class="col-md-3">
           <form class="navbar-collapse collapse" id="navbarsExampleDefault2">
@@ -176,7 +176,7 @@
       <div class="container">
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="main.php">IKA</a></li>
+            <li class="breadcrumb-item"><a href="index.php">IKA</a></li>
             <li class="breadcrumb-item"><a href="#">IKA Pension Calculation</a></li>
           </ol>
         </nav>
