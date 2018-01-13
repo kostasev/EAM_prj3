@@ -2,6 +2,14 @@
   /* destroy session and data */
   session_start();
 
+  if (!isset($_SESSION['user'])) {
+    /* user is not logged-in */
+    /* redirect properly */
+    $redirect_url = 'access_error.php';
+    header('Location: ' . $redirect_url);
+    exit();
+  }
+
   /* Unset session variables */
   $_SESSION = array();
   /* Destroy the whole session, not just the session data */

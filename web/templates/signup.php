@@ -1,3 +1,15 @@
+<?php
+  session_start();
+
+  if (isset($_SESSION['user'])) {
+    /* user is currently logged-in */
+    /* redirect properly */
+    $redirect_url = 'access_error.php';
+    header('Location: ' . $redirect_url);
+    exit();
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
