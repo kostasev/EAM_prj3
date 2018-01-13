@@ -13,14 +13,14 @@
   * username: eam_user
   * password: pass  
   Όπως φαίνεται και στο αρχείο *web/templates/db_connection.php*:
-  """
-  <?php
+
+  > <?php
     $hn = '127.0.0.1';
     $db = 'sdi1400058';
     $un = 'eam_user';
     $pw = 'pass'
   ?>
-  """
+
 
 ## Επικοινωνία
 
