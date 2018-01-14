@@ -32,12 +32,27 @@
         <div class="col-md-2"></div>
         <div role="navigation" class="navbar-collapse collapse" id="navbarsExampleDefault" aria-expanded="false" style="">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="signup.php">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.php">Log In</a>
-            </li>
+            <?php
+              if (isset($_SESSION['user'])) {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link danger-tooltip" href="profile.php" id="profile" data-toggle="tooltip" data-placement="bottom">My Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="logout.php">Log Out</a>
+              </li>
+            <?php
+              } else {
+            ?>
+              <li class="nav-item">
+                <a class="nav-link" href="signup.php">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="login.php">Log In</a>
+              </li>
+            <?php
+              }
+            ?>
             <li class="navbar-item">
               <select class="custom-select">
                 <option value="Albanian">Albanian</option>
